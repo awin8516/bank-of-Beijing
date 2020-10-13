@@ -16,69 +16,265 @@
 
 <body class="style-red">
 	<div class="container">
-		<header><img src="image/logo.png"><span>真诚 所以依赖</span></header>
-		<nav id="navFixed" class="nav-fixed"></nav>
+		<div class="header"><img src="image/logo.png"><span>真诚 所以依赖</span></div>
+		<div class="body">
+			<nav id="navFixed" class="nav nav-fixed">
+				<script id="tpl-nav-fixed" type="text/html">
+					{{each nav}}
+					<a href="#" data-tpl="{{$value.template}}">
+						<b>
+							<span>
+								<h2>{{$value.zh}}</h2>
+								<em>{{$value.en}}</em>
+							</span>
+						</b>
+					</a>
+					{{/each}}
+				</script>
+			</nav>
 
-		<!-- 首页 -->
-		<section id="pageHome" class="page page-home">
-			<nav id="navHome" class="nav-home"></nav>
-		</section>
+			<div class="side-btns">
+				<div class="back-home">
+					<b>返回首页</b>
+				</div>				
+				<!-- <div class="paging">
+					<b class="disabled">上一页</b>
+					<b>下一页</b>
+				</div> -->
+				<div class="scroll">
+					<b class="disabled">上滑</b>
+					<b>下滑</b>
+				</div>
+			</div>
 
-		<!-- 网点导览 -->
-		<section id="pageGuide" class="page page-guide">
-			<main>
+			<!-- 首页 -->		
+			<section class="page page-home page-show">
+				<nav class="nav nav-home">
+					<script id="tpl-nav-home" type="text/html">
+						{{each nav}}
+						<a href="#" data-tpl="{{$value.template}}">
+							<b>
+								<span>
+									<h2>{{$value.zh}}</h2>
+									<em>{{$value.en}}</em>
+								</span>
+							</b>
+						</a>
+						{{/each}}
+					</script>
+				</nav>
+				
 
-			</main>
-		</section>
+				<div class="exchange-fund">
+					<div class="exchange">
+						<script id="tpl-exchange" type="text/html">
+							<dl>
+								<dt>
+									<span>货币对</span>
+									<span>买入价</span>
+									<span>卖出价</span>
+									<span>最低买入</span>
+									<span>最高卖出</span>
+								</dt>
+								<dd>
+									<ul>
+										{{each list}}
+											<li>
+												<span>{{$value.CurrencyPair}}</span>
+												<span>{{$value.BuyPrice}}</span>
+												<span>{{$value.SalePrice}}</span>
+												<span>{{$value.LowestBuyIn}}</span>
+												<span>{{$value.HighestSellOut}}</span>
+											</li>
+										{{/each}}
+									</ul>
+								</dd>
+							</dl>
+						</script>
+					</div>
+					<div class="fund">
+						<script id="tpl-fund" type="text/html">
+							<dl>
+								<dt>
+									<span>基金代码</span>
+									<span>基金简称</span>
+									<span>单位净值</span>
+									<span>累计净值</span>
+									<span>日涨幅</span>
+									<span>月涨幅</span>
+									<span>季涨幅</span>
+								</dt>
+								<dd>
+									<ul>
+										{{each list}}
+											<li>
+												<span>{{$value.FundCode}}</span>
+												<span>{{$value.ShortName}}</span>
+												<span>{{$value.NetValue}}</span>
+												<span>{{$value.AccumulatedNetValue}}</span>
+												<span>{{$value.DayChanged}}</span>
+												<span>{{$value.LastMonth}}</span>
+												<span>{{$value.LastQuarter}}</span>
+											</li>
+										{{/each}}
+									</ul>
+								</dd>
+							</dl>
+						</script>
+					</div>
+				</div>
+			</section>
+				
+			<!-- 网点导览 -->
+			<section id="pageGuide" class="page page-guide">
+				<main>
+					<div class="scrollbox">
+						<div>
+							<div>
+								<script id="tpl-page-guide-content" type="text/html">
+									{{@ content}}
+									{{each nav}}
+									<a href="#">
+										<b>
+											<span>
+												<h2>{{$value.zh}}</h2>
+												<em>{{$value.en}}</em>
+											</span>
+										</b>
+									</a>
+									{{/each}}
+								</script>
+							</div>
+							<div class="peak-tips">
+								<div class="head">
+									<h1>高峰提示</h1>
+									<h2>Peak Time Reminder</h2>
+								</div>
+								<div class="body">
+									<ul>
+										<li>09:00-11:00
+											<s></s>
+											<i></i>
+											<s></s>
+											<i></i>
+										</li>
+										<li>11:00-12:00
+											<s></s>
+											<s></s>
+											<i></i>
+										</li>
+										<li>12:00-13:00
+											<s></s>
+											<s></s>
+										</li>
+										<li>13:00-14:00
+											<s></s>
+											<i></i>
+											<s></s>
+										</li>
+										<li>14:00-15:30
+											<s></s>
+											<i></i>
+											<s></s>
+											<i></i>
+										</li>
+										<li>15:30-17:00
+											<s></s>
+											<i></i>
+										</li>
+									</ul>
+									<ul>
+										<li>周一
+											<s></s>
+											<s></s>
+											<s></s>
+											<i></i>
+										</li>
+										<li>周二
+											<i></i>
+											<i></i>
+											<s></s>
+										</li>
+										<li>周三
+											<s></s>
+											<i></i>
+											<s></s>
+										</li>
+										<li>周四
+											<s></s>
+											<i></i>
+										</li>
+										<li>周五
+											<i></i>
+											<s></s>
+											<i></i>
+										</li>
+										<li>周日
+											<s></s>
+										</li>
+									</ul>
+								</div>
+								<div class="foot">
+									<div>尊敬的客户，您好！为了您能快速办理业务，请尽量避开高峰时段</div>
+									<p>*每月15号-18号、26号-28号为业务高峰期*</p>
+								</div>
+							</div>
+						</div>
 
-		<!-- 便民设施 -->
-		<section id="pageFacilities" class="page page-facilities">
-			<main>
+					</div>
+				</main>
+			</section>
 
-			</main>
-		</section>
+			<!-- 便民设施 -->
+			<section id="pageFacilities" class="page page-facilities">
+				<main>
 
-		<!-- 党建信息 -->
-		<section id="pageParty" class="page page-party">
-			<main>
+				</main>
+			</section>
 
-			</main>
-		</section>
+			<!-- 党建信息 -->
+			<section id="pageParty" class="page page-party">
+				<main>
 
-		<!-- 服务人员 -->
-		<section id="pageService" class="page page-service">
-			<main>
+				</main>
+			</section>
 
-			</main>
-		</section>
+			<!-- 服务人员 -->
+			<section id="pageService" class="page page-service">
+				<main>
 
-		<!-- 消费者保护 -->
-		<section id="pageConsumer" class="page page-consumer">
-			<main>
+				</main>
+			</section>
 
-			</main>
-		</section>
+			<!-- 消费者保护 -->
+			<section id="pageConsumer" class="page page-consumer">
+				<main>
 
-		<!-- 贵宾增值服务 -->
-		<section id="pageVip" class="page page-vip">
-			<main>
+				</main>
+			</section>
 
-			</main>
-		</section>
+			<!-- 贵宾增值服务 -->
+			<section id="pageVip" class="page page-vip">
+				<main>
 
-		<!-- 理财资讯 -->
-		<section id="pageFinancial" class="page page-financial">
-			<main>
+				</main>
+			</section>
 
-			</main>
-		</section>
+			<!-- 理财资讯 -->
+			<section id="pageFinancial" class="page page-financial">
+				<main>
 
-		<!-- 我的的荣誉 -->
-		<section id="pageHonor" class="page page-honor">
-			<main>
+				</main>
+			</section>
 
-			</main>
-		</section>
+			<!-- 我的的荣誉 -->
+			<section id="pageHonor" class="page page-honor">
+				<main>
+
+				</main>
+			</section>
+		</div>
+		
 	</div>
 </body>
 

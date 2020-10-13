@@ -39,7 +39,50 @@ var API = {
         API._send('getSiteInfo',"POST", data, success);
     },
 
+    getExchange:function(data,success,error){
+        $.ajax({
+            type: "GET",
+            url: "http://ewealth.abchina.com/app/data/api/DataService/RealTimeExchangeRateV2",
+            data: {},
+            dataType: "json",
+            success: success,
+            error:error
+        });
+    },
+
+    getFund:function(data,success,error){
+        $.ajax({
+            type: "GET",
+            url: "http://ewealth.abchina.com/app/data/api/DataService/FundFilterV2_New?i=1&s=50&o=2&W=0%7C-1%7C-1%7C1%7C0%7C1%7C1%7C0%7C-1%7C9_DESC",
+            data: {},
+            dataType: "json",
+            success: success,
+            error:error
+        });
+    },
+
+    getGuide:function(data,success){
+        API._send('getGuide',"POST", data, success);
+    },
+    getFacilities:function(data,success){
+        API._send('getFacilities',"POST", data, success);
+    },
     getParty:function(data,success){
         API._send('getParty',"POST", data, success);
-    }
+    },
+    getService:function(data,success){
+        API._send('getService',"POST", data, success);
+    },
+    getConsumer:function(data,success){
+        API._send('getConsumer',"POST", data, success);
+    },
+    getVip:function(data,success){
+        API._send('getVip',"POST", data, success);
+    },
+    getFinancial:function(data,success){
+        API._send('getFinancial',"POST", data, success);
+    },
+    getHonor:function(data,success){
+        API._send('getHonor',"POST", data, success);
+    },
 }
