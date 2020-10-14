@@ -42,8 +42,15 @@
 					<b>下一页</b>
 				</div> -->
 				<div class="scroll">
-					<b class="disabled">上滑</b>
+					<b>上滑</b>
 					<b>下滑</b>
+				</div>
+			</div>
+
+			<div id="popup" class="popup">
+				<div class="inner">
+					<a class="close"></a>
+					<div class="content"></div>
 				</div>
 			</div>
 
@@ -76,7 +83,7 @@
 									<span>最低买入</span>
 									<span>最高卖出</span>
 								</dt>
-								<dd>
+								<dd class="auto-scroll">
 									<ul>
 										{{each list}}
 											<li>
@@ -104,7 +111,7 @@
 									<span>月涨幅</span>
 									<span>季涨幅</span>
 								</dt>
-								<dd>
+								<dd class="auto-scroll">
 									<ul>
 										{{each list}}
 											<li>
@@ -228,54 +235,145 @@
 			<!-- 便民设施 -->
 			<section id="pageFacilities" class="page page-facilities">
 				<main>
-
+					<div class="scrollbox">
+						<div>
+							<div class="facilities-box">
+								<div class="facilities-logo"><img src="image/logo.png"></div>
+								<div class="facilities-title"><img src="image/2/title.png"></div>
+								<ul>
+									<script id="tpl-page-facilities" type="text/html">
+										{{each list}}
+										<li data-img="{{$value.img}}">
+											<img src="{{$value.icon}}">
+										</li>
+										{{/each}}
+									</script>
+								</ul>
+								<div class="tips">*点击可查看</div>
+							</div>
+						</div>
+					</div>
 				</main>
 			</section>
 
 			<!-- 党建信息 -->
 			<section id="pageParty" class="page page-party">
 				<main>
-
+					<div class="scrollbox">
+						<div>
+							<script id="tpl-page-party" type="text/html">
+								{{@ content}}
+							</script>
+						</div>
+					</div>
 				</main>
 			</section>
 
 			<!-- 服务人员 -->
-			<section id="pageService" class="page page-service">
+			<section id="pagePersonnel" class="page page-personnel">
 				<main>
-
+					<div class="scrollbox">
+						<div>
+							<script id="tpl-page-personnel" type="text/html">
+								<div><img src="{{groupPhoto}}"></div>
+								<div id="peopleList">
+									{{each category}}
+									<dl>
+										<dt>{{$value.cate}}</dt>
+										<dd>
+											<ul>
+												{{each $value.list}}
+												<li data-personnel='{{$value}}'>
+													<img src="{{$value.photo}}">
+													<div>{{$value.promise}}</div>
+													<div>{{$value.name}}</div>
+												</li>
+												{{/each}}
+											</ul>
+										</dd>
+									</dl>
+									{{/each}}
+								</div>
+							</script>	
+						</div>
+					</div>
 				</main>
 			</section>
 
 			<!-- 消费者保护 -->
 			<section id="pageConsumer" class="page page-consumer">
 				<main>
-
+					<div class="scrollbox">
+						<div>
+							<script id="tpl-page-consumer" type="text/html">
+								{{@ content}}
+							</script>
+						</div>
+					</div>
 				</main>
 			</section>
 
 			<!-- 贵宾增值服务 -->
 			<section id="pageVip" class="page page-vip">
 				<main>
-
+					<div class="scrollbox">
+						<div>
+							<script id="tpl-page-vip" type="text/html">
+								{{@ content}}
+							</script>
+						</div>
+					</div>
 				</main>
 			</section>
 
 			<!-- 理财资讯 -->
 			<section id="pageFinancial" class="page page-financial">
 				<main>
-
+					<div class="scrollbox">
+						<div>
+							<script id="tpl-page-financial" type="text/html">
+								{{@ content}}
+							</script>
+						</div>
+					</div>
 				</main>
 			</section>
 
 			<!-- 我的的荣誉 -->
 			<section id="pageHonor" class="page page-honor">
 				<main>
-
+					<div class="scrollbox">
+						<div>
+							<script id="tpl-page-honor" type="text/html">
+								{{@ content}}
+							</script>
+						</div>
+					</div>
 				</main>
 			</section>
 		</div>
-		
 	</div>
+
+	<script id="tpl-page-personnel-detail" type="text/html">
+		<div class="people">
+			<img src="image/4/零售团队/高蒙蒙.jpg">
+			<div>
+				<h2><b>姓名：</b>高蒙蒙</h2>
+				<h2><b>工号：</b>029163</h2>
+				<h2><b>岗位：</b>理财经理</h2>
+				<h2><b>服务承诺：</b>用心服务，竭诚相待</h2>
+				<h2><b>销售资质：</b>AFP、基金从业、保险、个贷A类、公积金</h2>
+			</div>
+		</div>
+		<div class="img-book">
+			<img src="image/4/零售团队/高蒙蒙/01.jpg">
+			<img src="image/4/零售团队/高蒙蒙/02.jpg">
+			<img src="image/4/零售团队/高蒙蒙/03.jpg">
+			<img src="image/4/零售团队/高蒙蒙/04.jpg">
+		</div>
+	</script>
+
+	
 </body>
 
 </html>

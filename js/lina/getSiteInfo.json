@@ -1,0 +1,50 @@
+{
+  "errcode": 0,
+  "errmsg": "ok",
+  "data": {
+    "siteId": 1,
+    "siteName": "bj",
+    "siteTheme": "red",
+    "nav": [{
+        "zh": "网点导览",
+        "en": "Branch Guide",
+        "template": "Guide"
+      },
+      {
+        "zh": "便民设施",
+        "en": "Public Facilities",
+        "template": "Facilities"
+      },
+      {
+        "zh": "党建信息",
+        "en": "Party Information",
+        "template": "Party"
+      },
+      {
+        "zh": "服务人员展示",
+        "en": "Service personnel",
+        "template": "Personnel"
+      },
+      {
+        "zh": "消费者保护专栏",
+        "en": "Consumer Protection",
+        "template": "Consumer"
+      },
+      {
+        "zh": "贵宾增值服务",
+        "en": "VIP Service",
+        "template": "VIP"
+      },
+      {
+        "zh": "理财资讯",
+        "en": "Financial Information",
+        "template": "Financial"
+      },
+      {
+        "zh": "我的的荣誉",
+        "en": "Our Honor",
+        "template": "Honor"
+      }
+    ]
+  }
+}

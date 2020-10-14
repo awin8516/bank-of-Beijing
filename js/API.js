@@ -1,10 +1,10 @@
 var API = {
     DOMAIN: location.href.indexOf("lina") != -1 ? "" : " http://114.55.11.192:7300/mock/5f841673d29faf95e856baa9/lina",               //正式
-    DEBUG: false, 
+    DEBUG: true, 
     _send: function(method,type, data, success){
         $.ajax({
-            url: API.DOMAIN + "/" + method,
-            type:type,
+            url: API.DEBUG ? "http://192.168.11.71/2020/bank-of-Beijing/js/lina/"+method+".json" : API.DOMAIN + "/" + method,
+            type: API.DEBUG ? "GET" : type,
             data: data,
             dataType: 'json',
             async: true,
@@ -70,8 +70,8 @@ var API = {
     getParty:function(data,success){
         API._send('getParty',"POST", data, success);
     },
-    getService:function(data,success){
-        API._send('getService',"POST", data, success);
+    getPersonnel:function(data,success){
+        API._send('getPersonnel',"POST", data, success);
     },
     getConsumer:function(data,success){
         API._send('getConsumer',"POST", data, success);
