@@ -5,6 +5,7 @@
     "siteId": 1,
     "siteName": "bj",
     "siteTheme": "red",
+    "siteVideo": "upload/01.mp4",
     "nav": [{
         "zh": "网点导览",
         "en": "Branch Guide",

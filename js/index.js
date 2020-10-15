@@ -31,7 +31,7 @@ $(document).ready(function(){
     mouseup :"ontouchend" in document.documentElement ? "touchend": "mouseup",
     scroll :"scroll"
   } 
-  var backHomeTime = 60; // 没有操作？秒后回首页
+  var backHomeTime = 600; // 没有操作？秒后回首页
   var backHomeTimer = null;
 
   $o.body.on(eventList.click, autoBackHome);
@@ -66,7 +66,9 @@ $(document).ready(function(){
     API.getSiteInfo({siteId:1},function(res){
       console.log(res.data);
       Template('tpl-nav-home', res.data);
+      Template('tpl-video', res.data);
       Template('tpl-nav-fixed', res.data);
+      document.title = res.data.siteName;
     });
 
     API.getExchange({},function(res){
@@ -96,7 +98,15 @@ $(document).ready(function(){
   function initGuide() {
     API.getGuide({siteId:1},function(res){
       console.log(res.data);
-      Template('tpl-page-guide-content', {content:res.data});
+      var time = JSON.parse('[{"name":"'+res.data.peakTime.replace(/\s|\n|\r\n|；$|;$|，$|,$|。$|.$/g, '').replace(/;|；|,|，/g, '},{"name":"').replace(/=/g, '","value":')+'}]');
+      var week = JSON.parse('[{"name":"'+res.data.peakWeek.replace(/\s|\n|\r\n|；$|;$|，$|,$|。$|.$/g, '').replace(/;|；|,|，/g, '},{"name":"').replace(/=/g, '","value":')+'}]');
+      var data = {
+        content:res.data.content,
+        peakTime:time,
+        peakWeek:week,
+      }
+      console.log(data)
+      Template('tpl-page-guide-content', data);
     });
   }
 
@@ -189,6 +199,16 @@ $(document).ready(function(){
   }
 
   /**
+   * 生成服务人员详细弹窗HTML
+   */
+  function createPersonnelDetail(data) {
+    console.log(data);
+    data = JSON.parse(data)
+    return template("tpl-page-personnel-detail", data);
+  }
+
+
+  /**
    * 汇率自动滚动
    * @param {*} box 
    */
@@ -210,15 +230,6 @@ $(document).ready(function(){
       box.children().attr("style", "animation: "+name+" "+duration+"ms linear infinite;");
       $o.head.append("<style>.a {width:100px} @keyframes "+name+"{to {transform: translateY(-"+sh+"px);}}</style>")
     }
-  }
-
-  /**
-   * 生成服务人员详细弹窗HTML
-   */
-  function createPersonnelDetail(data) {
-    console.log(data);
-    data = JSON.parse(data)
-    
   }
 
   /**
@@ -285,6 +296,51 @@ $(document).ready(function(){
     }
     return;
   }
+
+  var a='[{    category: "党组成员",    "name": "林悠玮",    "photo": "image/4/党组成员"/林悠玮.jpg",    "number": 5,    "post": "6",    "promise": "以真心换来信任，以诚意赢得理解.",    "qualification": "",    "qualificationImgs": ["1",2,"3",4,5,"xxx6",],  }]';
+  var b=""
+  var c=""
+
+  function jsonFormat(input) {
+    var copyJson = input;
+      if (!copyJson) return;
+      // 替换不正常的 { 号
+      copyJson = copyJson.replace(/｛/g, '{')
+      // 替换不正常的 } 号
+      copyJson = copyJson.replace(/｝/g, '}')
+      // 替换不正常的 : 号
+      copyJson = copyJson.replace(/：/g, ':')
+      // 去掉所有的空格
+      copyJson = copyJson.replace(/s/g, '')
+      // 替换所有的 引号
+      copyJson = copyJson.replace(/['‘“’”]/g, '"')
+      // 替换value值中的双引号
+      copyJson = copyJson.replace(/"(?=([ws-_d.*u4E00-u9FA5uf900-ufa2d]+?))/g, '’')
+      // 替换不正常的 , 号
+      copyJson = copyJson.replace(/[，]/g, ',')
+      // 替换 undefined 为字符串
+      copyJson = copyJson.replace(/["']?undefined["']?/g, '"undefined"')
+      // 替换所有}之前的，号
+      copyJson = copyJson.replace(/,}/g, '}')
+      try {
+        // 若正常直接返回
+        JSON.parse(copyJson);
+        return copyJson;
+      } catch (err) {
+        // 不正常开始替换
+        copyJson = copyJson.replace(/{"?([u4E00-u9FA5uf900-ufa2d'"dw_-]*?)"?:/g,($a,$b)=>{
+          return `{"${$b}":`;
+        }) 
+        copyJson = copyJson.replace(/,"?([u4E00-u9FA5uf900-ufa2d'"dw_-]*?)"?:/g,($a,$b)=>{
+          return `,"${$b}":`;
+        })
+        
+        return copyJson
+      }
+  }
+
+  // console.log(jsonFormat(a))
+    
 
   /**
    * 初始上滑下滑按钮

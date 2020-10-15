@@ -36,11 +36,7 @@
 			<div class="side-btns">
 				<div class="back-home">
 					<b>返回首页</b>
-				</div>				
-				<!-- <div class="paging">
-					<b class="disabled">上一页</b>
-					<b>下一页</b>
-				</div> -->
+				</div>
 				<div class="scroll">
 					<b>上滑</b>
 					<b>下滑</b>
@@ -70,6 +66,12 @@
 						{{/each}}
 					</script>
 				</nav>
+
+				<div class="video">
+					<script id="tpl-video" type="text/html">
+						<video src="{{siteVideo}}" autoplay></video>
+					</script>
+				</div>
 				
 
 				<div class="exchange-fund">
@@ -137,97 +139,36 @@
 				<main>
 					<div class="scrollbox">
 						<div>
-							<div>
-								<script id="tpl-page-guide-content" type="text/html">
-									{{@ content}}
-									{{each nav}}
-									<a href="#">
-										<b>
-											<span>
-												<h2>{{$value.zh}}</h2>
-												<em>{{$value.en}}</em>
-											</span>
-										</b>
-									</a>
-									{{/each}}
-								</script>
-							</div>
-							<div class="peak-tips">
-								<div class="head">
-									<h1>高峰提示</h1>
-									<h2>Peak Time Reminder</h2>
+							<script id="tpl-page-guide-content" type="text/html">
+								<div>{{@ content}}</div>
+								<div class="peak-tips">
+									<div class="hd">
+										<h1>高峰提示</h1>
+										<h2>Peak Time Reminder</h2>
+									</div>
+									<div class="bd">
+										<ul>
+											{{each peakTime}}
+											<li class="peak-{{$value.value}}">{{$value.name}}
+												<s></s><i></i><s></s><i></i><s></s><i></i><s></s><i></i>
+											</li>
+											{{/each}}
+										</ul>
+										<ul>
+											{{each peakWeek}}
+											<li class="peak-{{$value.value}}">{{$value.name}}
+												<s></s><i></i><s></s><i></i><s></s><i></i><s></s><i></i>
+											</li>
+											{{/each}}
+										</ul>
+									</div>
+									<div class="ft">
+										<div>尊敬的客户，您好！为了您能快速办理业务，请尽量避开高峰时段</div>
+										<p>*每月15号-18号、26号-28号为业务高峰期*</p>
+									</div>
 								</div>
-								<div class="body">
-									<ul>
-										<li>09:00-11:00
-											<s></s>
-											<i></i>
-											<s></s>
-											<i></i>
-										</li>
-										<li>11:00-12:00
-											<s></s>
-											<s></s>
-											<i></i>
-										</li>
-										<li>12:00-13:00
-											<s></s>
-											<s></s>
-										</li>
-										<li>13:00-14:00
-											<s></s>
-											<i></i>
-											<s></s>
-										</li>
-										<li>14:00-15:30
-											<s></s>
-											<i></i>
-											<s></s>
-											<i></i>
-										</li>
-										<li>15:30-17:00
-											<s></s>
-											<i></i>
-										</li>
-									</ul>
-									<ul>
-										<li>周一
-											<s></s>
-											<s></s>
-											<s></s>
-											<i></i>
-										</li>
-										<li>周二
-											<i></i>
-											<i></i>
-											<s></s>
-										</li>
-										<li>周三
-											<s></s>
-											<i></i>
-											<s></s>
-										</li>
-										<li>周四
-											<s></s>
-											<i></i>
-										</li>
-										<li>周五
-											<i></i>
-											<s></s>
-											<i></i>
-										</li>
-										<li>周日
-											<s></s>
-										</li>
-									</ul>
-								</div>
-								<div class="foot">
-									<div>尊敬的客户，您好！为了您能快速办理业务，请尽量避开高峰时段</div>
-									<p>*每月15号-18号、26号-28号为业务高峰期*</p>
-								</div>
-							</div>
+							</script>
 						</div>
-
 					</div>
 				</main>
 			</section>
@@ -356,21 +297,22 @@
 
 	<script id="tpl-page-personnel-detail" type="text/html">
 		<div class="people">
-			<img src="image/4/零售团队/高蒙蒙.jpg">
+			<img src="{{photo}}">
 			<div>
-				<h2><b>姓名：</b>高蒙蒙</h2>
-				<h2><b>工号：</b>029163</h2>
-				<h2><b>岗位：</b>理财经理</h2>
-				<h2><b>服务承诺：</b>用心服务，竭诚相待</h2>
-				<h2><b>销售资质：</b>AFP、基金从业、保险、个贷A类、公积金</h2>
+				{{if name }}<h2><b>姓名：</b>{{name}}</h2>{{/if}}
+				{{if number }}<h2><b>工号：</b>{{number}}</h2>{{/if}}
+				{{if post }}<h2><b>岗位：</b>{{post}}</h2>{{/if}}
+				{{if promise }}<h2><b>服务承诺：</b>{{promise}}</h2>{{/if}}
+				{{if qualification }}<h2><b>销售资质：</b>{{qualification}}</h2>{{/if}}
 			</div>
 		</div>
+		{{if qualificationImgs.length }}
 		<div class="img-book">
-			<img src="image/4/零售团队/高蒙蒙/01.jpg">
-			<img src="image/4/零售团队/高蒙蒙/02.jpg">
-			<img src="image/4/零售团队/高蒙蒙/03.jpg">
-			<img src="image/4/零售团队/高蒙蒙/04.jpg">
+			{{each qualificationImgs}}
+			<img src="{{$value}}">
+			{{/each}}
 		</div>
+		{{/if}}
 	</script>
 
 	
