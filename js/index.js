@@ -37,6 +37,7 @@ $(document).ready(function(){
   $o.body.on(eventList.click, autoBackHome);
   $o.body.on(eventList.click, ".nav a", pageTo);
   $o.body.on(eventList.click, ".back-home", backHome);
+  
   $o.body.on(eventList.click, "[data-img]", function(){
     if(this.dataset.img){
       showPopup("<img src=" + this.dataset.img + ">");
@@ -50,6 +51,7 @@ $(document).ready(function(){
   $o.popupClose.on(eventList.click, hidePopup);
 
 
+  initFullScreen();
   initHome();
   initGuide();
   initFacilities();
@@ -59,6 +61,7 @@ $(document).ready(function(){
   initVip();
   initFinancial();
   initHonor();
+
   /*******************
    * 初始化首页 & 菜单
    */
@@ -69,6 +72,7 @@ $(document).ready(function(){
       Template('tpl-video', res.data);
       Template('tpl-nav-fixed', res.data);
       document.title = res.data.siteName;
+      $o.body.attr("class", "theme-ui-"+res.data.siteTheme)
     });
 
     API.getExchange({},function(res){
@@ -272,7 +276,7 @@ $(document).ready(function(){
     $o.popupContent.html("");
   }
 
-
+  
   /**
    * 打开页面
    */
@@ -284,8 +288,19 @@ $(document).ready(function(){
     initSwipe();
   }
 
-  function fullScreen() {
-    var el = document.documentElement;
+  /**
+   * 打开页面
+   */
+  function initFullScreen() {
+    $("<div class='fullscreen-mask'><div class='btn-fullscreen'></div></div>").appendTo("body");
+    $o.body.on(eventList.click, ".btn-fullscreen", function(){
+      fullScreen();
+      $(this).parent().addClass("hide");
+    });
+  }
+
+  function fullScreen(callback) {
+    var el = document.body;
     var rfs =
       el.requestFullScreen ||
       el.webkitRequestFullScreen ||
@@ -293,54 +308,10 @@ $(document).ready(function(){
       el.msRequestFullscreen;
     if (typeof rfs != "undefined" && rfs) {
       rfs.call(el);
+      callback && callback();
     }
     return;
   }
-
-  var a='[{    category: "党组成员",    "name": "林悠玮",    "photo": "image/4/党组成员"/林悠玮.jpg",    "number": 5,    "post": "6",    "promise": "以真心换来信任，以诚意赢得理解.",    "qualification": "",    "qualificationImgs": ["1",2,"3",4,5,"xxx6",],  }]';
-  var b=""
-  var c=""
-
-  function jsonFormat(input) {
-    var copyJson = input;
-      if (!copyJson) return;
-      // 替换不正常的 { 号
-      copyJson = copyJson.replace(/｛/g, '{')
-      // 替换不正常的 } 号
-      copyJson = copyJson.replace(/｝/g, '}')
-      // 替换不正常的 : 号
-      copyJson = copyJson.replace(/：/g, ':')
-      // 去掉所有的空格
-      copyJson = copyJson.replace(/s/g, '')
-      // 替换所有的 引号
-      copyJson = copyJson.replace(/['‘“’”]/g, '"')
-      // 替换value值中的双引号
-      copyJson = copyJson.replace(/"(?=([ws-_d.*u4E00-u9FA5uf900-ufa2d]+?))/g, '’')
-      // 替换不正常的 , 号
-      copyJson = copyJson.replace(/[，]/g, ',')
-      // 替换 undefined 为字符串
-      copyJson = copyJson.replace(/["']?undefined["']?/g, '"undefined"')
-      // 替换所有}之前的，号
-      copyJson = copyJson.replace(/,}/g, '}')
-      try {
-        // 若正常直接返回
-        JSON.parse(copyJson);
-        return copyJson;
-      } catch (err) {
-        // 不正常开始替换
-        copyJson = copyJson.replace(/{"?([u4E00-u9FA5uf900-ufa2d'"dw_-]*?)"?:/g,($a,$b)=>{
-          return `{"${$b}":`;
-        }) 
-        copyJson = copyJson.replace(/,"?([u4E00-u9FA5uf900-ufa2d'"dw_-]*?)"?:/g,($a,$b)=>{
-          return `,"${$b}":`;
-        })
-        
-        return copyJson
-      }
-  }
-
-  // console.log(jsonFormat(a))
-    
 
   /**
    * 初始上滑下滑按钮

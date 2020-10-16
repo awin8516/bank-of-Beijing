@@ -1,37 +1,43 @@
 var API = {
     DOMAIN: location.href.indexOf("lina") != -1 ? "" : " http://114.55.11.192:7300/mock/5f841673d29faf95e856baa9/lina",               //正式
-    DEBUG: true, 
+    DEBUG: true,    
     _send: function(method,type, data, success){
-        $.ajax({
-            url: API.DEBUG ? "http://192.168.11.71/2020/bank-of-Beijing/js/lina/"+method+".json" : API.DOMAIN + "/" + method,
-            type: API.DEBUG ? "GET" : type,
-            data: data,
-            dataType: 'json',
-            async: true,
-            success: function(res) {
-                if (API.DEBUG){
-                    console.log(method + "——success");
-                    console.log(res);
-                }
-                
-                if(res && res.errcode == 0){
-                    if (success) success(res);
-                }else{
-                    if(confirm('数据请求超时，是否刷新页面？')){
-                        window.location.reload();
-                    }
-                } 
-            },
-            error: function(res) {
-                if (API.DEBUG) {
-                    console.log(method + "——fail");
-                    console.log(res);
-                } 
-                if(confirm('数据请求超时，是否刷新页面？')){
-                    window.location.reload();
-                }
+        var successfn = function(res){
+            if (API.DEBUG){
+                console.log(method + "——success");
+                console.log(res);
             }
-        }); 
+            
+            if(res && res.errcode == 0){
+                if (success) success(res);
+            }else{
+                // if(confirm('数据请求超时，是否刷新页面？')){
+                //     window.location.reload();
+                // }
+            } 
+        };
+        var errorFn = function(res) {
+            if (API.DEBUG) {
+                console.log(method + "——fail");
+                console.log(res);
+            } 
+            // if(confirm('数据请求超时，是否刷新页面？')){
+            //     window.location.reload();
+            // }
+        }
+        if(API.DEBUG){
+            successfn && successfn(__DATA[method])
+        }else{
+            $.ajax({
+                url: API.DOMAIN + "/" + method,
+                type: API.DEBUG ? "GET" : type,
+                data: data,
+                dataType: 'json',
+                async: true,
+                success: successfn,
+                error: errorFn
+            });
+        }
     },
 
 

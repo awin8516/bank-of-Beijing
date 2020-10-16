@@ -7,14 +7,16 @@
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<title></title>
 	<meta name="format-detection" content="telephone=no" />
-	<link href="css/style.css" rel="stylesheet">
+	<link href="css/style.min.css" rel="stylesheet">
 	<script src="js/jquery.1.11.3.min.js"></script>
+	<script src="js/lina/__DATA.js"></script>
 	<script src="js/API.js"></script>
 	<script src="js/art-template-4.13.2.js"></script>
 	<script src="js/index.js"></script>
 </head>
 
-<body class="style-red">
+<body class="theme-red">
+
 	<div class="container">
 		<div class="header"><img src="image/logo.png"><span>真诚 所以依赖</span></div>
 		<div class="body">
@@ -52,20 +54,23 @@
 
 			<!-- 首页 -->		
 			<section class="page page-home page-show">
-				<nav class="nav nav-home">
+				<div>
 					<script id="tpl-nav-home" type="text/html">
-						{{each nav}}
-						<a href="#" data-tpl="{{$value.template}}">
-							<b>
-								<span>
-									<h2>{{$value.zh}}</h2>
-									<em>{{$value.en}}</em>
-								</span>
-							</b>
-						</a>
-						{{/each}}
+						<nav class="nav nav-home nav-num-{{nav.length}}">
+							{{each nav}}
+							<a href="#" data-tpl="{{$value.template}}">
+								<b>
+									<span>
+										<h2>{{$value.zh}}</h2>
+										<em>{{$value.en}}</em>
+									</span>
+								</b>
+							</a>
+							{{/each}}							
+						</nav>
 					</script>
-				</nav>
+				</div>
+				
 
 				<div class="video">
 					<script id="tpl-video" type="text/html">
