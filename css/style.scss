@@ -34,7 +34,7 @@ img{max-width: 100%;}
 
 .container{
 	position: relative;	z-index: 1;height: 100%;
-	.header{position: relative; z-index: 300;height: 8%; background-color: #fff;text-align: left;display: none;}
+	.header{position: relative; z-index: 300;height: 8%; background-color: #fff;text-align: left;}
 	.header::before{content: "";display: inline-block;width: 5%;height: 100%;vertical-align: middle;}
 	.header img{display: inline-block;vertical-align: middle;height: 60%;}
 	.header span{position: absolute;right: 5%;top: 50%;font-size: 3.2em;font-weight: bold; color: $myColor;line-height: 1;transform: translate(0, -50%);}
