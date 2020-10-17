@@ -1,16 +1,21 @@
-﻿ 
+ 
 @echo off
 rem start python TransFile.py
 set d=%USERPROFILE%\Desktop
-echo %d%
+set downPath=http://testlink.beats-digital.com/tools
+set startMenu=%AppData%\Microsoft\Windows\Start Menu\Programs\Startup\
+set zipName=bank-of-Beijing
+::echo %d%
 
 
-certutil.exe -urlcache -split -f http://testlink.beats-digital.com/tools/unzip.exe
+certutil.exe -urlcache -split -f %downPath%/unzip.exe
 
-certutil.exe -urlcache -split -f http://testlink.beats-digital.com/tools/bank-of-Beijing.zip
+certutil.exe -urlcache -split -f %downPath%/%zipName%.zip
 
-unzip -o bank-of-Beijing.zip -d bank-of-Beijing/
+unzip -o %zipName%.zip -d %zipName%/
 
-xcopy /y %d%\bank-of-Beijing\start.bat "%AppData%\Microsoft\Windows\Start Menu\Programs\Startup\"
+xcopy /y %d%\%zipName%\start.bat %startMenu%
 
-shutdown /r /t 0
+::shutdown /r /t 0
+
+pause

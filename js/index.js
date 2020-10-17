@@ -17,6 +17,7 @@ $(document).ready(function(){
     pageVip:$("#pageVip"),
     pageFinancial:$("#pageFinancial"),
     pageHonor:$("#pageHonor"),
+    pageAnniversary:$("#pageAnniversary"),
     swipBtnBox:$(".side-btns .scroll"),
     swipUp:$(".side-btns .scroll b:first"),
     swipDown:$(".side-btns .scroll b:last"),
@@ -30,7 +31,9 @@ $(document).ready(function(){
     mousemove :"ontouchmove" in document.documentElement ? "touchmove": "mousemove",
     mouseup :"ontouchend" in document.documentElement ? "touchend": "mouseup",
     scroll :"scroll"
-  } 
+  }
+  console.log(eventList);
+
   var backHomeTime = 600; // 没有操作？秒后回首页
   var backHomeTimer = null;
 
@@ -67,7 +70,7 @@ $(document).ready(function(){
    */
   function initHome() {
     API.getSiteInfo({siteId:1},function(res){
-      console.log(res.data);
+      // console.log(res.data);
       Template('tpl-nav-home', res.data);
       Template('tpl-video', res.data);
       Template('tpl-nav-fixed', res.data);
@@ -76,7 +79,7 @@ $(document).ready(function(){
     });
 
     API.getExchange({},function(res){
-      console.log(res);
+      // console.log(res);
       if(res.ErrorCode == 0){
         Template('tpl-exchange', {list:res.Data.CacheTable});
         autoScroll($('.exchange dd'))
@@ -86,7 +89,7 @@ $(document).ready(function(){
     });
 
     API.getFund({},function(res){
-      console.log(res);
+      // console.log(res);
       if(res.ErrorCode == 0){
         Template('tpl-fund', {list:res.Data.Table});
         autoScroll($('.fund dd'))
@@ -101,7 +104,7 @@ $(document).ready(function(){
    */
   function initGuide() {
     API.getGuide({siteId:1},function(res){
-      console.log(res.data);
+      // console.log(res.data);
       var time = JSON.parse('[{"name":"'+res.data.peakTime.replace(/\s|\n|\r\n|；$|;$|，$|,$|。$|.$/g, '').replace(/;|；|,|，/g, '},{"name":"').replace(/=/g, '","value":')+'}]');
       var week = JSON.parse('[{"name":"'+res.data.peakWeek.replace(/\s|\n|\r\n|；$|;$|，$|,$|。$|.$/g, '').replace(/;|；|,|，/g, '},{"name":"').replace(/=/g, '","value":')+'}]');
       var data = {
@@ -109,7 +112,7 @@ $(document).ready(function(){
         peakTime:time,
         peakWeek:week,
       }
-      console.log(data)
+      // console.log(data)
       Template('tpl-page-guide-content', data);
     });
   }
@@ -120,7 +123,7 @@ $(document).ready(function(){
    */
   function initFacilities() {
     API.getFacilities({siteId:1},function(res){
-      console.log(res.data);
+      // console.log(res.data);
       Template('tpl-page-facilities', {list:res.data});
     });
   }
@@ -130,7 +133,7 @@ $(document).ready(function(){
    */
   function initParty() {
     API.getParty({siteId:1},function(res){
-      console.log(res.data);
+      // console.log(res.data);
       Template('tpl-page-party', {content:res.data});
     });
   }
@@ -140,7 +143,7 @@ $(document).ready(function(){
    */
   function initPersonnel() {
     API.getPersonnel({siteId:1},function(res){
-      console.log(res.data);
+      // console.log(res.data);
       // var category=[]
       // var cate = ""
       // for(var i=0;i<res.data.length;i++){
@@ -170,7 +173,7 @@ $(document).ready(function(){
    */
   function initConsumer() {
     API.getConsumer({siteId:1},function(res){
-      console.log(res.data);
+      // console.log(res.data);
       Template('tpl-page-consumer', {content:res.data});
     });
   }
@@ -179,7 +182,7 @@ $(document).ready(function(){
    */
   function initVip() {
     API.getVip({siteId:1},function(res){
-      console.log(res.data);
+      // console.log(res.data);
       Template('tpl-page-vip', {content:res.data});
     });
   }
@@ -188,7 +191,7 @@ $(document).ready(function(){
    */
   function initFinancial() {
     API.getFinancial({siteId:1},function(res){
-      console.log(res.data);
+      // console.log(res.data);
       Template('tpl-page-financial', {content:res.data});
     });
   }
@@ -197,8 +200,17 @@ $(document).ready(function(){
    */
   function initHonor() {
     API.getHonor({siteId:1},function(res){
-      console.log(res.data);
+      // console.log(res.data);
       Template('tpl-page-honor', {content:res.data});
+    });
+  }
+  /*****************
+   * 13周年庆
+   */
+  function initAnniversary() {
+    API.getAnniversary({siteId:1},function(res){
+      // console.log(res.data);
+      Template('tpl-page-anniversary', {content:res.data});
     });
   }
 
@@ -206,7 +218,7 @@ $(document).ready(function(){
    * 生成服务人员详细弹窗HTML
    */
   function createPersonnelDetail(data) {
-    console.log(data);
+    // console.log(data);
     data = JSON.parse(data)
     return template("tpl-page-personnel-detail", data);
   }
@@ -292,6 +304,7 @@ $(document).ready(function(){
    * 打开页面
    */
   function initFullScreen() {
+    return false;
     $("<div class='fullscreen-mask'><div class='btn-fullscreen'></div></div>").appendTo("body");
     $o.body.on(eventList.click, ".btn-fullscreen", function(){
       fullScreen();
@@ -333,10 +346,15 @@ $(document).ready(function(){
       scrollTop = $scrollbox.scrollTop();
       if (scrollTop <= 0) {
         $o.swipBtnBox.attr("status", "top");
+        clear();
+        return false;
       } else if (scrollTop > 0 && scrollTop < scrollSpace) {        
         $o.swipBtnBox.attr("status", "mid")
+        return true;
       } else if (scrollTop >= scrollSpace) {        
         $o.swipBtnBox.attr("status", "bottom")
+        clear();
+        return false;
       }
     }
 
@@ -345,9 +363,10 @@ $(document).ready(function(){
       scrollTop = $scrollbox.scrollTop();
       scrollTop = scrollTop + px * dir
       $scrollbox.scrollTop(scrollTop);
-      updateBtnStatus();
+      var status = updateBtnStatus();
+      console.log(0)
 
-      if(!timer){
+      if(!timer && !timerPx && status){
         console.log(1)
         timer = setTimeout(function() {
           console.log(2)
@@ -360,23 +379,26 @@ $(document).ready(function(){
     }
 
     var clear = function(){
+      console.log(10)
       clearTimeout(timer);
-      clearTimeout(timerPx);
+      clearInterval(timerPx);
       timer = null
       timerPx = null
     }
 
-    $o.swipUp.on(eventList.click, function(){
+    $o.swipUp.on(eventList.mousedown, function(){
+      console.log(8)
       swipe(-1)
     });
-    $o.swipDown.on(eventList.click, function(){
+    $o.swipDown.on(eventList.mousedown, function(){
+      console.log(9)
       swipe(1)
     });
     $scrollbox.on(eventList.scroll, function(){
       updateBtnStatus()
     });
 
-    $o.swipUp.on(eventList.mouseup, clear);
-    $o.swipDown.on(eventList.mouseup, clear);
+    $o.swipUp.on(eventList.mouseup, function(){clear()});
+    $o.swipDown.on(eventList.mouseup, function(){clear()});
   }
 });

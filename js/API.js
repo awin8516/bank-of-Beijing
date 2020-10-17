@@ -4,8 +4,8 @@ var API = {
     _send: function(method,type, data, success){
         var successfn = function(res){
             if (API.DEBUG){
-                console.log(method + "——success");
-                console.log(res);
+                // console.log(method + "——success");
+                // console.log(res);
             }
             
             if(res && res.errcode == 0){
@@ -18,8 +18,8 @@ var API = {
         };
         var errorFn = function(res) {
             if (API.DEBUG) {
-                console.log(method + "——fail");
-                console.log(res);
+                // console.log(method + "——fail");
+                // console.log(res);
             } 
             // if(confirm('数据请求超时，是否刷新页面？')){
             //     window.location.reload();
@@ -90,5 +90,8 @@ var API = {
     },
     getHonor:function(data,success){
         API._send('getHonor',"POST", data, success);
+    },
+    getAnniversary:function(data,success){
+        API._send('getAnniversary',"POST", data, success);
     },
 }

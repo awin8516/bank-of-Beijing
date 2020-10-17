@@ -8,26 +8,26 @@ var __DATA = {
       "siteTheme": "red",
       "siteVideo": "upload/01.mp4",
       "nav": [
-      // {
-      //   "zh": "网点导览",
-      //   "en": "Branch Guide",
-      //   "template": "Guide"
-      // },
-      // {
-      //   "zh": "便民设施",
-      //   "en": "Public Facilities",
-      //   "template": "Facilities"
-      // },
+      {
+        "zh": "网点导览",
+        "en": "Branch Guide",
+        "template": "Guide"
+      },
+      {
+        "zh": "便民设施",
+        "en": "Public Facilities",
+        "template": "Facilities"
+      },
       {
         "zh": "党建信息",
         "en": "Party Information",
         "template": "Party"
       },
-      // {
-      //   "zh": "服务人员展示",
-      //   "en": "Service personnel",
-      //   "template": "Personnel"
-      // },
+      {
+        "zh": "服务人员展示",
+        "en": "Service personnel",
+        "template": "Personnel"
+      },
       {
         "zh": "消费者保护专栏",
         "en": "Consumer Protection",
@@ -40,14 +40,24 @@ var __DATA = {
       },
       {
         "zh": "理财资讯",
-        "en": "Financial Information",
+        "en": "Financial",
         "template": "Financial"
+      },
+      {
+        "zh": "我的的荣誉",
+        "en": "Our Honor",
+        "template": "Honor"
+      },
+      {
+        "zh": "13周年庆",
+        "en": "Anniversary",
+        "template": "Anniversary"
+      },
+      {
+        "zh": "13周年庆",
+        "en": "Anniversary",
+        "template": "Anniversary"
       }
-      // {
-      //   "zh": "我的的荣誉",
-      //   "en": "Our Honor",
-      //   "template": "Honor"
-      // }
       ]
     }
   },
