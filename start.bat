@@ -12,7 +12,17 @@ if exist "C:\Program Files (x86)\Google\Chrome\Application\chrome.exe" (
 
 ) else (
 
- start iexplore.exe %d%\bank-of-Beijing\index.html
+if exist "%localAppData%\Google\Chrome\Application\chrome.exe" ( 
+
+  cd "%localAppData%\Google\Chrome\Application\" 
+
+  start chrome.exe %d%\bank-of-Beijing\index.html
+
+  ) else (
+
+   start iexplore.exe %d%\bank-of-Beijing\index.html
+
+  )
 
 )
 
