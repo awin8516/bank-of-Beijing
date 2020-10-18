@@ -5,7 +5,8 @@ $myColor3: lighten($myColor,30%);
 $myFontSize: 12px;
 $myLineHeight: 1.6;
 $myWidth: 680px;
-$navColor: #22baf1,#6be2b4,#ddc95a,#f0915a,#ff6f6f,#dd54a4,#ae8adf,#829ae7;
+$navColor: #22baf1,#6be2b4,#ddc95a,#f0915a,#ff6f6f,#dd54a4,#ae8adf,#829ae7,#e782df,#f78a8a;
+$fixedNavHeight: 20%;
 
 /* scss */
 html,
@@ -37,8 +38,16 @@ img{max-width: 100%;}
 	.header{position: relative; z-index: 300;height: 8%; background-color: #fff;text-align: left;}
 	.header::before{content: "";display: inline-block;width: 5%;height: 100%;vertical-align: middle;}
 	.header img{display: inline-block;vertical-align: middle;height: 60%;}
-	.header span{position: absolute;right: 5%;top: 50%;font-size: 3.2em;font-weight: bold; color: $myColor;line-height: 1;transform: translate(0, -50%);}
+	.header span{position: absolute;right: 20%;top: 50%;font-size: 3.2em;font-weight: bold; color: $myColor;line-height: 1;transform: translate(0, -50%);}
 	.body{position: relative;	z-index: 1;height: 92%;}
+}
+.btn-fullscreen{
+	position: absolute;width:7%;right:3em;top:50%;transform: translate(0, -50%); background: url(../image/common/icon-fullscreen-w2.png) $myColor no-repeat center / 90% auto;z-index: 100;box-shadow: 0px 0px 0.5rem rgba(0, 0, 0, 0.5);border-radius: 50%;
+	border:5px #fff solid;
+	&::before{content: "";display: inline-block;padding-bottom: 100%;vertical-align: top;}
+}
+html.full-screen {
+	.btn-fullscreen {background-image: url(../image/common/icon-exitfullscreen-w2.png);}
 }
 
 .fullscreen-mask{
@@ -46,7 +55,7 @@ img{max-width: 100%;}
 	.btn-fullscreen{
 		position: absolute;width:20%;left:50%;top:50%;transform: translate(-50%, -50%); background: url(../image/common/icon-fullscreen-w2.png) $myColor no-repeat center / 90% auto;z-index: 100;box-shadow: 5px 5px 2rem rgba(0, 0, 0, 0.5);border-radius: 50%;
 		border:10px #fff solid;
-		&::before{content: "";display: inline-block;padding-bottom: 100%;}
+		&::before{content: "";display: inline-block;padding-bottom: 100%;vertical-align: top;}
 	}
 	&.hide{display: none;}
 }
@@ -68,20 +77,21 @@ img{max-width: 100%;}
 
 
 .nav-fixed{
-	position: fixed;z-index: 200; width: 100%;left: 0;top:0; margin-top: 18%;text-align: center;transform: translate(0,-300%);transition: transform 300ms 0ms;font-size:0.65em;
-	a{display: inline-block; width: 10%;margin: 0 0.5em;/*filter: grayscale(100%);*/vertical-align: top;}
-	a b{display: inline-block;width: 100%;height: 0; padding-bottom: 100%;background-color: #ddd;color: #fff;opacity: 0.9;border-radius: 50%;white-space: nowrap;}
+	position: absolute;z-index: 200; width: 100%;left: 0;top:0;text-align: center;transform: translate(0,-300%);transition: transform 300ms 0ms;font-size:0.65em;
+	&:after{content:"";display: inline-block;width: 0;height: 0;padding-bottom: $fixedNavHeight;vertical-align: middle;}
+	a{display: inline-block; width: 10%;margin: 0 0.1em;/*filter: grayscale(100%);*/vertical-align: middle;}
+	a b{display: inline-block;width: 100%;height: 0; padding-bottom: 100%;vertical-align: top;background-color: #ddd;color: #fff;opacity: 0.9;border-radius: 50%;white-space: nowrap;}
 	a b:after{content:"";display: inline-block;width: 0;height: 0;padding-bottom: 100%;vertical-align: middle;}
-	a span{display: inline-block;transform-origin: center;vertical-align: middle;text-shadow: 1px 1px 3px rgba(0,0,0,0.3);}
+	a span{display: inline-block;transform-origin: center;vertical-align: middle;text-shadow: 1px 1px 3px rgba(0,0,0,0.3);margin-top: 1em;}
 	a span h2{font-size: 1.6em;}
-	a span em{font-style: normal;}
+	a span em{display: block; font-style: normal;font-weight: 100;}
 	a.active {position: relative;filter: grayscale(0%);}
 	a.active b{color: #fff;box-shadow:0 0 1.5em 0.5em #fff inset;opacity: 1;}
 
 	@for $i from 1 through 10 {	
 		&.nav-num-#{$i} {
-			font-size:0.65em - $i * 0.02 ;
-			a{width: 80% / $i;}
+			font-size:1.3em - ($i - 5 ) * 0.13 ;
+			a { width: 80% / $i;}
 		}
 	}
 
@@ -100,7 +110,7 @@ img{max-width: 100%;}
 }
 .has-nav .page{background-color: rgba(0, 0, 0, 0.3);}
 
-.page > main{position: absolute;z-index: 10; width: 90%;height: 80%;border-radius: 1em; left: 5%; padding: 5%;margin-top: 20%; box-sizing: border-box;background-color: rgba(255,255,255,1);}
+.page > main{position: absolute;z-index: 10; width: 90%;height: 80%;border-radius: 1em; left: 5%; padding: 5%;margin-top: $fixedNavHeight; box-sizing: border-box;background-color: rgba(255,255,255,1);}
 .page > main > .scrollbox{height: 100%;overflow-y: auto;}
 .page > main > .scrollbox img{width: 100%;}
 
@@ -194,13 +204,13 @@ img{max-width: 100%;}
 .page-home {
 	.nav-home{
 		position: absolute;width: 100%;left: 0;top: 0%;margin-top: 0%;text-align: center;font-size: 1.6em;
-		&:after{content:"";display: inline-block;width: 0;height: 0;padding-bottom: 100%;}
+		&:after{content:"";display: inline-block;width: 0;height: 0;padding-bottom: 100%;vertical-align: top;}
 		a{position: absolute;}
 		a b {display: block; width: 100%;height: 100%;background-color: #ddd;color: #fff;border-radius: 50%;animation: btn 8000ms  infinite;font-weight: normal;white-space: nowrap;box-shadow:0 0 1.5em 0.5em #fff inset;}
 		a b:after{content:"";display: inline-block;width: 0;height: 100%;vertical-align: middle;}
 		a span{display: inline-block;transform-origin: center;vertical-align: middle;text-shadow: 1px 1px 3px rgba(0,0,0,0.3);}
 		a span h2{font-size: 1.4em;}
-		a span em{font-style: normal;}
+		a span em{font-style: normal;font-weight: 100;display: block;}
 
 
 		@for $i from 1 through 10 {	
@@ -300,7 +310,7 @@ img{max-width: 100%;}
 	$myFontSize: 12px;
 	$myLineHeight: 1.6;
 	$myWidth: 680px;
-	$navColor: #22baf1,#6be2b4,#ddc95a,#f0915a,#ff6f6f,#dd54a4,#ae8adf,#829ae7;
+	$navColor:  #22baf1,#6be2b4,#ddc95a,#f0915a,#ff6f6f,#dd54a4,#ae8adf,#829ae7,#e782df,#f78a8a;
 
 	/* scss */
 	background-image: url(../image/bg.jpg);

@@ -64,6 +64,7 @@ $(document).ready(function(){
   initVip();
   initFinancial();
   initHonor();
+  initAnniversary();
 
   /*******************
    * 初始化首页 & 菜单
@@ -301,15 +302,37 @@ $(document).ready(function(){
   }
 
   /**
-   * 打开页面
+   * 初始全屏
    */
   function initFullScreen() {
-    return false;
-    $("<div class='fullscreen-mask'><div class='btn-fullscreen'></div></div>").appendTo("body");
+    // return false;
+    // $("<div class='fullscreen-mask'><div class='btn-fullscreen'></div></div>").appendTo(".container > .header");
+    $("<div class='btn-fullscreen'></div>").appendTo(".container > .header");
     $o.body.on(eventList.click, ".btn-fullscreen", function(){
-      fullScreen();
-      $(this).parent().addClass("hide");
+      if($o.html.hasClass("full-screen")){
+        console.log("exitFullscreen")
+        exitFullscreen();
+      }else{
+        console.log("fullScreen")
+        fullScreen();
+      }
+      
+      // $(this).parent().addClass("hide");
     });
+
+    //监听window是否全屏，并进行相应的操作,支持esc键退出
+    window.onresize = function() {
+      var isFull=!!(document.webkitIsFullScreen || document.mozFullScreen || 
+        document.msFullscreenElement || document.fullscreenElement
+      );//!document.webkitIsFullScreen都为true。因此用!!
+      if (isFull==false) {
+        $o.html.attr("class", "")
+      }else{
+        $o.html.attr("class", "full-screen")
+      }
+    }
+
+
   }
 
   function fullScreen(callback) {
@@ -319,6 +342,20 @@ $(document).ready(function(){
       el.webkitRequestFullScreen ||
       el.mozRequestFullScreen ||
       el.msRequestFullscreen;
+    if (typeof rfs != "undefined" && rfs) {
+      rfs.call(el);
+      callback && callback();
+    }
+    return;
+  }
+
+  function exitFullscreen(callback) {
+    var el = document;
+    var rfs =
+      el.exitFullscreen ||
+      el.webkitExitFullscreen ||
+      el.mozCancelFullScreen ||
+      el.msExitFullscreen;
     if (typeof rfs != "undefined" && rfs) {
       rfs.call(el);
       callback && callback();
@@ -364,14 +401,10 @@ $(document).ready(function(){
       scrollTop = scrollTop + px * dir
       $scrollbox.scrollTop(scrollTop);
       var status = updateBtnStatus();
-      console.log(0)
 
       if(!timer && !timerPx && status){
-        console.log(1)
         timer = setTimeout(function() {
-          console.log(2)
           timerPx = setInterval(function() {
-            console.log(3)
             swipe(dir, 10);
           }, 100);
         }, 1000);
@@ -379,7 +412,6 @@ $(document).ready(function(){
     }
 
     var clear = function(){
-      console.log(10)
       clearTimeout(timer);
       clearInterval(timerPx);
       timer = null
@@ -387,11 +419,9 @@ $(document).ready(function(){
     }
 
     $o.swipUp.on(eventList.mousedown, function(){
-      console.log(8)
       swipe(-1)
     });
     $o.swipDown.on(eventList.mousedown, function(){
-      console.log(9)
       swipe(1)
     });
     $scrollbox.on(eventList.scroll, function(){

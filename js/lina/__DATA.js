@@ -8,56 +8,51 @@ var __DATA = {
       "siteTheme": "red",
       "siteVideo": "upload/01.mp4",
       "nav": [
-      {
-        "zh": "网点导览",
-        "en": "Branch Guide",
-        "template": "Guide"
-      },
-      {
-        "zh": "便民设施",
-        "en": "Public Facilities",
-        "template": "Facilities"
-      },
-      {
-        "zh": "党建信息",
-        "en": "Party Information",
-        "template": "Party"
-      },
-      {
-        "zh": "服务人员展示",
-        "en": "Service personnel",
-        "template": "Personnel"
-      },
-      {
-        "zh": "消费者保护专栏",
-        "en": "Consumer Protection",
-        "template": "Consumer"
-      },
-      {
-        "zh": "贵宾增值服务",
-        "en": "VIP Service",
-        "template": "VIP"
-      },
-      {
-        "zh": "理财资讯",
-        "en": "Financial",
-        "template": "Financial"
-      },
-      {
-        "zh": "我的的荣誉",
-        "en": "Our Honor",
-        "template": "Honor"
-      },
-      {
-        "zh": "13周年庆",
-        "en": "Anniversary",
-        "template": "Anniversary"
-      },
-      {
-        "zh": "13周年庆",
-        "en": "Anniversary",
-        "template": "Anniversary"
-      }
+        // {
+        //   "zh": "网点导览",
+        //   "en": "Guide",
+        //   "template": "Guide"
+        // },
+        // {
+        //   "zh": "便民设施",
+        //   "en": "Facilities",
+        //   "template": "Facilities"
+        // },
+        {
+          "zh": "党建信息",
+          "en": "Party",
+          "template": "Party"
+        },
+        // {
+        //   "zh": "服务人员展示",
+        //   "en": "Personnel",
+        //   "template": "Personnel"
+        // },
+        {
+          "zh": "消费者保护专栏",
+          "en": "Consumer",
+          "template": "Consumer"
+        },
+        {
+          "zh": "贵宾增值服务",
+          "en": "VIP",
+          "template": "VIP"
+        },
+        {
+          "zh": "理财资讯",
+          "en": "Financial",
+          "template": "Financial"
+        },
+        // {
+        //   "zh": "我的的荣誉",
+        //   "en": "Honor",
+        //   "template": "Honor"
+        // },
+        {
+          "zh": "13周年庆",
+          "en": "Anniversary",
+          "template": "Anniversary"
+        }
       ]
     }
   },
@@ -529,5 +524,10 @@ var __DATA = {
     "errcode": 0,
     "errmsg": "ok",
     "data": "<img src='image/8/0.jpg' ><img src='image/8/1.jpg'><img src='image/8/2.jpg'><img src='image/8/3.jpg'><img src='image/8/4.jpg'><img src='image/8/5.jpg'><img src='image/8/6.jpg'>"
+  },
+  getAnniversary: {
+    "errcode": 0,
+    "errmsg": "ok",
+    "data": "<img src='image/9/海报.jpg' >"
   }
 }

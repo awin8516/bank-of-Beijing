@@ -57,7 +57,7 @@ img {
 
 .container .header span {
   position: absolute;
-  right: 5%;
+  right: 20%;
   top: 50%;
   font-size: 3.2em;
   font-weight: bold;
@@ -70,6 +70,30 @@ img {
   position: relative;
   z-index: 1;
   height: 92%;
+}
+
+.btn-fullscreen {
+  position: absolute;
+  width: 7%;
+  right: 3em;
+  top: 50%;
+  transform: translate(0, -50%);
+  background: url(../image/common/icon-fullscreen-w2.png) #e60012 no-repeat center/90% auto;
+  z-index: 100;
+  box-shadow: 0px 0px 0.5rem rgba(0, 0, 0, 0.5);
+  border-radius: 50%;
+  border: 5px #fff solid;
+}
+
+.btn-fullscreen::before {
+  content: "";
+  display: inline-block;
+  padding-bottom: 100%;
+  vertical-align: top;
+}
+
+html.full-screen .btn-fullscreen {
+  background-image: url(../image/common/icon-exitfullscreen-w2.png);
 }
 
 .fullscreen-mask {
@@ -99,6 +123,7 @@ img {
   content: "";
   display: inline-block;
   padding-bottom: 100%;
+  vertical-align: top;
 }
 
 .fullscreen-mask.hide {
@@ -165,24 +190,32 @@ img {
 }
 
 .nav-fixed {
-  position: fixed;
+  position: absolute;
   z-index: 200;
   width: 100%;
   left: 0;
   top: 0;
-  margin-top: 18%;
   text-align: center;
   transform: translate(0, -300%);
   transition: transform 300ms 0ms;
   font-size: 0.65em;
 }
 
+.nav-fixed:after {
+  content: "";
+  display: inline-block;
+  width: 0;
+  height: 0;
+  padding-bottom: 20%;
+  vertical-align: middle;
+}
+
 .nav-fixed a {
   display: inline-block;
   width: 10%;
-  margin: 0 0.5em;
+  margin: 0 0.1em;
   /*filter: grayscale(100%);*/
-  vertical-align: top;
+  vertical-align: middle;
 }
 
 .nav-fixed a b {
@@ -190,6 +223,7 @@ img {
   width: 100%;
   height: 0;
   padding-bottom: 100%;
+  vertical-align: top;
   background-color: #ddd;
   color: #fff;
   opacity: 0.9;
@@ -211,6 +245,7 @@ img {
   transform-origin: center;
   vertical-align: middle;
   text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.3);
+  margin-top: 1em;
 }
 
 .nav-fixed a span h2 {
@@ -218,7 +253,9 @@ img {
 }
 
 .nav-fixed a span em {
+  display: block;
   font-style: normal;
+  font-weight: 100;
 }
 
 .nav-fixed a.active {
@@ -233,7 +270,7 @@ img {
 }
 
 .nav-fixed.nav-num-1 {
-  font-size: 0.63em;
+  font-size: 1.82em;
 }
 
 .nav-fixed.nav-num-1 a {
@@ -241,7 +278,7 @@ img {
 }
 
 .nav-fixed.nav-num-2 {
-  font-size: 0.61em;
+  font-size: 1.69em;
 }
 
 .nav-fixed.nav-num-2 a {
@@ -249,7 +286,7 @@ img {
 }
 
 .nav-fixed.nav-num-3 {
-  font-size: 0.59em;
+  font-size: 1.56em;
 }
 
 .nav-fixed.nav-num-3 a {
@@ -257,7 +294,7 @@ img {
 }
 
 .nav-fixed.nav-num-4 {
-  font-size: 0.57em;
+  font-size: 1.43em;
 }
 
 .nav-fixed.nav-num-4 a {
@@ -265,7 +302,7 @@ img {
 }
 
 .nav-fixed.nav-num-5 {
-  font-size: 0.55em;
+  font-size: 1.3em;
 }
 
 .nav-fixed.nav-num-5 a {
@@ -273,7 +310,7 @@ img {
 }
 
 .nav-fixed.nav-num-6 {
-  font-size: 0.53em;
+  font-size: 1.17em;
 }
 
 .nav-fixed.nav-num-6 a {
@@ -281,7 +318,7 @@ img {
 }
 
 .nav-fixed.nav-num-7 {
-  font-size: 0.51em;
+  font-size: 1.04em;
 }
 
 .nav-fixed.nav-num-7 a {
@@ -289,7 +326,7 @@ img {
 }
 
 .nav-fixed.nav-num-8 {
-  font-size: 0.49em;
+  font-size: 0.91em;
 }
 
 .nav-fixed.nav-num-8 a {
@@ -297,7 +334,7 @@ img {
 }
 
 .nav-fixed.nav-num-9 {
-  font-size: 0.47em;
+  font-size: 0.78em;
 }
 
 .nav-fixed.nav-num-9 a {
@@ -305,7 +342,7 @@ img {
 }
 
 .nav-fixed.nav-num-10 {
-  font-size: 0.45em;
+  font-size: 0.65em;
 }
 
 .nav-fixed.nav-num-10 a {
@@ -347,6 +384,14 @@ img {
 
 .nav a:nth-child(8) b {
   background-color: #829ae7;
+}
+
+.nav a:nth-child(9) b {
+  background-color: #e782df;
+}
+
+.nav a:nth-child(10) b {
+  background-color: #f78a8a;
 }
 
 .page {
@@ -770,6 +815,7 @@ img {
   width: 0;
   height: 0;
   padding-bottom: 100%;
+  vertical-align: top;
 }
 
 .page-home .nav-home a {
@@ -810,6 +856,8 @@ img {
 
 .page-home .nav-home a span em {
   font-style: normal;
+  font-weight: 100;
+  display: block;
 }
 
 .page-home .nav-home.nav-num-1 a {
@@ -1528,6 +1576,14 @@ body.theme-ui-red .nav a:nth-child(7) b {
 
 body.theme-ui-red .nav a:nth-child(8) b {
   background-color: #829ae7;
+}
+
+body.theme-ui-red .nav a:nth-child(9) b {
+  background-color: #e782df;
+}
+
+body.theme-ui-red .nav a:nth-child(10) b {
+  background-color: #f78a8a;
 }
 
 /* y */
