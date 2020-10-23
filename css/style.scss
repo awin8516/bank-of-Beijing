@@ -46,7 +46,7 @@ img{max-width: 100%;}
 	border:5px #fff solid;
 	&::before{content: "";display: inline-block;padding-bottom: 100%;vertical-align: top;}
 }
-html.full-screen {
+.full-screen {
 	.btn-fullscreen {background-image: url(../image/common/icon-exitfullscreen-w2.png);}
 }
 

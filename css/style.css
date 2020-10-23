@@ -92,7 +92,7 @@ img {
   vertical-align: top;
 }
 
-html.full-screen .btn-fullscreen {
+.full-screen .btn-fullscreen {
   background-image: url(../image/common/icon-exitfullscreen-w2.png);
 }
 

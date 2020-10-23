@@ -4,6 +4,7 @@ $(document).ready(function(){
     html:$("html"),
     head:$("head"),
     body:$("body"),
+    container:$("body > .container"),
     pages:$("section.page"),
     pageHome:$("#pageHome"),
     navHome:$("#navHome"),
@@ -34,7 +35,7 @@ $(document).ready(function(){
   }
   console.log(eventList);
 
-  var backHomeTime = 600; // 没有操作？秒后回首页
+  var backHomeTime = 60; // 没有操作？秒后回首页
   var backHomeTimer = null;
 
   $o.body.on(eventList.click, autoBackHome);
@@ -309,10 +310,13 @@ $(document).ready(function(){
     // $("<div class='fullscreen-mask'><div class='btn-fullscreen'></div></div>").appendTo(".container > .header");
     $("<div class='btn-fullscreen'></div>").appendTo(".container > .header");
     $o.body.on(eventList.click, ".btn-fullscreen", function(){
-      if($o.html.hasClass("full-screen")){
+      console.log(22)
+      if($o.container.hasClass("full-screen")){
+        console.log(33)
         console.log("exitFullscreen")
         exitFullscreen();
       }else{
+        console.log(44)
         console.log("fullScreen")
         fullScreen();
       }
@@ -322,13 +326,16 @@ $(document).ready(function(){
 
     //监听window是否全屏，并进行相应的操作,支持esc键退出
     window.onresize = function() {
+      console.log(0)
       var isFull=!!(document.webkitIsFullScreen || document.mozFullScreen || 
         document.msFullscreenElement || document.fullscreenElement
       );//!document.webkitIsFullScreen都为true。因此用!!
       if (isFull==false) {
-        $o.html.attr("class", "")
+        console.log(1)
+        $o.container.removeClass("full-screen")
       }else{
-        $o.html.attr("class", "full-screen")
+        console.log(2)
+        $o.container.addClass("full-screen")
       }
     }
 
