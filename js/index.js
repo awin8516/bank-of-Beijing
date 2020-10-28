@@ -54,6 +54,9 @@ $(document).ready(function(){
   });
   $o.popupClose.on(eventList.click, hidePopup);
 
+  $o.body.on(eventList.click, ".popup-fullscreen .popup .close", function(){
+    hidePopup2()
+  });
 
   initFullScreen();
   initHome();
@@ -74,10 +77,42 @@ $(document).ready(function(){
     API.getSiteInfo({siteId:1},function(res){
       // console.log(res.data);
       Template('tpl-nav-home', res.data);
+      Template('tpl-banner', res.data);
       Template('tpl-video', res.data);
       Template('tpl-nav-fixed', res.data);
       document.title = res.data.siteName;
-      $o.body.attr("class", "theme-ui-"+res.data.siteTheme)
+      $o.body.attr("class", "theme-ui-"+res.data.siteTheme);
+      swiperBanner = new Swiper({
+        el: '.swiper-home-banner',
+        // initialSlide: 0,
+        // spaceBetween: 50,
+        // slidesPerView: 1,
+        // centeredSlides: true,
+        // slideToClickedSlide: true,
+        // grabCursor: true,
+        // scrollbar: {
+        //   el: '.swiper-scrollbar',
+        // },
+        // mousewheel: {
+        //   enabled: true,
+        // },
+        // keyboard: {
+        //   enabled: true,
+        // },
+        pagination: {
+          el: '.swiper-home-banner .swiper-pagination',
+        },
+        loop : true,
+        autoplay: {
+          delay: 3000,
+          stopOnLastSlide: false,
+          disableOnInteraction: true
+        }
+        // navigation: {
+        //   nextEl: '.swiper-home-banner .swiper-button-next',
+        //   prevEl: '.swiper-home-banner .swiper-button-prev',
+        // }
+      });
     });
 
     API.getExchange({},function(res){
@@ -281,11 +316,21 @@ $(document).ready(function(){
     hidePopup();
   }
 
-  function showPopup(html) {
+  function showPopup(html, fullscreen) {
     $o.popupContent.html(html);
+    if(fullscreen){
+      $o.container.addClass("popup-fullscreen")
+    }
     $o.popup.addClass("show");
   }
   function hidePopup() {
+    if(!$o.container.hasClass("popup-fullscreen")){
+      $o.popup.removeClass("show");
+      $o.popupContent.html("");
+    }
+  }
+  function hidePopup2() {
+    $o.container.removeClass("popup-fullscreen")
     $o.popup.removeClass("show");
     $o.popupContent.html("");
   }
@@ -310,15 +355,20 @@ $(document).ready(function(){
     // $("<div class='fullscreen-mask'><div class='btn-fullscreen'></div></div>").appendTo(".container > .header");
     $("<div class='btn-fullscreen'></div>").appendTo(".container > .header");
     $o.body.on(eventList.click, ".btn-fullscreen", function(){
-      console.log(22)
+      // console.log(22)
       if($o.container.hasClass("full-screen")){
-        console.log(33)
-        console.log("exitFullscreen")
-        exitFullscreen();
+        // console.log(33)
+        exitFullscreen(function(){
+          $o.container.removeClass("full-screen")
+          console.log("exitFullscreen")
+        });
       }else{
-        console.log(44)
-        console.log("fullScreen")
-        fullScreen();
+        // console.log(44)
+        fullScreen(function(){
+          $o.container.addClass("full-screen")
+          $("video")[0].play();
+          console.log("fullScreen")
+        });
       }
       
       // $(this).parent().addClass("hide");
@@ -326,15 +376,14 @@ $(document).ready(function(){
 
     //监听window是否全屏，并进行相应的操作,支持esc键退出
     window.onresize = function() {
-      console.log(0)
-      var isFull=!!(document.webkitIsFullScreen || document.mozFullScreen || 
-        document.msFullscreenElement || document.fullscreenElement
-      );//!document.webkitIsFullScreen都为true。因此用!!
+      
+      console.log('onresize')
+      var isFull=!!(document.webkitIsFullScreen || document.mozFullScreen || document.msFullscreenElement || document.fullscreenElement );//!document.webkitIsFullScreen都为true。因此用!!
       if (isFull==false) {
-        console.log(1)
+        console.log('removeClass("full-screen")')
         $o.container.removeClass("full-screen")
       }else{
-        console.log(2)
+        console.log('addClass("full-screen")')
         $o.container.addClass("full-screen")
       }
     }
@@ -350,8 +399,12 @@ $(document).ready(function(){
       el.mozRequestFullScreen ||
       el.msRequestFullscreen;
     if (typeof rfs != "undefined" && rfs) {
-      rfs.call(el);
-      callback && callback();
+      try{
+        rfs.call(el);
+        callback && callback();
+      }catch(e){
+        console.log("fullScreen-error")
+      }
     }
     return;
   }
@@ -364,8 +417,12 @@ $(document).ready(function(){
       el.mozCancelFullScreen ||
       el.msExitFullscreen;
     if (typeof rfs != "undefined" && rfs) {
-      rfs.call(el);
-      callback && callback();
+      try{
+        rfs.call(el);
+        callback && callback();
+      }catch(e){
+        console.log("exitFullscreen-error")
+      }
     }
     return;
   }

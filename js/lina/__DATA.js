@@ -6,7 +6,8 @@ var __DATA = {
       "siteId": 1,
       "siteName": "bj",
       "siteTheme": "red",
-      "siteVideo": "upload/01.mp4",
+      // "siteBanner":["image/6/1 (1).jpg","image/6/1 (2).jpg","image/6/1 (3).jpg"],
+      "siteVideo": "http://v.smartsca.com/%E5%8C%97%E4%BA%AC%E9%93%B6%E8%A1%8C%E4%B8%8A%E6%B5%B7%E5%88%86%E8%A1%8C1027.mp4",
       "nav": [
         // {
         //   "zh": "网点导览",
