@@ -529,6 +529,6 @@ var __DATA = {
   getAnniversary: {
     "errcode": 0,
     "errmsg": "ok",
-    "data": "<img src='image/9/海报.jpg' >"
+    "data": "<img src='image/9/01.jpg' >"
   }
 }

@@ -1,6 +1,7 @@
 ﻿
 $(document).ready(function(){
   var $o = {
+    win:$(window),
     html:$("html"),
     head:$("head"),
     body:$("body"),
@@ -33,6 +34,8 @@ $(document).ready(function(){
     mouseup :"ontouchend" in document.documentElement ? "touchend": "mouseup",
     scroll :"scroll"
   }
+
+  var screenSize = {width:$o.win.width(),height:$o.win.height()}
   console.log(eventList);
 
   var backHomeTime = 60; // 没有操作？秒后回首页
@@ -81,6 +84,7 @@ $(document).ready(function(){
       Template('tpl-video', res.data);
       Template('tpl-nav-fixed', res.data);
       document.title = res.data.siteName;
+      $o.video = $("video");
       $o.body.attr("class", "theme-ui-"+res.data.siteTheme);
       swiperBanner = new Swiper({
         el: '.swiper-home-banner',
@@ -354,19 +358,28 @@ $(document).ready(function(){
     // return false;
     // $("<div class='fullscreen-mask'><div class='btn-fullscreen'></div></div>").appendTo(".container > .header");
     $("<div class='btn-fullscreen'></div>").appendTo(".container > .header");
-    $o.body.on(eventList.click, ".btn-fullscreen", function(){
+    $o.body.on("click", ".btn-fullscreen", function(){
       // console.log(22)
       if($o.container.hasClass("full-screen")){
         // console.log(33)
         exitFullscreen(function(){
           $o.container.removeClass("full-screen")
-          console.log("exitFullscreen")
+          console.log("exitFullscreen");
+          $o.video[0].pause();
+          console.log("video pause")
         });
       }else{
         // console.log(44)
         fullScreen(function(){
-          $o.container.addClass("full-screen")
-          $("video")[0].play();
+          $o.container.addClass("full-screen");
+          screenSize = {width:$o.win.width(),height:$o.win.height()};
+          if(screenSize.width > screenSize.height){
+            $o.video[0].play();
+            console.log("video play")
+          }else{
+            $o.video[0].pause();
+            console.log("video pause")
+          }
           console.log("fullScreen")
         });
       }
@@ -392,19 +405,22 @@ $(document).ready(function(){
   }
 
   function fullScreen(callback) {
-    var el = document.body;
+    var el = document.documentElement;
     var rfs =
-      el.requestFullScreen ||
+      el.requestFullscreen ||
       el.webkitRequestFullScreen ||
       el.mozRequestFullScreen ||
       el.msRequestFullscreen;
     if (typeof rfs != "undefined" && rfs) {
+      var _catch = false;
       try{
         rfs.call(el);
-        callback && callback();
       }catch(e){
+        _catch = true
+        console.log(e)
         console.log("fullScreen-error")
       }
+      !_catch && callback && callback();
     }
     return;
   }
@@ -413,16 +429,19 @@ $(document).ready(function(){
     var el = document;
     var rfs =
       el.exitFullscreen ||
-      el.webkitExitFullscreen ||
+      el.webkitCancelFullScreen ||
       el.mozCancelFullScreen ||
       el.msExitFullscreen;
     if (typeof rfs != "undefined" && rfs) {
+      var _catch = false;
       try{
         rfs.call(el);
-        callback && callback();
       }catch(e){
+        _catch = true
+        console.log(e)
         console.log("exitFullscreen-error")
       }
+      !_catch && callback && callback();
     }
     return;
   }
