@@ -1691,7 +1691,7 @@ body.theme-ui-red .nav a:nth-child(10) b {
 /* x 
  * 1920/1080==1.7777
  */
-@media (min-aspect-ratio: 1900 / 1080) and (max-aspect-ratio: 1940 / 1080) {
+@media (min-aspect-ratio: 1400 / 1080) and (max-aspect-ratio: 3300 / 1080) {
   .popup::after {
     content: "";
     display: inline-block;
