@@ -36,10 +36,10 @@ $(document).ready(function(){
   }
 
   var screenSize = {width:$o.win.width(),height:$o.win.height()}
-  console.log(eventList);
 
   var backHomeTime = 60; // 没有操作？秒后回首页
   var backHomeTimer = null;
+  var newDate = "2020/11/28 00:00:00";
 
   $o.body.on(eventList.click, autoBackHome);
   $o.body.on(eventList.click, ".nav a", pageTo);
@@ -61,6 +61,7 @@ $(document).ready(function(){
     hidePopup2()
   });
 
+  initStyle();
   initFullScreen();
   initHome();
   initGuide();
@@ -72,6 +73,17 @@ $(document).ready(function(){
   initFinancial();
   initHonor();
   initAnniversary();
+
+  //showPopup("<img src='./image/home/01.jpg'>", true);
+  
+  function initStyle(){
+    var nowDate = new Date();
+    var style = "style";
+    if(nowDate >= new Date(newDate)){
+      style = "style1128"
+    }
+    $("head").append('<link href="css/'+style+'.min.css" rel="stylesheet">')
+  }
 
   /*******************
    * 初始化首页 & 菜单
@@ -372,14 +384,16 @@ $(document).ready(function(){
         // console.log(44)
         fullScreen(function(){
           $o.container.addClass("full-screen");
-          screenSize = {width:$o.win.width(),height:$o.win.height()};
-          if(screenSize.width > screenSize.height){
-            $o.video[0].play();
-            console.log("video play")
-          }else{
-            $o.video[0].pause();
-            console.log("video pause")
-          }
+          // screenSize = {width:$o.win.width(),height:$o.win.height()};
+          // if(screenSize.width > screenSize.height){
+          //   $o.video[0].play();
+          //   console.log("video play")
+          // }else{
+          //   $o.video[0].pause();
+          //   console.log("video pause")
+          // }
+          $o.video[0].play();
+          console.log("video play")
           console.log("fullScreen")
         });
       }

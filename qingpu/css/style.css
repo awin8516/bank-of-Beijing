@@ -379,6 +379,10 @@ img {
   }
 }
 
+.banner {
+  display: none;
+}
+
 .banner .swiper-home-banner {
   position: absolute;
   width: 80%;
@@ -506,17 +510,17 @@ img {
 }
 
 .exchange-fund > .fund span:nth-child(2) {
-  width: 30%;
+  width: 28%;
   text-align: left;
 }
 
 .exchange-fund > .fund span:nth-child(3) {
-  width: 12%;
+  width: 13%;
   text-align: left;
 }
 
 .exchange-fund > .fund span:nth-child(4) {
-  width: 12%;
+  width: 13%;
 }
 
 .exchange-fund > .fund span:nth-child(5) {
@@ -672,9 +676,7 @@ img {
 }
 
 .popup-fullscreen .popup .inner .close {
-  left: 0;
-  right: auto;
-  transform: translate(10%, 10%);
+  transform: translate(-10%, 10%);
 }
 
 .popup-fullscreen .popup .inner .content {
