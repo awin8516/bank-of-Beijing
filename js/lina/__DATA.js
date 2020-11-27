@@ -6,29 +6,29 @@ var __DATA = {
       "siteId": 1,
       "siteName": "bj",
       "siteTheme": "red",
-      "siteBanner":["image/index/b1.jpg","image/index/b2.jpg","image/index/b3.jpg","image/index/b4.jpg","image/index/b5.jpg","image/index/b6.jpg","image/index/b7.jpg","image/index/b8.jpg","image/index/b9.jpg","image/index/b10.jpg","image/index/b11.jpg","image/index/b12.jpg"],
+      "siteBanner":["image/index/b1.jpg","image/index/b2.jpg","image/index/b3.jpg","image/index/b4.jpg","image/index/b5.jpg"],
       "siteVideo": "upload/MG动画-存款保险人行上海总部版.mp4",
       "nav": [
-        {
-          "zh": "网点导览",
-          "en": "Guide",
-          "template": "Guide"
-        },
-        {
-          "zh": "便民设施",
-          "en": "Facilities",
-          "template": "Facilities"
-        },
+        // {
+        //   "zh": "网点导览",
+        //   "en": "Guide",
+        //   "template": "Guide"
+        // },
+        // {
+        //   "zh": "便民设施",
+        //   "en": "Facilities",
+        //   "template": "Facilities"
+        // },
         {
           "zh": "党建信息",
           "en": "Party",
           "template": "Party"
         },
-        {
-          "zh": "服务人员展示",
-          "en": "Personnel",
-          "template": "Personnel"
-        },
+        // {
+        //   "zh": "服务人员展示",
+        //   "en": "Personnel",
+        //   "template": "Personnel"
+        // },
         {
           "zh": "消费者保护专栏",
           "en": "Consumer",
@@ -44,11 +44,11 @@ var __DATA = {
           "en": "Financial",
           "template": "Financial"
         },
-        {
-          "zh": "我的的荣誉",
-          "en": "Honor",
-          "template": "Honor"
-        },
+        // {
+        //   "zh": "我的的荣誉",
+        //   "en": "Honor",
+        //   "template": "Honor"
+        // },
         {
           "zh": "13周年庆",
           "en": "Anniversary",

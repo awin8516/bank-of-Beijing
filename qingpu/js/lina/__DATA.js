@@ -6,7 +6,7 @@ var __DATA = {
       "siteId": 1,
       "siteName": "bj",
       "siteTheme": "red",
-      "siteBanner":["image/index/b1.jpg","image/index/b2.jpg","image/index/b3.jpg","image/index/b4.jpg","image/index/b5.jpg","image/index/b6.jpg","image/index/b7.jpg","image/index/b8.jpg","image/index/b9.jpg","image/index/b10.jpg","image/index/b11.jpg","image/index/b12.jpg"],
+      "siteBanner":["image/index/b1.jpg","image/index/b2.jpg","image/index/b3.jpg","image/index/b4.jpg","image/index/b5.jpg"],
       "siteVideo": "upload/MG动画-存款保险人行上海总部版.mp4",
       "nav": [
         {

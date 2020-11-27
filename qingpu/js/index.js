@@ -39,7 +39,8 @@ $(document).ready(function(){
 
   var backHomeTime = 60; // 没有操作？秒后回首页
   var backHomeTimer = null;
-  var newDate = "2020/11/28 00:00:00";
+  var newDate = "2020/11/28 00:00:00";  
+  var nowDate = new Date();
 
   $o.body.on(eventList.click, autoBackHome);
   $o.body.on(eventList.click, ".nav a", pageTo);
@@ -77,7 +78,6 @@ $(document).ready(function(){
   //showPopup("<img src='./image/home/01.jpg'>", true);
   
   function initStyle(){
-    var nowDate = new Date();
     var style = "style";
     if(nowDate >= new Date(newDate)){
       style = "style1128"
@@ -91,6 +91,10 @@ $(document).ready(function(){
   function initHome() {
     API.getSiteInfo({siteId:1},function(res){
       // console.log(res.data);
+      if(nowDate < new Date(newDate)){
+        res.data.siteVideo = "http://v.smartsca.com/%E5%8C%97%E4%BA%AC%E9%93%B6%E8%A1%8C%E4%B8%8A%E6%B5%B7%E5%88%86%E8%A1%8C1027.mp4"
+      }
+
       Template('tpl-nav-home', res.data);
       Template('tpl-banner', res.data);
       Template('tpl-video', res.data);
@@ -384,17 +388,25 @@ $(document).ready(function(){
         // console.log(44)
         fullScreen(function(){
           $o.container.addClass("full-screen");
-          // screenSize = {width:$o.win.width(),height:$o.win.height()};
-          // if(screenSize.width > screenSize.height){
-          //   $o.video[0].play();
-          //   console.log("video play")
-          // }else{
-          //   $o.video[0].pause();
-          //   console.log("video pause")
-          // }
-          $o.video[0].play();
-          console.log("video play")
-          console.log("fullScreen")
+          screenSize = {width:$o.win.width(),height:$o.win.height()};
+          if(nowDate < new Date(newDate)){
+            if(screenSize.width > screenSize.height){
+              $o.video[0].play();
+              console.log("video play")
+            }else{
+              $o.video[0].pause();
+              console.log("video pause")
+            }
+          }else{
+            $o.video[0].play();
+            console.log("video play")
+            console.log("fullScreen")
+          }
+          
+
+          // $o.video[0].play();
+          // console.log("video play")
+          // console.log("fullScreen")
         });
       }
       
