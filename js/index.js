@@ -64,7 +64,7 @@ $(document).ready(function(){
 
   initStyle();
   initFullScreen();
-  initHome();
+  initHome();initVideoPlay();
   initGuide();
   initFacilities();
   initParty();
@@ -73,10 +73,24 @@ $(document).ready(function(){
   initVip();
   initFinancial();
   initHonor();
-  initAnniversary();
-
-  //showPopup("<img src='./image/home/01.jpg'>", true);
+  initAnniversary();    
   
+  function initVideoPlay(){
+    var $videos= $("video[data-playlist]");
+    $.each($videos,function(index, video){
+      console.log(video);
+      var playlist = JSON.parse(this.dataset.playlist);
+      var index = 0;
+      console.log(playlist)
+      video.src = playlist[index];
+      $(video).on("ended", function(){
+        index = index === playlist.length-1 ? 0 : index+1;
+        video.src = playlist[index];
+        video.play();
+      })
+    })
+  }
+
   function initStyle(){
     var style = "style";
     if(nowDate >= new Date(newDate)){
@@ -91,8 +105,12 @@ $(document).ready(function(){
   function initHome() {
     API.getSiteInfo({siteId:1},function(res){
       // console.log(res.data);
-      if(nowDate < new Date(newDate)){
-        res.data.siteVideo = "http://v.smartsca.com/%E5%8C%97%E4%BA%AC%E9%93%B6%E8%A1%8C%E4%B8%8A%E6%B5%B7%E5%88%86%E8%A1%8C1027.mp4"
+      // if(nowDate < new Date(newDate)){
+      //   res.data.siteVideo = "http://v.smartsca.com/%E5%8C%97%E4%BA%AC%E9%93%B6%E8%A1%8C%E4%B8%8A%E6%B5%B7%E5%88%86%E8%A1%8C1027.mp4"
+      // }
+
+      if(res.data.sitePoster){
+        showPopup("<img src='"+res.data.sitePoster+"'>", true);
       }
 
       Template('tpl-nav-home', res.data);
@@ -349,10 +367,12 @@ $(document).ready(function(){
       $o.popupContent.html("");
     }
   }
-  function hidePopup2() {
-    $o.container.removeClass("popup-fullscreen")
-    $o.popup.removeClass("show");
-    $o.popupContent.html("");
+  function hidePopup2() {    
+    setTimeout(function(){
+      $o.container.removeClass("popup-fullscreen")
+      $o.popup.removeClass("show");
+      $o.popupContent.html("");
+    }, 17)
   }
 
   
@@ -375,7 +395,7 @@ $(document).ready(function(){
     // $("<div class='fullscreen-mask'><div class='btn-fullscreen'></div></div>").appendTo(".container > .header");
     $("<div class='btn-fullscreen'></div>").appendTo(".container > .header");
     $o.body.on("click", ".btn-fullscreen", function(){
-      // console.log(22)
+      console.log($(this))
       if($o.container.hasClass("full-screen")){
         // console.log(33)
         exitFullscreen(function(){

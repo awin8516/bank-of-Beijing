@@ -24,8 +24,8 @@
 		<div class="body">
 			<div>
 				<script id="tpl-nav-fixed" type="text/html">
-					<nav id="navFixed" class="nav nav-fixed nav-num-{{nav.length}}">
-						{{each nav}}
+					<nav id="navFixed" class="nav nav-fixed nav-num-{{siteNav.length}}">
+						{{each siteNav}}
 						<a href="#" data-tpl="{{$value.template}}">
 							<b>
 								<span>
@@ -61,8 +61,8 @@
 			<section class="page page-home page-show">
 				<div>
 					<script id="tpl-nav-home" type="text/html">
-						<nav class="nav nav-home nav-num-{{nav.length}}">
-							{{each nav}}
+						<nav class="nav nav-home nav-num-{{siteNav.length}}">
+							{{each siteNav}}
 							<a href="#" data-tpl="{{$value.template}}">
 								<b>
 									<span>
@@ -79,7 +79,7 @@
 				<div class="video">
 					<script id="tpl-video" type="text/html">
 						{{if siteVideo }}
-						<div class="video-container"><video src="{{siteVideo}}" loop controls></video></div>
+						<div class="video-container"><video data-playlist="{{siteVideo}}" src="" controls></video></div>
 						{{/if}}
 					</script>
 				</div>
