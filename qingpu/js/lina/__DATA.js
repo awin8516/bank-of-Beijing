@@ -6,9 +6,10 @@ var __DATA = {
       "siteId": 1,
       "siteName": "bj",
       "siteTheme": "red",
-      "siteBanner":["image/index/b1.jpg","image/index/b2.jpg","image/index/b3.jpg","image/index/b4.jpg","image/index/b5.jpg"],
-      "siteVideo": "upload/MG动画-存款保险人行上海总部版.mp4",
-      "nav": [
+      "sitePoster": "",
+      "siteBanner":["image/index/06.jpg","image/index/01.jpg","image/index/02.jpg","image/index/03.jpg","image/index/04.jpg","image/index/05.jpg"],
+      "siteVideo": ["upload/2.1分钟公益宣传片.mp4","upload/MG动画-存款保险人行上海总部版.mp4"],
+      "siteNav": [
         {
           "zh": "网点导览",
           "en": "Guide",

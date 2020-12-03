@@ -73,7 +73,9 @@ $(document).ready(function(){
   initVip();
   initFinancial();
   initHonor();
-  initAnniversary();    
+  initAnniversary();
+
+  //showPopup("<img src='./image/home/01.jpg'>", true);
   
   function initVideoPlay(){
     var $videos= $("video[data-playlist]");
@@ -395,7 +397,7 @@ $(document).ready(function(){
     // $("<div class='fullscreen-mask'><div class='btn-fullscreen'></div></div>").appendTo(".container > .header");
     $("<div class='btn-fullscreen'></div>").appendTo(".container > .header");
     $o.body.on("click", ".btn-fullscreen", function(){
-      console.log($(this))
+      // console.log(22)
       if($o.container.hasClass("full-screen")){
         // console.log(33)
         exitFullscreen(function(){

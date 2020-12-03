@@ -699,6 +699,7 @@ img {
 
 .popup-fullscreen .popup .inner {
   width: 100%;
+  height: 100%;
   margin-top: 0;
   border-radius: 0;
   box-shadow: none;
@@ -711,6 +712,16 @@ img {
 
 .popup-fullscreen .popup .inner .content {
   padding: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.popup-fullscreen .popup .inner .content img {
+  max-width: 100%;
+  max-height: 100%;
 }
 
 .peak-tips {

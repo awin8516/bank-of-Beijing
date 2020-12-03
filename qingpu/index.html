@@ -5,7 +5,7 @@
 	<meta charset="utf-8">
 	<meta name="renderer" content="webkit">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<title></title>
+	<title>北京银行</title>
 	<meta name="format-detection" content="telephone=no" />
 	<!-- <link href="css/style.min.css" rel="stylesheet"> -->
 	<link href="js/swiper-master/swiper-bundle.min.css" rel="stylesheet">
@@ -24,8 +24,8 @@
 		<div class="body">
 			<div>
 				<script id="tpl-nav-fixed" type="text/html">
-					<nav id="navFixed" class="nav nav-fixed nav-num-{{nav.length}}">
-						{{each nav}}
+					<nav id="navFixed" class="nav nav-fixed nav-num-{{siteNav.length}}">
+						{{each siteNav}}
 						<a href="#" data-tpl="{{$value.template}}">
 							<b>
 								<span>
@@ -61,8 +61,8 @@
 			<section class="page page-home page-show">
 				<div>
 					<script id="tpl-nav-home" type="text/html">
-						<nav class="nav nav-home nav-num-{{nav.length}}">
-							{{each nav}}
+						<nav class="nav nav-home nav-num-{{siteNav.length}}">
+							{{each siteNav}}
 							<a href="#" data-tpl="{{$value.template}}">
 								<b>
 									<span>
@@ -73,6 +73,14 @@
 							</a>
 							{{/each}}
 						</nav>
+					</script>
+				</div>
+
+				<div class="video">
+					<script id="tpl-video" type="text/html">
+						{{if siteVideo }}
+						<div class="video-container"><video data-playlist="{{siteVideo}}" src="" controls></video></div>
+						{{/if}}
 					</script>
 				</div>
 
@@ -91,17 +99,7 @@
 						</section>
 						{{/if}}
 					</script>
-				</div>
-				
-
-				<div class="video">
-					<script id="tpl-video" type="text/html">
-						{{if siteVideo }}
-						<div class="video-container"><video src="{{siteVideo}}" loop controls></video></div>
-						{{/if}}
-					</script>
-				</div>
-				
+				</div>				
 
 				<div class="exchange-fund">
 					<div class="exchange">
