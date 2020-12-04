@@ -6,6 +6,7 @@ var __DATA = {
       "siteId": 1,
       "siteName": "bj",
       "siteTheme": "red",
+      "siteLogo": "",
       "sitePoster": "",
       "siteBanner":["image/index/06.jpg","image/index/01.jpg","image/index/02.jpg","image/index/03.jpg","image/index/04.jpg","image/index/05.jpg"],
       "siteVideo": ["upload/2.1分钟公益宣传片.mp4","upload/MG动画-存款保险人行上海总部版.mp4"],
