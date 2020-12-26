@@ -147,6 +147,14 @@ $(document).ready(function(){
     $("head").append('<link href="css/'+style+'.min.css" rel="stylesheet">')
   }
 
+  function removeNav(index){
+    siteNav.splice(index,1);
+    var nav = {siteNav:siteNav}
+    console.log(nav)
+    Template('tpl-nav-home', nav);
+    Template('tpl-nav-fixed', nav);
+  }
+
   /*******************
    * 初始化首页 & 菜单
    */
@@ -158,10 +166,10 @@ $(document).ready(function(){
         showPopup("<img src='"+res.result.sitePoster+"'>", true);
       }
 
-      Template('tpl-nav-home', res.result);
+      // Template('tpl-nav-home', res.result);
       Template('tpl-banner', res.result);
       Template('tpl-video', res.result);
-      Template('tpl-nav-fixed', res.result);
+      // Template('tpl-nav-fixed', res.result);
       document.title = res.result.siteName;
       $o.video = $("video");
       $o.body.attr("class", "theme-ui-"+res.result.siteTheme);
@@ -226,15 +234,20 @@ $(document).ready(function(){
    */
   function initGuide() {
     API.getGuide({id:siteId},function(res){
-      var time = JSON.parse('[{"name":"'+res.result.peakTime.replace(/\s|\n|\r\n|；$|;$|，$|,$|。$|\.$/g, '').replace(/;|；|,|，/g, '},{"name":"').replace(/=/g, '","value":')+'}]');
-      var week = JSON.parse('[{"name":"'+res.result.peakWeek.replace(/\s|\n|\r\n|；$|;$|，$|,$|。$|\.$/g, '').replace(/;|；|,|，/g, '},{"name":"').replace(/=/g, '","value":')+'}]');
-      var data = {
-        content:res.result.content,
-        peakTime:time,
-        peakWeek:week,
+      if(!res.result.content){
+        var time = JSON.parse('[{"name":"'+res.result.peakTime.replace(/\s|\n|\r\n|；$|;$|，$|,$|。$|\.$/g, '').replace(/;|；|,|，/g, '},{"name":"').replace(/=/g, '","value":')+'}]');
+        var week = JSON.parse('[{"name":"'+res.result.peakWeek.replace(/\s|\n|\r\n|；$|;$|，$|,$|。$|\.$/g, '').replace(/;|；|,|，/g, '},{"name":"').replace(/=/g, '","value":')+'}]');
+        var data = {
+          content:res.result.content,
+          peakTime:time,
+          peakWeek:week,
+        }
+        // console.log(data)
+        Template('tpl-page-guide-content', data);
+      }else{
+        removeNav(0);
       }
-      // console.log(data)
-      Template('tpl-page-guide-content', data);
+      
     });
   }
 
@@ -245,7 +258,11 @@ $(document).ready(function(){
   function initFacilities() {
     API.getFacilities({id:siteId},function(res){
       // console.log(res.result);
-      Template('tpl-page-facilities', {list:res.result});
+      if(!res.result.length){
+        Template('tpl-page-facilities', {list:res.result});
+      }else{
+        removeNav(1);
+      }
     });
   }
 
@@ -265,28 +282,11 @@ $(document).ready(function(){
   function initPersonnel() {
     API.getPersonnel({id:siteId},function(res){
       console.log(res.result);
-      // var category=[]
-      // var cate = ""
-      // for(var i=0;i<res.result.length;i++){
-      //   var _cate = res.result[i].category;
-      //   if(cate.indexOf(_cate+"#") != -1){
-      //     //已有分类
-      //     for(var c=0;c<category.length;c++){
-      //       if(category[c].cate == _cate){
-      //         category[c].list.push(res.result[i])
-      //       }
-      //     }
-      //   }else{
-      //     //新分类
-      //     cate = cate + _cate + "#";
-      //     category.push({
-      //       cate:_cate,
-      //       list: [res.result[i]]
-      //     })
-      //   }
-      // }
-      // console.log(JSON.stringify(category))
-      Template('tpl-page-personnel', {groupPhoto:res.result.groupPhoto,category:res.result.data});
+      if(!res.result.data.length){
+        Template('tpl-page-personnel', {groupPhoto:res.result.groupPhoto,category:res.result.data});
+      }else{
+        removeNav(3);
+      }
     });
   }
   /*****************
@@ -322,7 +322,11 @@ $(document).ready(function(){
   function initHonor() {
     API.getHonor({id:siteId},function(res){
       console.log(res.result);
-      Template('tpl-page-honor', {content:res.result.data});
+      if(!res.result.data){
+        Template('tpl-page-honor', {content:res.result.data});
+      }else{
+        removeNav(7);
+      }
     });
   }
   /*****************
