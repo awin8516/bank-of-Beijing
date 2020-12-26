@@ -246,6 +246,7 @@
 								<div><img src="{{groupPhoto}}"></div>
 								<div id="peopleList">
 									{{each category}}
+									{{if $value.list.length}}
 									<dl>
 										<dt>{{$value.cate}}</dt>
 										<dd>
@@ -260,6 +261,7 @@
 											</ul>
 										</dd>
 									</dl>
+									{{/if}}
 									{{/each}}
 								</div>
 							</script>	

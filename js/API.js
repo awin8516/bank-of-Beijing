@@ -1,6 +1,7 @@
 var API = {
-    DOMAIN: location.href.indexOf("lina") != -1 ? "" : " http://114.55.11.192:7300/mock/5f841673d29faf95e856baa9/lina",               //正式
-    DEBUG: true,    
+    // DOMAIN: location.href.indexOf("lina") != -1 ? "http://lina007.com/Api/Handler.ashx" : " http://114.55.11.192:7300/mock/5f841673d29faf95e856baa9/lina",               //正式
+    DOMAIN: "http://lina007.com",               //正式
+    DEBUG: false,    
     _send: function(method,type, data, success){
         var successfn = function(res){
             if (API.DEBUG){
@@ -29,7 +30,7 @@ var API = {
             successfn && successfn(__DATA[method])
         }else{
             $.ajax({
-                url: API.DOMAIN + "/" + method,
+                url: API.DOMAIN + "/Api/Handler.ashx?method=" + method,
                 type: API.DEBUG ? "GET" : type,
                 data: data,
                 dataType: 'json',
