@@ -255,7 +255,7 @@ $(document).ready(function(){
   function initParty() {
     API.getParty({id:siteId},function(res){
       // console.log(res.result);
-      Template('tpl-page-party', {content:res.result});
+      Template('tpl-page-party', {content:res.result.data});
     });
   }
   
@@ -295,7 +295,7 @@ $(document).ready(function(){
   function initConsumer() {
     API.getConsumer({id:siteId},function(res){
       // console.log(res.result);
-      Template('tpl-page-consumer', {content:res.result});
+      Template('tpl-page-consumer', {content:res.result.data});
     });
   }
   /*****************
@@ -304,7 +304,7 @@ $(document).ready(function(){
   function initVip() {
     API.getVip({id:siteId},function(res){
       // console.log(res.result);
-      Template('tpl-page-vip', {content:res.result});
+      Template('tpl-page-vip', {content:res.result.data});
     });
   }
   /*****************
@@ -313,7 +313,7 @@ $(document).ready(function(){
   function initFinancial() {
     API.getFinancial({id:siteId},function(res){
       // console.log(res.result);
-      Template('tpl-page-financial', {content:res.result});
+      Template('tpl-page-financial', {content:res.result.data});
     });
   }
   /*****************
@@ -331,7 +331,7 @@ $(document).ready(function(){
   function initAnniversary() {
     API.getAnniversary({id:siteId},function(res){
       // console.log(res.result);
-      Template('tpl-page-anniversary', {content:res.result});
+      Template('tpl-page-anniversary', {content:res.result.data});
     });
   }
 
