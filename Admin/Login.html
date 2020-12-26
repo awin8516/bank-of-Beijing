@@ -1,0 +1,167 @@
+﻿<!DOCTYPE html>
+<!--[if IE 9]>         <html class="ie9 no-focus"> <![endif]-->
+<!--[if gt IE 9]><!-->
+<html class="no-focus">
+<!--<![endif]-->
+<head>
+    <meta charset="utf-8">
+
+    <title>Admin</title>
+    <link rel="icon" type="image/x-icon" href="assets/img/favicons/fav.png" />
+
+    <meta name="description" content="Aglie - Admin">
+    <meta name="author" content="pixelcave">
+    <meta name="robots" content="noindex, nofollow">
+    <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1.0">
+
+    <!-- Stylesheets -->
+    <!-- Web fonts -->
+    <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400italic,600,700%7COpen+Sans:300,400,400italic,600,700">
+
+    <!-- OneUI CSS framework -->
+    <link rel="stylesheet" id="css-main" href="assets/css/oneui.css">
+
+</head>
+<body>
+    <!-- Login Content -->
+    <div class="content overflow-hidden">
+        <div class="row">
+            <div class="col-sm-8 col-sm-offset-2 col-md-6 col-md-offset-3 col-lg-4 col-lg-offset-4">
+                <!-- Login Block -->
+                <div class="block block-themed animated fadeIn">
+                    <div class="block-header bg-primary">
+                        <h3 class="block-title">Login</h3>
+                    </div>
+                    <div class="block-content block-content-full block-content-narrow">
+                        <!-- Login Title -->
+                        <h1 class="h2 font-w600 push-30-t push-5">Admin</h1>
+                        <p>Welcome, please login.</p>
+                        <!-- END Login Title -->
+                        <!-- Login Form -->
+                        <!-- jQuery Validation (.js-validation-login class is initialized in js/pages/base_pages_login.js) -->
+                        <!-- For more examples you can check out https://github.com/jzaefferer/jquery-validation -->
+                        <form class="js-validation-login form-horizontal push-30-t push-50" method="post">
+                            <div class="form-group">
+                                <div class="col-xs-12">
+                                    <div class="form-material form-material-primary">
+                                        <input class="form-control" type="text" id="txt_Username" required="required">
+                                        <label for="login-username">Username</label>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <div class="col-xs-12">
+                                    <div class="form-material form-material-primary">
+                                        <input class="form-control" type="password" id="txt_Password" required="required">
+                                        <label for="login-password">Password</label>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <div class="col-xs-12">
+                                    <label class="css-input switch switch-sm switch-primary">
+                                        <input type="checkbox" id="cb_Remember"><span></span> Remember Me?
+                                    </label>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <div class="col-xs-12 col-sm-6 col-md-4">
+                                    <button class="btn btn-block btn-primary" type="submit"><i class="si si-login pull-right"></i> Log in</button>
+                                </div>
+                            </div>
+                        </form>
+                        <!-- END Login Form -->
+                    </div>
+                </div>
+                <!-- END Login Block -->
+            </div>
+        </div>
+    </div>
+    <!-- END Login Content -->
+    <!-- OneUI Core JS: jQuery, Bootstrap, slimScroll, scrollLock, Appear, CountTo, Placeholder, Cookie and App.js -->
+    <script src="assets/js/core/jquery.min.js"></script>
+    <script src="assets/js/core/bootstrap.min.js"></script>
+    <script src="assets/js/core/jquery.slimscroll.min.js"></script>
+    <script src="assets/js/core/jquery.scrollLock.min.js"></script>
+    <script src="assets/js/core/jquery.appear.min.js"></script>
+    <script src="assets/js/core/jquery.countTo.min.js"></script>
+    <script src="assets/js/core/jquery.placeholder.min.js"></script>
+    <script src="assets/js/core/js.cookie.min.js"></script>
+    <script src="assets/js/app.js"></script>
+    <script src="assets/js/global.js"></script>
+
+    <!-- Page JS Plugins -->
+    <script src="assets/js/plugins/jquery-validation/jquery.validate.min.js"></script>
+
+    <!-- Page JS Code -->
+    <script>
+        $(function () {
+
+            $.get('Ajax/AdminHandler.ashx', { method: 'GetRootPath' }, function (data) { localStorage.tls = data.result; }, 'json');
+
+            if ($.cookie.get('Username')) {
+                $('#txt_Username').val($.cookie.get('Username'));
+                $('#txt_Password').val($.cookie.get('Password'));
+                $('#cb_Remember').attr('checked', true);
+            }
+            jQuery('.js-validation-login').validate({
+                errorClass: 'help-block text-right animated fadeInDown',
+                errorElement: 'div',
+                errorPlacement: function (error, e) {
+                    jQuery(e).parents('.form-group .form-material').append(error);
+                },
+                highlight: function (e) {
+                    jQuery(e).closest('.form-group').removeClass('has-error').addClass('has-error');
+                    jQuery(e).closest('.help-block').remove();
+                },
+                success: function (e) {
+                    jQuery(e).closest('.form-group').removeClass('has-error');
+                    jQuery(e).closest('.help-block').remove();
+                },
+                rules: {
+                    'login-username': {
+                        required: true,
+                    },
+                    'login-password': {
+                        required: true,
+                    }
+                },
+                messages: {
+                    'login-username': {
+                        required: 'Please enter a username',
+                        minlength: 'Your username must consist of at least 3 characters'
+                    },
+                    'login-password': {
+                        required: 'Please provide a password',
+                        minlength: 'Your password must be at least 5 characters long'
+                    }
+                },
+                submitHandler: function () {
+                    var Username = $('#txt_Username').val();
+                    var Password = $('#txt_Password').val();
+                    var IsRemember = $('#cb_Remember').is(':checked');
+                    $.post("Ajax/AdminHandler.ashx", { method: 'Login', Username: Username, Password: Password }, function (data) {
+                        if (data.errcode == "0") {
+                            if (IsRemember) {
+                                $.cookie.set('Username', Username, { expires: 7 });
+                                $.cookie.set('Password', Password, { expires: 7 });
+                            }
+                            location.href = "Index.aspx";
+                        } else {
+                            $.cookie.remove('Username');
+                            $.cookie.remove('Password');
+                            alert(data.errmsg);
+                        }
+                    }, "json");
+                    return false;
+                }
+            });
+            if ($.cookie.get('Username')) {
+                $('#txt_Username').val($.cookie.get('Username'));
+                $('#txt_Password').val($.cookie.get('Password'));
+                $('#cb_Remember').attr('checked', true);
+            }
+        })
+    </script>
+</body>
+</html>

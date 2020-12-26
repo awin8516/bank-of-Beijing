@@ -1,0 +1,53 @@
+﻿{
+    "Config": { "DB": "DB", "Name": "youyijia_Multimedia", "PK": "ID", "Field": "*", "Query": "IsDel=0", "Sort": "ID desc", "PageSize": 10, "Span": 5 },
+    "Column": [
+        {
+            "Title": "ID",
+            "SearchType": "Like",
+            "Bind": "ID"
+        },
+		{
+            "Title": "名称",
+            "SearchType": "Like",			
+            "Bind": "Multimedia_Name"
+        },
+		{
+            "Title": "图片类型",
+            "SearchType": "Select",
+            "BindType": "Select",
+            "Bind": "Multimedia_Type",
+            "Info": [ { "Value": 1, "Text": "Banner" }, { "Value": 2, "Text": "二维码" } ]
+        },
+		 { 
+		    "Title": "图片", 
+		    "BindType": "Html", 
+		    "Info": "<img src='{Multimedia_Url}' width='100'></img>"
+		 },
+		{
+            "Title": "排序",
+            "SearchType": "Like",
+			"IsSort":true,
+            "Bind": "Weight"
+        },
+		{
+            "Title": "入库时间",
+            "SearchType": "Time",
+			"BindType": "Time",
+            "Bind": "AddTime"
+        },
+		{ 
+			"Title": "", 
+			"SearchType": "",
+			"BindType": "Html", 
+			"Info": "<a class='btn btn-sm btn-default' title='编辑图片' onclick='fhuo({ID},\"{Multimedia_Type}\",\"{Multimedia_Url}\",\"{Weight}\",\"{Multimedia_Name}\")'><i class='glyphicon glyphicon-pencil'></i> 编辑</a><a class='btn btn-sm btn-default lab456' onclick='if(confirm(\"确认删除吗？\"))DelCoupon([{ID},1])' title='删除'><i class='glyphicon glyphicon-remove'></i>删除</a>" 
+		 }			
+    ],
+	"Ajax": [
+        {
+            "Name": "DelCoupon",
+            "SQL": "Update youyijia_Multimedia set IsDel=@1 where ID=@0",
+            "Update": true,
+            "Info": "alert('删除成功!');"
+        }
+    ]
+}

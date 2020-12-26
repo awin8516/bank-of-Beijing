@@ -1,0 +1,57 @@
+﻿{
+  "Config": {
+    "DB": "DB",
+    "Name": "Admin_Convenience",
+    "PK": "ID",
+    "Field": "*",
+    "Query": "IsDel=0",
+    "Sort": "ID desc",
+    "PageSize": 10,
+    "Span": 5
+  },
+  "Column": [
+    {
+      "Title": "ID",
+      "SearchType": "Like",
+      "Bind": "ID"
+    },
+    {
+      "Title": "标题",
+      "SearchType": "Like",
+      "Bind": "title"
+    },
+      {
+        "Title": "图标",
+        "BindType": "Html",
+        "Info": "<img src='{icon}' width='100' hight='100' onerror=\"this.src='../assets/默认图标.png';this.onerror=null\"></img>"
+      },
+      {
+        "Title": "照片",
+        "BindType": "Html",
+        "Info": "<img src='{img}' width='100' hight='100' onerror=\"this.src='../assets/默认图标.png';this.onerror=null\"></img>"
+      },
+    {
+      "Title": "入库时间",
+      "SearchType": "Time",
+      "BindType": "Time",
+      "Bind": "AddTime"
+
+
+    },
+    {
+      "Title": "",
+      "SearchType": "Export",
+      "BindType": "Html",
+      "Info": "<a class='btn btn-sm btn-default' title='编辑' href='ConvenienceEdit.aspx?ID={ID}'><i class='fa fa-pencil'></i> 编辑/查看</a><a class='btn btn-sm btn-default lab456' onclick='if(confirm(\"确认删除吗？\"))SetIsDel([{ID},1])' title='删除'><i class='glyphicon glyphicon-remove'></i> 删除</a>"
+    }
+  ],
+  "Ajax": [
+
+    {
+      "Name": "SetIsDel",
+      "SQL": "Update Admin_Convenience set IsDel=@1 where ID=@0",
+      "Update": true,
+      "Info": "alert('删除成功!');"
+    }
+  ]
+}
