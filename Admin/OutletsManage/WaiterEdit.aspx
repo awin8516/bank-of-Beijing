@@ -229,13 +229,6 @@
 
         $(function () {
 
-
-            if (!$(".company-imgs3").find("li .img").attr("src")) {
-                $(".img").parents("li").parents(".company-imgs3").css("display", "none");
-            } else {
-                $(".img").parents("li").parents(".company-imgs3").css("display", "inline-block");
-            }
-
             $("#ContentPlaceHolder1_FileUpload1").change(function (e) {
                 var $file = $(this);
                 var fileObj = $file[0];
@@ -519,13 +512,15 @@
                     <div class="form-material">
                         <div class="col-xs-12">
                             <label class="control-label control-label" for="inputError2">照片：</label>
-                              <div class="" style="margin-top: 15px">
+                              <div class="control-container">
+                                <asp:HiddenField runat="server" ID="image1Hidden" Value="" />
                                 <a href="javascript:;" class="company-upload4">
                                     <asp:FileUpload ID="FileUpload1" AllowMultiple="true" runat="server" CssClass="form-control" />
                                 </a>
                                 <ul class="company-imgs3">
                                     <li id="li1" runat="server">
                                         <asp:Image ID="image1" runat="server" CssClass="img" />
+                                        <a class="btn-remove del-img"><i class="glyphicon glyphicon-remove"></i></a>
                                     </li>
                                 </ul>
                             </div>
@@ -557,7 +552,7 @@
                             <label class="control-label control-label" for="inputError2">资质照片:</label>
                             <asp:HiddenField runat="server" ID="img" Value="" />
                             <%--<asp:HiddenField runat="server" ID="hdfImagePath" Value="1" />--%>
-                            <div class="" style="margin-top: 15px">
+                            <div class="control-container">
                                 <a href="javascript:;" class="file company-upload">
                                     <input type="file" name="" accept="image/x-png,image/jpeg,image/jpg" multiple="multiple" runat="server" id="upLoad" />
                                 </a>

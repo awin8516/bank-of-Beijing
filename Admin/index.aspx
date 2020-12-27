@@ -27,14 +27,14 @@
 <body>
     <div id="page-container" class="sidebar-l sidebar-o side-scroll header-navbar-fixed">
         <!-- Sidebar -->
-        <nav id="sidebar" style="background-color: #1f1a1a">
+        <nav id="sidebar">
             <!-- Sidebar Scroll Container -->
             <div id="sidebar-scroll">
                 <!-- Sidebar Content -->
                 <!-- Adding .sidebar-mini-hide to an element will hide it when the sidebar is in mini mode -->
                 <div class="sidebar-content">
                     <!-- Side Header -->
-                    <div class="side-header bg-white-op" style="background-color: #000">
+                    <div class="side-header bg-white-op" >
                         <!-- Layout API, functionality initialized in App() -> uiLayoutApi() -->
                         <!-- <button class="btn btn-link text-gray pull-right hidden-md hidden-lg" type="button" data-toggle="layout" data-action="sidebar_close">
                             <i class="fa fa-times"></i>
@@ -42,7 +42,7 @@
                         <!-- Themes functionality initialized in App() -> uiHandleTheme() -->
 
                         <a class="h5 text-white">
-                            <span class="h4 font-w600 sidebar-mini-hide push-10-l">Admin</span>
+                            <span class="h4 font-w600 sidebar-mini-hide push-10-l">LINA SYSTEM</span>
                         </a>
                     </div>
                     <!-- END Side Header -->
@@ -55,7 +55,7 @@
                                 <a target="xframe" id="autolink" href="OutletsManage/List.aspx"><i class="si si-arrow-right"></i><span class="sidebar-mini-hide">网点配置</span></a>
                             </li>
                             <li id="li1" runat="server">
-                                <a target="xframe" href="Party/List.aspx?ID=1"><i class="si si-arrow-right"></i><span class="sidebar-mini-hide">建党信息</span></a>
+                                <a target="xframe" href="Party/List.aspx?ID=1"><i class="si si-arrow-right"></i><span class="sidebar-mini-hide">党建信息</span></a>
                             </li>
                             <li id="li2" runat="server">
                                 <a target="xframe" href="Consumer/List.aspx?ID=1"><i class="si si-arrow-right"></i><span class="sidebar-mini-hide">消费者保护专栏</span></a>

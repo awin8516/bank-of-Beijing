@@ -110,8 +110,12 @@
                     <div class="form-material">
                         <div class="col-xs-12">
                             <label class="control">高峰-小时：</label>
-                            <asp:TextBox ID="TextBox1" runat="server" autocomplete="off" Height="200px" TextMode="MultiLine" Width="945px" style="display:block;border:solid 1px #ccc;"></asp:TextBox>
-
+                            <asp:TextBox ID="TextBox1" runat="server" autocomplete="off" Height="200px" TextMode="MultiLine" Width="945px" style="display:block;border:solid 1px #ccc;">09:00-11:00=4,
+11:00-12:00=3,
+12:00-13:00=2,
+13:00-14:00=3,
+14:00-15:30=4,
+15:30-17:00=2,</asp:TextBox>
                         </div>
                     </div>
                 </div>
@@ -120,7 +124,12 @@
                     <div class="form-material">
                         <div class="col-xs-12">
                             <label class="control">高峰-周：</label>
-                            <asp:TextBox ID="TextBox2" runat="server"  autocomplete="off" Height="200px" TextMode="MultiLine" Width="945px" style="display:block;border:solid 1px #ccc;"></asp:TextBox>
+                            <asp:TextBox ID="TextBox2" runat="server"  autocomplete="off" Height="200px" TextMode="MultiLine" Width="945px" style="display:block;border:solid 1px #ccc;">周一=4,
+周二=3,
+周三=3,
+周四=2,
+周五=3,
+周日=1,</asp:TextBox>
 
                         </div>
                     </div>

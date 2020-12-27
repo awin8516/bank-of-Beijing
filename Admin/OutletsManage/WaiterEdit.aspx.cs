@@ -42,6 +42,7 @@ public partial class Lays_Job_Edit : PageBase
                 this.TextBox4.Text = comm.promise;
                 this.TextBox5.Text = comm.qualification;
                 this.image1.ImageUrl = comm.photo;
+                this.image1Hidden.Value = comm.photo;
                 this.ddl_Type.SelectedValue = comm.category;
 
                 var imageList = Manage.GetList<Admin_QualificationImgs>("WaiterID=@0 and IsDel=0", comm.ID);
@@ -111,6 +112,10 @@ public partial class Lays_Job_Edit : PageBase
                 FileUpload1.SaveAs(Server.MapPath("~" + path));
                 comm.photo = GetSiteUrl() + path;
             }
+        }
+        else
+        {
+            comm.photo = image1Hidden.Value;
         }
         comm.AddTime = DateTime.Now;
 

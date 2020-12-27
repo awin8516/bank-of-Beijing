@@ -68,13 +68,12 @@ $(document).ready(function(){
       showPopup(createPersonnelDetail(this.dataset.personnel));
     }
   });
-  $o.popupClose.on(eventList.click, hidePopup);
+  $o.popupClose.on('click', hidePopup);
 
-  $o.body.on(eventList.click, ".popup-fullscreen .popup .close", function(){
-    hidePopup2()
-  });
+  // $o.body.on(eventList.click, ".popup-fullscreen .popup .close", function(){
+  //   hidePopup2()
+  // });
 
-  initStyle();
   initFullScreen();
   initHome();
   initGuide();
@@ -112,14 +111,6 @@ $(document).ready(function(){
         video.play();
       })
     })
-  }
-
-  function initStyle(){
-    var style = "style";
-    if(nowDate >= new Date(newDate)){
-      style = "style1128"
-    }
-    $("head").append('<link href="css/'+style+'.min.css" rel="stylesheet">')
   }
 
   function getIndexByArray(key,value,arr){
@@ -422,12 +413,15 @@ $(document).ready(function(){
     $o.popup.addClass("show");
   }
   function hidePopup() {
-    if(!$o.container.hasClass("popup-fullscreen")){
+    console.log('hidePopup')
+    // if(!$o.container.hasClass("popup-fullscreen")){
+      $o.container.removeClass("popup-fullscreen")
       $o.popup.removeClass("show");
       $o.popupContent.html("");
-    }
+    // }
   }
   function hidePopup2() {    
+    console.log('hidePopup2')
     setTimeout(function(){
       $o.container.removeClass("popup-fullscreen")
       $o.popup.removeClass("show");
@@ -454,10 +448,12 @@ $(document).ready(function(){
     // return false;
     // $("<div class='fullscreen-mask'><div class='btn-fullscreen'></div></div>").appendTo(".container > .header");
     $("<div class='btn-fullscreen'></div>").appendTo(".container > .header");
-    $o.body.on("click", ".btn-fullscreen", function(){
-      // console.log(22)
+    $o.body.on("click", ".btn-fullscreen", function(e){
+      
+      console.log(this)
+      console.log(22)
       if($o.container.hasClass("full-screen")){
-        // console.log(33)
+        console.log(33)
         exitFullscreen(function(){
           $o.container.removeClass("full-screen")
           console.log("exitFullscreen");
@@ -465,7 +461,7 @@ $(document).ready(function(){
           console.log("video pause")
         });
       }else{
-        // console.log(44)
+        console.log(44)
         fullScreen(function(){
           $o.container.addClass("full-screen");
           screenSize = {width:$o.win.width(),height:$o.win.height()};

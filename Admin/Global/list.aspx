@@ -345,15 +345,6 @@
 
         $(function () {
 
-
-
-            if (!$(".company-imgs3").find("li .img").attr("src")) {
-                $(".img").parents("li").parents(".company-imgs3").css("display", "none");
-            } else {
-                $(".img").parents("li").parents(".company-imgs3").css("display", "inline-block");
-            }
-
-
             $("#ContentPlaceHolder1_FileUpload2").change(function (e) {
                 var $file = $(this);
                 var fileObj = $file[0];
@@ -791,14 +782,15 @@
             <div class="block-content block-content-narrow">
                 <asp:HiddenField ID="hidID" runat="server" Value="0" />
                 <div class="form-group has-success has-feedback">
-                    <div class="col-xs-12">
-                        <div class="form-material">
+                    <div class="form-material">
+                        <div class="col-xs-12">
                             <label class="control-label" for="inputError2">是否开启全局:</label>
-                            <br />
-                            <asp:DropDownList ID="ddl_Type" runat="server" class="form-control">
-                                <asp:ListItem Value="1">开启</asp:ListItem>
-                                <asp:ListItem Value="2">关闭</asp:ListItem>
-                            </asp:DropDownList>
+                            <div class="control-container">
+                                <asp:DropDownList ID="ddl_Type" runat="server" class="form-control">
+                                    <asp:ListItem Value="1">开启</asp:ListItem>
+                                    <asp:ListItem Value="2">关闭</asp:ListItem>
+                                </asp:DropDownList>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -806,7 +798,8 @@
                     <div class="form-material">
                         <div class="col-xs-12">
                             <label class="control-label control-label" for="inputError2">开屏海报:</label>
-                            <div class="" style="margin-top: 15px">
+                            <div class="control-container">
+                                <asp:HiddenField runat="server" ID="image2Hidden" Value="" />
                                 <a href="javascript:;" class="company-upload3">
                                     <asp:FileUpload ID="FileUpload2" AllowMultiple="true" runat="server" CssClass="form-control" />
                                 </a>
@@ -814,6 +807,7 @@
                                 <ul class="company-imgs3">
                                     <li>
                                         <asp:Image ID="image2" runat="server" CssClass="img" />
+                                        <a class="btn-remove del-img"><i class="glyphicon glyphicon-remove"></i></a>
                                     </li>
                                 </ul>
                             </div>
@@ -824,9 +818,9 @@
                     <div class="form-material">
                         <div class="col-xs-12">
                             <label class="control-label control-label" for="inputError2">首页轮播图:</label>
-                            <asp:HiddenField runat="server" ID="img" Value="" />
                             <%--<asp:HiddenField runat="server" ID="hdfImagePath" Value="1" />--%>
-                            <div class="" style="margin-top: 15px">
+                            <div class="control-container">
+                                <asp:HiddenField runat="server" ID="img" Value="" />
                                 <a href="javascript:;" class="file company-upload">
                                     <input type="file" name="" accept="image/x-png,image/jpeg,image/jpg" multiple="multiple" runat="server" id="upLoad" />
                                 </a>
@@ -844,7 +838,7 @@
                             <label class="control-label control-label" for="inputError2">首页轮播视频:</label>
                             <asp:HiddenField runat="server" ID="img1" Value="" />
 
-                            <div class="" style="margin-top: 15px">
+                            <div class="control-container">
                                 <a href="javascript:;" class="file company-upload1">
                                     <input type="file" name="" accept="video/mp4" multiple="multiple" runat="server" id="upLoad1" />
                                 </a>

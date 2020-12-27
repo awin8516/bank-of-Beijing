@@ -26,6 +26,34 @@ td.Brand_Url{max-width: 40%;word-break: break-all;white-space: normal;}
 .control-label-must::after{ content: "*";color: #ff0000;padding-left: 0.2em;font-family: serif;}
 
 
+.control-container{display: inline-block;vertical-align: middle;}
+
+.form-group .del-img{
+    position: absolute;
+    font-size: 12px;
+    line-height: 1;
+    width: 20px;
+    height: 20px;
+    right: -10px;
+    top: -10px;
+    border: 1px #e30512 solid;
+    border-radius: 50%;
+    background: #e30512;
+    text-align: center;
+    color: #fff;
+    cursor: pointer;
+}
+.form-group .del-img::before {
+    content: "";
+    display: inline-block;
+    height: 94%;
+    vertical-align: middle;
+}
+.form-group .del-img i {
+    vertical-align: middle;
+}
+
+
 
 
 

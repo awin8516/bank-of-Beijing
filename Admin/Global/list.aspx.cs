@@ -41,6 +41,7 @@ public partial class Lays_Job_Edit : PageBase
                     //if (!string.IsNullOrEmpty(comm.HandImage)) image1.ImageUrl = "http://yihuo.beats-digital.com" + comm.HandImage;
 
                     this.image2.ImageUrl = comm.sitePoster;
+                    this.image2Hidden.Value = comm.sitePoster;
 
                     var imageList = Manage.GetList<Admin_GlobalMedia>("GlobalID=@0 and IsDel=0 and MediaType=@1", comm.ID, "img");
                     List<string> tempPathList = new List<string>();
@@ -102,6 +103,10 @@ public partial class Lays_Job_Edit : PageBase
                 FileUpload2.SaveAs(Server.MapPath("~" + path));
                 comm.sitePoster = GetSiteUrl() + path;
             }
+        }
+        else
+        {
+            comm.sitePoster = image2Hidden.Value;
         }
         if (this.ddl_Type.SelectedValue == "1")
         {

@@ -100,11 +100,6 @@
     <script>
         $(function () {
 
-            if (!$(".company-imgs3").find("li .img").attr("src")) {
-                $(".img").parents("li").parents(".company-imgs3").css("display", "none");
-            } else {
-                $(".img").parents("li").parents(".company-imgs3").css("display", "inline-block");
-            }
             $("#ContentPlaceHolder1_FileUpload2").change(function (e) {
                 var $file = $(this);
                 var fileObj = $file[0];
@@ -197,13 +192,15 @@
                     <div class="form-material">
                         <div class="col-xs-12">
                             <label class="control-label control-label" for="inputError2">图标：</label>
-                            <div class="" style="margin-top: 15px">
+                            <div class="control-container">
+                                <asp:HiddenField runat="server" ID="image1Hidden" Value="" />
                                 <a href="javascript:;" class="company-upload4">
                                     <asp:FileUpload ID="FileUpload1" AllowMultiple="true" runat="server" CssClass="form-control" />
                                 </a>
                                 <ul class="company-imgs3">
                                     <li>
                                         <asp:Image ID="image1" runat="server" CssClass="img" />
+                                        <a class="btn-remove del-img"><i class="glyphicon glyphicon-remove"></i></a>
                                     </li>
                                 </ul>
                             </div>
@@ -215,7 +212,8 @@
                     <div class="form-material">
                         <div class="col-xs-12">
                             <label class="control-label control-label" for="inputError2">照片：</label>
-                            <div class="" style="margin-top: 15px">
+                            <div class="control-container">
+                                <asp:HiddenField runat="server" ID="image2Hidden" Value="" />
                                 <a href="javascript:;" class="company-upload3">
                                     <asp:FileUpload ID="FileUpload2" AllowMultiple="true" runat="server" CssClass="form-control" />
                                 </a>
@@ -223,6 +221,7 @@
                                 <ul class="company-imgs3">
                                     <li>
                                         <asp:Image ID="image2" runat="server" CssClass="img" />
+                                        <a class="btn-remove del-img"><i class="glyphicon glyphicon-remove"></i></a>
                                     </li>
                                 </ul>
                             </div>

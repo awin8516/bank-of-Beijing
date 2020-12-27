@@ -27,6 +27,8 @@ public partial class Lays_BrandInfo_Edit : PageBase
 
                 this.image1.ImageUrl = comm.icon;
                 this.image2.ImageUrl = comm.img;
+                this.image1Hidden.Value = comm.icon;
+                this.image2Hidden.Value = comm.img;
                 this.HiddenField1OutletsID.Value = comm.OutletsID.ToString();
 
             }
@@ -65,6 +67,10 @@ public partial class Lays_BrandInfo_Edit : PageBase
                 comm.icon = GetSiteUrl() + path;
             }
         }
+        else
+        {
+            comm.icon = image1Hidden.Value;
+        }
         if (!string.IsNullOrWhiteSpace(FileUpload2.FileName))
         {
             if (FileUpload2.PostedFile.ContentType.Contains("image"))
@@ -73,6 +79,10 @@ public partial class Lays_BrandInfo_Edit : PageBase
                 FileUpload2.SaveAs(Server.MapPath("~" + path));
                 comm.img = GetSiteUrl() + path;
             }
+        }
+        else
+        {
+            comm.img = image2Hidden.Value;
         }
 
         comm.AddTime = DateTime.Now;

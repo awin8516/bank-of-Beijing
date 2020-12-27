@@ -37,7 +37,9 @@ public partial class Lays_Job_Edit : PageBase
                 this.TextBox4.Text = comm.password;
                 //this.TextBox5.Text = comm.siteLink;
                 this.image1.ImageUrl = comm.siteLogo;
+                this.image1Hidden.Value = comm.siteLogo;
                 this.image2.ImageUrl = comm.sitePoster;
+                this.image2Hidden.Value = comm.sitePoster;
 
                 var imageList = Manage.GetList<Admin_OutletsMedia>("OutletsID=@0 and IsDel=0 and MediaType=@1", comm.ID,"img");
                 List<string> tempPathList = new List<string>();
@@ -100,6 +102,8 @@ public partial class Lays_Job_Edit : PageBase
                     FileUpload1.SaveAs(Server.MapPath("~" + path));
                     comm.siteLogo = GetSiteUrl() + path;
                 }
+            } else {
+                comm.siteLogo = image1Hidden.Value;
             }
             if (!string.IsNullOrWhiteSpace(FileUpload2.FileName))
             {
@@ -109,6 +113,8 @@ public partial class Lays_Job_Edit : PageBase
                     FileUpload2.SaveAs(Server.MapPath("~" + path));
                     comm.sitePoster = GetSiteUrl() + path;
                 }
+            } else {
+                comm.sitePoster = image2Hidden.Value;
             }
             comm.siteBackTime = this.TextBox2.Text;
             comm.accountNumber = this.TextBox3.Text;
@@ -116,7 +122,7 @@ public partial class Lays_Job_Edit : PageBase
             //if (om!=null||this.TextBox3.Text=="admin")
             //{
                             
-            //    Alert("ÕËºÅÒÑ´æÔÚ£¬ÇëÖØÐÂ³öÈë","List.aspx");
+            //    Alert("ï¿½Ëºï¿½ï¿½Ñ´ï¿½ï¿½Ú£ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Â³ï¿½ï¿½ï¿½","List.aspx");
             //    return;
             
             //}

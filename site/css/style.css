@@ -208,7 +208,7 @@ img {
   left: 0;
   top: 0;
   text-align: center;
-  transform: translate(0, -300%);
+  transform: translate(0, 0);
   transition: transform 300ms 0ms;
   font-size: 0.65em;
 }
@@ -237,8 +237,9 @@ img {
   padding-bottom: 100%;
   vertical-align: top;
   background-color: #ddd;
+  box-shadow: 0 0 1.5em 0.5em #fff inset;
   color: #fff;
-  opacity: 0.9;
+  opacity: 1;
   border-radius: 50%;
   white-space: nowrap;
 }
@@ -379,46 +380,75 @@ img {
   }
 }
 
-.banner {
-  display: none;
-}
-
-.banner .swiper-home-banner {
+.video {
   position: absolute;
   width: 80%;
-  height: 30%;
   left: 10%;
-  top: 60%;
-  overflow: hidden;
+  margin-top: 20%;
+  border: 0px #fff solid;
+  border-radius: 3px;
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
+  background-color: #000;
+  box-sizing: border-box;
 }
 
-.video {
-  display: none;
+.video::before {
+  content: "";
+  display: block;
+  height: 0;
+  padding-bottom: 56.25%;
 }
 
 .video .video-container {
   position: absolute;
-  width: 40%;
-  left: 10%;
-  top: 50%;
-  transform: translateY(-50%);
-  border: 5px #fff solid;
-  border-radius: 3px;
-  box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
-  background-color: #000;
+  width: 100%;
+  height: 100%;
+  left: 0;
+  top: 0;
 }
 
 .video .video-container video {
   display: block;
   width: 100%;
+  height: 100%;
+}
+
+.banner {
+  position: absolute;
+  width: 80%;
+  left: 10%;
+  margin-top: 68%;
+  overflow: hidden;
+}
+
+.banner::before {
+  content: "";
+  display: block;
+  height: 0;
+  padding-bottom: 56.25%;
+}
+
+.banner .swiper-home-banner {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  left: 0;
+  top: 0;
+  text-align: center;
+  background-color: #fff;
+}
+
+.banner .swiper-home-banner img {
+  max-width: 100%;
+  max-height: 100%;
 }
 
 .exchange-fund {
   position: absolute;
   width: 90%;
-  height: 37%;
+  height: 27%;
   left: 5%;
-  top: 60%;
+  margin-top: 116%;
   white-space: nowrap;
   letter-spacing: -0.35em;
   font-size: 0.5em;
@@ -662,6 +692,10 @@ img {
   z-index: 0;
 }
 
+.popup-fullscreen .header .btn-fullscreen {
+  right: -100em;
+}
+
 .popup-fullscreen .popup {
   position: fixed;
   z-index: 1000;
@@ -669,6 +703,7 @@ img {
 
 .popup-fullscreen .popup .inner {
   width: 100%;
+  height: 100%;
   margin-top: 0;
   border-radius: 0;
   box-shadow: none;
@@ -681,6 +716,16 @@ img {
 
 .popup-fullscreen .popup .inner .content {
   padding: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.popup-fullscreen .popup .inner .content img {
+  max-width: 100%;
+  max-height: 100%;
 }
 
 .peak-tips {
@@ -788,6 +833,7 @@ img {
 }
 
 .page-home .nav-home {
+  display: none;
   position: absolute;
   width: 100%;
   left: 0;
@@ -1592,11 +1638,11 @@ body.theme-ui-red .nav a:nth-child(10) b {
     right: 3em;
     top: 50%;
   }
-  .page-home .video {
-    display: none;
-  }
   .page-home .exchange-fund {
     display: block;
+  }
+  .nav-fixed a {
+    max-width: 16%;
   }
   .nav-fixed.nav-num-1 {
     font-size: 1.72em;
@@ -1690,7 +1736,7 @@ body.theme-ui-red .nav a:nth-child(10) b {
     width: 5%;
     margin-top: 0;
     margin-left: 1%;
-    transform: translate(-150%, -50%);
+    transform: translate(0%, -50%);
     transition: transform 300ms 0ms;
   }
   .nav-fixed a {
@@ -1701,12 +1747,6 @@ body.theme-ui-red .nav a:nth-child(10) b {
   .has-nav .nav-fixed {
     transform: translate(0, -50%);
     transition: transform 300ms 300ms;
-  }
-  .banner .swiper-home-banner {
-    width: 40%;
-    height: 40%;
-    left: 10%;
-    top: 30%;
   }
   .popup {
     text-align: center;
@@ -1760,7 +1800,21 @@ body.theme-ui-red .nav a:nth-child(10) b {
     margin-top: 0;
   }
   .page-home .video {
-    display: block;
+    width: 55%;
+    left: 8%;
+    margin-top: 0;
+    top: 50%;
+    transform: translateY(-50%);
+  }
+  .page-home .banner {
+    width: 33%;
+    left: 65%;
+    margin-top: 0;
+    top: 50%;
+    transform: translateY(-50%);
+  }
+  .page-home .banner::before {
+    padding-bottom: 94.25%;
   }
   .page-home .exchange-fund {
     display: none;
