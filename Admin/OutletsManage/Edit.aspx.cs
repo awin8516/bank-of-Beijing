@@ -133,7 +133,7 @@ public partial class Lays_Job_Edit : PageBase
 
             Manage.Save(comm);
 
-            string link = "http://lina007.com/?siteId="+comm.ID;
+            string link = "http://lina007.com/site/?siteId="+comm.ID;
             DB.ExecuteCommand("update Admin_OutletsManage set siteLink=@0 where ID=@1",link,comm.ID);
             string imagePath = this.img.Value.Trim(',');
             DB.ExecuteCommand("delete from Admin_OutletsMedia where OutletsID=@0 and MediaType=@1", comm.ID,"img");
