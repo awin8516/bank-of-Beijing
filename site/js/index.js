@@ -49,6 +49,7 @@ $(document).ready(function(){
   ];
 
   var screenSize = {width:$o.win.width(),height:$o.win.height()}
+  var screenType = screenSize.width/screenSize.height>1?"horizontal":"vertical";
   var siteId = getQueryString("siteId");
   var backHomeTime = 60; // 没有操作？秒后回首页
   var backHomeTimer = null;
@@ -142,6 +143,7 @@ $(document).ready(function(){
    */
   function initHome() {
     API.getSiteInfo({id:siteId},function(res){
+      console.log(res)
       res.result.siteNav = siteNav;
       // console.log(res);
       backHomeTime = res.result.siteBackTime ? parseInt(res.result.siteBackTime) : 60; // 没有操作？秒后回首页
@@ -156,8 +158,14 @@ $(document).ready(function(){
         showPopup("<img src='"+res.result.sitePoster+"'>", true);
       }
 
+      var banners = {
+        siteBanner:res.result.siteBanner[screenType]
+      }
+
+      console.log(banners)
+
       Template('tpl-nav-home', res.result);
-      Template('tpl-banner', res.result);
+      Template('tpl-banner', banners);
       Template('tpl-video', res.result);
       Template('tpl-nav-fixed', res.result);
       $o.video = $("video");

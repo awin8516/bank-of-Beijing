@@ -382,8 +382,8 @@ img {
 
 .video {
   position: absolute;
-  width: 80%;
-  left: 10%;
+  width: 90%;
+  left: 5%;
   margin-top: 20%;
   border: 0px #fff solid;
   border-radius: 3px;
@@ -415,9 +415,9 @@ img {
 
 .banner {
   position: absolute;
-  width: 80%;
-  left: 10%;
-  margin-top: 68%;
+  width: 90%;
+  left: 5%;
+  margin-top: 73%;
   overflow: hidden;
 }
 
@@ -425,7 +425,7 @@ img {
   content: "";
   display: block;
   height: 0;
-  padding-bottom: 56.25%;
+  padding-bottom: 54.16666666666666%;
 }
 
 .banner .swiper-home-banner {
@@ -441,14 +441,16 @@ img {
 .banner .swiper-home-banner img {
   max-width: 100%;
   max-height: 100%;
+  width: 100%;
+  height: 100%;
 }
 
 .exchange-fund {
   position: absolute;
   width: 90%;
-  height: 27%;
+  height: 21%;
   left: 5%;
-  margin-top: 116%;
+  margin-top: 124%;
   white-space: nowrap;
   letter-spacing: -0.35em;
   font-size: 0.5em;
@@ -465,7 +467,7 @@ img {
   display: inline-block;
   width: 48%;
   height: 100%;
-  margin-right: 4%;
+  margin-right: 3.5%;
   background: rgba(255, 255, 255, 0.9);
   border: 2px #666 solid;
   border-radius: 10px;
@@ -1807,14 +1809,14 @@ body.theme-ui-red .nav a:nth-child(10) b {
     transform: translateY(-50%);
   }
   .page-home .banner {
-    width: 33%;
+    width: 33.49%;
     left: 65%;
     margin-top: 0;
     top: 50%;
     transform: translateY(-50%);
   }
   .page-home .banner::before {
-    padding-bottom: 94.25%;
+    padding-bottom: 92.847%;
   }
   .page-home .exchange-fund {
     display: none;
