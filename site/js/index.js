@@ -191,7 +191,7 @@ $(document).ready(function(){
         },
         loop : true,
         autoplay: {
-          delay: 3000,
+          delay: 5000,
           stopOnLastSlide: false,
           disableOnInteraction: true
         }

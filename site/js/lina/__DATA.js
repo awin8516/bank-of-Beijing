@@ -10,8 +10,6 @@ var __DATA = {
       sitePoster: "",
       siteBanner: {
         vertical:[
-          "image/index/00-y.jpg",
-          "image/index/01-y.jpg",
           "image/index/02-y.jpg",
           "image/index/03-y.jpg",
           "image/index/04-y.jpg",
@@ -19,15 +17,18 @@ var __DATA = {
           "image/index/06-y.jpg",
           "image/index/07-y.jpg",
           "image/index/08-y.jpg",
-          "image/index/09-y.jpg",
           "image/index/10-y.jpg",
           "image/index/11-y.jpg",
-          "image/index/12-y.jpg",
-          "image/index/13-y.jpg",
+          "image/index/14-y.jpg",
+          "image/index/15-y.jpg",
+          "image/index/16-y.jpg",
+          "image/index/17-y.jpg",
+          "image/index/18-y.jpg",
+          "image/index/19-y.jpg",
+          "image/index/20-y.jpg",
+          "image/index/21-y.jpg"
         ],        
         horizontal:[
-          "image/index/00-x.jpg",
-          "image/index/01-x.jpg",
           "image/index/02-x.jpg",
           "image/index/03-x.jpg",
           "image/index/04-x.jpg",
@@ -35,15 +36,20 @@ var __DATA = {
           "image/index/06-x.jpg",
           "image/index/07-x.jpg",
           "image/index/08-x.jpg",
-          "image/index/09-x.jpg",
           "image/index/10-x.jpg",
           "image/index/11-x.jpg",
-          "image/index/12-x.jpg",
-          "image/index/13-x.jpg",
+          "image/index/14-x.jpg",
+          "image/index/15-x.jpg",
+          "image/index/16-x.jpg",
+          "image/index/17-x.jpg",
+          "image/index/18-x.jpg",
+          "image/index/19-x.jpg",
+          "image/index/20-x.jpg",
+          "image/index/21-x.jpg"
         ]
       },
       siteVideo: [
-        "upload/2.1分钟公益宣传片.mp4",
+        "upload/北京银行上海分行1027_1.mp4",
         "upload/MG动画-存款保险人行上海总部版.mp4",
       ],
       siteNav: [
