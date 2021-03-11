@@ -7,7 +7,7 @@
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<title>北京银行</title>
 	<meta name="format-detection" content="telephone=no" />
-	<!-- <link href="css/style.min.css" rel="stylesheet"> -->
+	<link href="css/style.min.css" rel="stylesheet">
 	<link href="js/swiper-master/swiper-bundle.min.css" rel="stylesheet">
 	<script src="js/jquery.1.11.3.min.js"></script>
 	<script src="js/lina/__DATA.js"></script>
@@ -17,10 +17,10 @@
 	<script src="js/index.js"></script>
 </head>
 
-<body class="theme-red">
+<body class="">
 
 	<div class="container">
-		<div class="header"><img src="image/logo.png"><span>真诚 所以依赖</span></div>
+		<div class="header"><img class="logo-img" src="image/logo.png"><span>真诚 所以依赖</span></div>
 		<div class="body">
 			<div>
 				<script id="tpl-nav-fixed" type="text/html">
@@ -206,7 +206,7 @@
 					<div class="scrollbox">
 						<div>
 							<div class="facilities-box">
-								<div class="facilities-logo"><img src="image/logo.png"></div>
+								<div class="facilities-logo"><img class="logo-img" src="image/logo.png"></div>
 								<div class="facilities-title"><img src="image/2/title.png"></div>
 								<ul>
 									<script id="tpl-page-facilities" type="text/html">
@@ -246,6 +246,7 @@
 								<div><img src="{{groupPhoto}}"></div>
 								<div id="peopleList">
 									{{each category}}
+									{{if $value.list.length}}
 									<dl>
 										<dt>{{$value.cate}}</dt>
 										<dd>
@@ -260,6 +261,7 @@
 											</ul>
 										</dd>
 									</dl>
+									{{/if}}
 									{{/each}}
 								</div>
 							</script>	

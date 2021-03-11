@@ -1,5 +1,6 @@
 var API = {
-    DOMAIN: location.href.indexOf("lina") != -1 ? "" : " http://114.55.11.192:7300/mock/5f841673d29faf95e856baa9/lina",               //正式
+    // DOMAIN: location.href.indexOf("lina") != -1 ? "http://lina007.com/Api/Handler.ashx" : " http://114.55.11.192:7300/mock/5f841673d29faf95e856baa9/lina",               //正式
+    DOMAIN: "http://lina007.com",               //正式
     DEBUG: true,    
     _send: function(method,type, data, success){
         var successfn = function(res){
@@ -11,6 +12,7 @@ var API = {
             if(res && res.errcode == 0){
                 if (success) success(res);
             }else{
+                if (success) success(res);
                 // if(confirm('数据请求超时，是否刷新页面？')){
                 //     window.location.reload();
                 // }
@@ -29,7 +31,7 @@ var API = {
             successfn && successfn(__DATA[method])
         }else{
             $.ajax({
-                url: API.DOMAIN + "/" + method,
+                url: API.DOMAIN + "/Api/Handler.ashx?method=" + method,
                 type: API.DEBUG ? "GET" : type,
                 data: data,
                 dataType: 'json',

@@ -6,6 +6,7 @@ $(document).ready(function(){
     head:$("head"),
     body:$("body"),
     container:$("body > .container"),
+    logo:$(".logo-img"),
     pages:$("section.page"),
     pageHome:$("#pageHome"),
     navHome:$("#navHome"),
@@ -35,14 +36,26 @@ $(document).ready(function(){
     scroll :"scroll"
   }
 
-  var screenSize = {width:$o.win.width(),height:$o.win.height()}
+  var siteNav =  [
+    {"zh": "网点导览","en": "Guide","template": "Guide"},
+    {"zh": "便民设施","en": "Facilities","template": "Facilities"},
+    {"zh": "党建信息","en": "Party","template": "Party"},
+    {"zh": "服务人员展示","en": "Personnel","template": "Personnel"},
+    {"zh": "消费者保护专栏","en": "Consumer","template": "Consumer"},
+    {"zh": "贵宾增值服务","en": "VIP","template": "VIP"},
+    {"zh": "理财资讯","en": "Financial","template": "Financial"},
+    {"zh": "我的的荣誉","en": "Honor","template": "Honor"},
+    {"zh": "13周年庆","en": "Anniversary","template": "Anniversary"}
+  ];
 
+  var screenSize = {width:$o.win.width(),height:$o.win.height()}
+  var screenType = screenSize.width/screenSize.height>1?"horizontal":"vertical";
+  var siteId = getQueryString("siteId");
   var backHomeTime = 60; // 没有操作？秒后回首页
   var backHomeTimer = null;
   var newDate = "2020/11/28 00:00:00";  
   var nowDate = new Date();
 
-  $o.body.on(eventList.click, autoBackHome);
   $o.body.on(eventList.click, ".nav a", pageTo);
   $o.body.on(eventList.click, ".back-home", backHome);
   
@@ -56,15 +69,14 @@ $(document).ready(function(){
       showPopup(createPersonnelDetail(this.dataset.personnel));
     }
   });
-  $o.popupClose.on(eventList.click, hidePopup);
+  $o.popupClose.on('click', hidePopup);
 
-  $o.body.on(eventList.click, ".popup-fullscreen .popup .close", function(){
-    hidePopup2()
-  });
+  // $o.body.on(eventList.click, ".popup-fullscreen .popup .close", function(){
+  //   hidePopup2()
+  // });
 
-  initStyle();
   initFullScreen();
-  initHome();initVideoPlay();
+  initHome();
   initGuide();
   initFacilities();
   initParty();
@@ -75,15 +87,24 @@ $(document).ready(function(){
   initHonor();
   initAnniversary();
 
-  //showPopup("<img src='./image/home/01.jpg'>", true);
+  //获得http url参数
+	function getQueryString(name) {
+		if (name && name != '') {
+			var reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)", "i");
+			var r = window.location.search.substr(1).match(reg);
+			if (r != null) return decodeURIComponent(r[2]);
+			return null;
+		} //end if
+		else return null;
+	} //end func
   
   function initVideoPlay(){
     var $videos= $("video[data-playlist]");
     $.each($videos,function(index, video){
-      console.log(video);
+      // console.log(video);
       var playlist = JSON.parse(this.dataset.playlist);
       var index = 0;
-      console.log(playlist)
+      // console.log(playlist)
       video.src = playlist[index];
       $(video).on("ended", function(){
         index = index === playlist.length-1 ? 0 : index+1;
@@ -93,35 +114,61 @@ $(document).ready(function(){
     })
   }
 
-  function initStyle(){
-    var style = "style";
-    if(nowDate >= new Date(newDate)){
-      style = "style1128"
-    }
-    $("head").append('<link href="css/'+style+'.min.css" rel="stylesheet">')
+  function getIndexByArray(key,value,arr){
+    var index = false;
+    for(var i=0;i<arr.length;i++){
+      if(arr[i][key] == value){
+        index = i;
+        break;
+      }
+    }   
+    return index 
+  }
+
+  function delStyleHtml(html){
+    return html.replace(/style="(.*?)"/g,"") 
+  }
+
+  function removeNav(name){
+    var index = getIndexByArray("en",name,siteNav)
+    siteNav.splice(index,1);
+    var nav = {siteNav:siteNav}
+    // console.log(nav)
+    Template('tpl-nav-home', nav);
+    Template('tpl-nav-fixed', nav);
   }
 
   /*******************
    * 初始化首页 & 菜单
    */
   function initHome() {
-    API.getSiteInfo({siteId:1},function(res){
-      // console.log(res.data);
-      // if(nowDate < new Date(newDate)){
-      //   res.data.siteVideo = "http://v.smartsca.com/%E5%8C%97%E4%BA%AC%E9%93%B6%E8%A1%8C%E4%B8%8A%E6%B5%B7%E5%88%86%E8%A1%8C1027.mp4"
-      // }
-
-      if(res.data.sitePoster){
-        showPopup("<img src='"+res.data.sitePoster+"'>", true);
+    API.getSiteInfo({id:siteId},function(res){
+      console.log(res)
+      res.result.siteNav = siteNav;
+      // console.log(res);
+      backHomeTime = res.result.siteBackTime ? parseInt(res.result.siteBackTime) : 60; // 没有操作？秒后回首页
+      $o.body.on(eventList.click, autoBackHome);
+      $o.body.addClass("theme-ui-"+res.result.siteTheme);
+      document.title = res.result.siteName;
+      if(res.result.siteLogo){
+        $o.logo.attr("src",res.result.siteLogo);
       }
 
-      Template('tpl-nav-home', res.data);
-      Template('tpl-banner', res.data);
-      Template('tpl-video', res.data);
-      Template('tpl-nav-fixed', res.data);
-      document.title = res.data.siteName;
+      if(res.result.sitePoster){
+        showPopup("<img src='"+res.result.sitePoster+"'>", true);
+      }
+
+      var banners = {
+        siteBanner:res.result.siteBanner[screenType]
+      }
+
+      console.log(banners)
+
+      Template('tpl-nav-home', res.result);
+      Template('tpl-banner', banners);
+      Template('tpl-video', res.result);
+      Template('tpl-nav-fixed', res.result);
       $o.video = $("video");
-      $o.body.attr("class", "theme-ui-"+res.data.siteTheme);
       swiperBanner = new Swiper({
         el: '.swiper-home-banner',
         // initialSlide: 0,
@@ -144,7 +191,7 @@ $(document).ready(function(){
         },
         loop : true,
         autoplay: {
-          delay: 3000,
+          delay: 5000,
           stopOnLastSlide: false,
           disableOnInteraction: true
         }
@@ -153,6 +200,8 @@ $(document).ready(function(){
         //   prevEl: '.swiper-home-banner .swiper-button-prev',
         // }
       });
+
+      initVideoPlay();
     });
 
     API.getExchange({},function(res){
@@ -180,17 +229,21 @@ $(document).ready(function(){
    * 初始化网点导览
    */
   function initGuide() {
-    API.getGuide({siteId:1},function(res){
-      // console.log(res.data);
-      var time = JSON.parse('[{"name":"'+res.data.peakTime.replace(/\s|\n|\r\n|；$|;$|，$|,$|。$|.$/g, '').replace(/;|；|,|，/g, '},{"name":"').replace(/=/g, '","value":')+'}]');
-      var week = JSON.parse('[{"name":"'+res.data.peakWeek.replace(/\s|\n|\r\n|；$|;$|，$|,$|。$|.$/g, '').replace(/;|；|,|，/g, '},{"name":"').replace(/=/g, '","value":')+'}]');
-      var data = {
-        content:res.data.content,
-        peakTime:time,
-        peakWeek:week,
+    API.getGuide({id:siteId},function(res){
+      if(res.errcode == 0 && res.result.content){
+        var time = JSON.parse('[{"name":"'+res.result.peakTime.replace(/\s|\n|\r\n|；$|;$|，$|,$|。$|\.$/g, '').replace(/;|；|,|，/g, '},{"name":"').replace(/=/g, '","value":')+'}]');
+        var week = JSON.parse('[{"name":"'+res.result.peakWeek.replace(/\s|\n|\r\n|；$|;$|，$|,$|。$|\.$/g, '').replace(/;|；|,|，/g, '},{"name":"').replace(/=/g, '","value":')+'}]');
+        var data = {
+          content:delStyleHtml(res.result.content),
+          peakTime:time,
+          peakWeek:week,
+        }
+        // console.log(data)
+        Template('tpl-page-guide-content', data);
+      }else{
+        removeNav("Guide");
       }
-      // console.log(data)
-      Template('tpl-page-guide-content', data);
+      
     });
   }
 
@@ -199,9 +252,13 @@ $(document).ready(function(){
    * 初始化便民设施
    */
   function initFacilities() {
-    API.getFacilities({siteId:1},function(res){
-      // console.log(res.data);
-      Template('tpl-page-facilities', {list:res.data});
+    API.getFacilities({id:siteId},function(res){
+      // console.log(res.result);
+      if(res.errcode == 0 && res.result.length){
+        Template('tpl-page-facilities', {list:res.result});
+      }else{
+        removeNav("Facilities");
+      }
     });
   }
 
@@ -209,9 +266,9 @@ $(document).ready(function(){
    * 初始化党建信息
    */
   function initParty() {
-    API.getParty({siteId:1},function(res){
-      // console.log(res.data);
-      Template('tpl-page-party', {content:res.data});
+    API.getParty({id:siteId},function(res){
+      // console.log(res.result);
+      Template('tpl-page-party', {content:delStyleHtml(res.result.data)});
     });
   }
   
@@ -219,75 +276,73 @@ $(document).ready(function(){
    * 初始化服务人员
    */
   function initPersonnel() {
-    API.getPersonnel({siteId:1},function(res){
-      // console.log(res.data);
-      // var category=[]
-      // var cate = ""
-      // for(var i=0;i<res.data.length;i++){
-      //   var _cate = res.data[i].category;
-      //   if(cate.indexOf(_cate+"#") != -1){
-      //     //已有分类
-      //     for(var c=0;c<category.length;c++){
-      //       if(category[c].cate == _cate){
-      //         category[c].list.push(res.data[i])
-      //       }
-      //     }
-      //   }else{
-      //     //新分类
-      //     cate = cate + _cate + "#";
-      //     category.push({
-      //       cate:_cate,
-      //       list: [res.data[i]]
-      //     })
-      //   }
-      // }
-      // console.log(JSON.stringify(category))
-      Template('tpl-page-personnel', {groupPhoto:res.groupPhoto,category:res.data});
+    API.getPersonnel({id:siteId},function(res){
+      // console.log(res.result);
+      res.errcode = 1
+      for(var i=0;i<res.result.data.length;i++){
+        if(res.result.data[i].list.length){
+          res.errcode = 0
+        }
+      }
+      console.log(res);
+      if(res.errcode == 0 && res.result.data.length){
+        Template('tpl-page-personnel', {groupPhoto:res.result.groupPhoto,category:res.result.data});
+      }else{
+        removeNav("Personnel");
+      }
     });
   }
   /*****************
    * 初始化消费者保护
    */
   function initConsumer() {
-    API.getConsumer({siteId:1},function(res){
-      // console.log(res.data);
-      Template('tpl-page-consumer', {content:res.data});
+    API.getConsumer({id:siteId},function(res){
+      // console.log(res.result);
+      Template('tpl-page-consumer', {content:delStyleHtml(res.result.data)});
     });
   }
   /*****************
    * 初始化贵宾增值服务
    */
   function initVip() {
-    API.getVip({siteId:1},function(res){
-      // console.log(res.data);
-      Template('tpl-page-vip', {content:res.data});
+    API.getVip({id:siteId},function(res){
+      // console.log(res.result);
+      Template('tpl-page-vip', {content:delStyleHtml(res.result.data)});
     });
   }
   /*****************
    * 初始化理财资讯
    */
   function initFinancial() {
-    API.getFinancial({siteId:1},function(res){
-      // console.log(res.data);
-      Template('tpl-page-financial', {content:res.data});
+    API.getFinancial({id:siteId},function(res){
+      // console.log(res.result);
+      Template('tpl-page-financial', {content:delStyleHtml(res.result.data)});
     });
   }
   /*****************
    * 初始化我的的荣誉
    */
   function initHonor() {
-    API.getHonor({siteId:1},function(res){
-      // console.log(res.data);
-      Template('tpl-page-honor', {content:res.data});
+    API.getHonor({id:siteId},function(res){
+      // console.log(res.result);
+      if(res.errcode == 0 && res.result.data){
+        Template('tpl-page-honor', {content:delStyleHtml(res.result.data)});
+      }else{
+        removeNav("Honor");
+      }
     });
   }
   /*****************
    * 13周年庆
    */
   function initAnniversary() {
-    API.getAnniversary({siteId:1},function(res){
-      // console.log(res.data);
-      Template('tpl-page-anniversary', {content:res.data});
+    API.getAnniversary({id:siteId},function(res){
+      // console.log(res.result);
+      if(res.errcode == 0 && res.result.data){
+        Template('tpl-page-anniversary', {content:delStyleHtml(res.result.data)});
+      }else{
+        removeNav("Anniversary");
+      }
     });
   }
 
@@ -333,7 +388,9 @@ $(document).ready(function(){
     if(el){
       $(el).html(html);
     }else{
-      $("#"+tpl).replaceWith(html);
+      $("#"+tpl).prevAll().remove();
+      $("#"+tpl).before(html);
+      // $("#"+tpl).replaceWith(html);
     }
   }
 
@@ -364,12 +421,15 @@ $(document).ready(function(){
     $o.popup.addClass("show");
   }
   function hidePopup() {
-    if(!$o.container.hasClass("popup-fullscreen")){
+    console.log('hidePopup')
+    // if(!$o.container.hasClass("popup-fullscreen")){
+      $o.container.removeClass("popup-fullscreen")
       $o.popup.removeClass("show");
       $o.popupContent.html("");
-    }
+    // }
   }
   function hidePopup2() {    
+    console.log('hidePopup2')
     setTimeout(function(){
       $o.container.removeClass("popup-fullscreen")
       $o.popup.removeClass("show");
@@ -396,10 +456,12 @@ $(document).ready(function(){
     // return false;
     // $("<div class='fullscreen-mask'><div class='btn-fullscreen'></div></div>").appendTo(".container > .header");
     $("<div class='btn-fullscreen'></div>").appendTo(".container > .header");
-    $o.body.on("click", ".btn-fullscreen", function(){
-      // console.log(22)
+    $o.body.on("click", ".btn-fullscreen", function(e){
+      
+      console.log(this)
+      console.log(22)
       if($o.container.hasClass("full-screen")){
-        // console.log(33)
+        console.log(33)
         exitFullscreen(function(){
           $o.container.removeClass("full-screen")
           console.log("exitFullscreen");
@@ -407,7 +469,7 @@ $(document).ready(function(){
           console.log("video pause")
         });
       }else{
-        // console.log(44)
+        console.log(44)
         fullScreen(function(){
           $o.container.addClass("full-screen");
           screenSize = {width:$o.win.width(),height:$o.win.height()};
