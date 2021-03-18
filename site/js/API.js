@@ -96,4 +96,7 @@ var API = {
     getAnniversary:function(data,success){
         API._send('getAnniversary',"POST", data, success);
     },
+    getCash:function(data,success){
+        API._send('getCash',"POST", data, success);
+    },
 }

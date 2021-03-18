@@ -36,18 +36,6 @@ $(document).ready(function(){
     scroll :"scroll"
   }
 
-  var siteNav =  [
-    // {"zh": "网点导览","en": "Guide","template": "Guide"},
-    // {"zh": "便民设施","en": "Facilities","template": "Facilities"},
-    {"zh": "党建信息","en": "Party","template": "Party"},
-    // {"zh": "服务人员展示","en": "Personnel","template": "Personnel"},
-    {"zh": "消费者保护专栏","en": "Consumer","template": "Consumer"},
-    {"zh": "贵宾增值服务","en": "VIP","template": "VIP"},
-    {"zh": "理财资讯","en": "Financial","template": "Financial"},
-    // {"zh": "我的的荣誉","en": "Honor","template": "Honor"},
-    {"zh": "13周年庆","en": "Anniversary","template": "Anniversary"}
-  ];
-
   var screenSize = {width:$o.win.width(),height:$o.win.height()}
   var screenType = screenSize.width/screenSize.height>1?"horizontal":"vertical";
   var siteId = getQueryString("siteId");
@@ -55,6 +43,35 @@ $(document).ready(function(){
   var backHomeTimer = null;
   var newDate = "2020/11/28 00:00:00";  
   var nowDate = new Date();
+
+  if(siteId == 1){
+    var siteNav =  [
+      {"zh": "网点导览","en": "Guide","template": "Guide"},
+      {"zh": "便民设施","en": "Facilities","template": "Facilities"},
+      {"zh": "党建信息","en": "Party","template": "Party"},
+      {"zh": "服务人员展示","en": "Personnel","template": "Personnel"},
+      {"zh": "消费者保护专栏","en": "Consumer","template": "Consumer"},
+      {"zh": "贵宾增值服务","en": "VIP","template": "VIP"},
+      {"zh": "理财资讯","en": "Financial","template": "Financial"},
+      {"zh": "我的的荣誉","en": "Honor","template": "Honor"},
+      {"zh": "13周年庆","en": "Anniversary","template": "Anniversary"},
+      {"zh": "现金服务","en": "Cash","template": "Cash"}
+    ];
+  }else{
+    var siteNav =  [
+      // {"zh": "网点导览","en": "Guide","template": "Guide"},
+      // {"zh": "便民设施","en": "Facilities","template": "Facilities"},
+      {"zh": "党建信息","en": "Party","template": "Party"},
+      // {"zh": "服务人员展示","en": "Personnel","template": "Personnel"},
+      {"zh": "消费者保护专栏","en": "Consumer","template": "Consumer"},
+      {"zh": "贵宾增值服务","en": "VIP","template": "VIP"},
+      {"zh": "理财资讯","en": "Financial","template": "Financial"},
+      // {"zh": "我的的荣誉","en": "Honor","template": "Honor"},
+      {"zh": "13周年庆","en": "Anniversary","template": "Anniversary"},
+      {"zh": "现金服务","en": "Cash","template": "Cash"}
+    ];
+  }
+  
 
   $o.body.on(eventList.click, ".nav a", pageTo);
   $o.body.on(eventList.click, ".back-home", backHome);
@@ -86,6 +103,7 @@ $(document).ready(function(){
   initFinancial();
   initHonor();
   initAnniversary();
+  initCash();
 
   //获得http url参数
 	function getQueryString(name) {
@@ -98,13 +116,12 @@ $(document).ready(function(){
 		else return null;
 	} //end func
   
-  function initVideoPlay(){
-    var $videos= $("video[data-playlist]");
+  function initPlayList(el){
+    var $videos= $(el);
     $.each($videos,function(index, video){
-      // console.log(video);
+      // console.log(this.dataset.playlist)
       var playlist = JSON.parse(this.dataset.playlist);
       var index = 0;
-      // console.log(playlist)
       video.src = playlist[index];
       $(video).on("ended", function(){
         index = index === playlist.length-1 ? 0 : index+1;
@@ -143,7 +160,7 @@ $(document).ready(function(){
    */
   function initHome() {
     API.getSiteInfo({id:siteId},function(res){
-      console.log(res)
+      // console.log(res)
       res.result.siteNav = siteNav;
       // console.log(res);
       backHomeTime = res.result.siteBackTime ? parseInt(res.result.siteBackTime) : 60; // 没有操作？秒后回首页
@@ -162,7 +179,7 @@ $(document).ready(function(){
         siteBanner:res.result.siteBanner[screenType]
       }
 
-      console.log(banners)
+      // console.log(banners)
 
       Template('tpl-nav-home', res.result);
       Template('tpl-banner', banners);
@@ -201,7 +218,7 @@ $(document).ready(function(){
         // }
       });
 
-      initVideoPlay();
+      initPlayList('.video video');
     });
 
     API.getExchange({},function(res){
@@ -284,7 +301,7 @@ $(document).ready(function(){
           res.errcode = 0
         }
       }
-      console.log(res);
+      // console.log(res);
       if(res.errcode == 0 && res.result.data.length){
         Template('tpl-page-personnel', {groupPhoto:res.result.groupPhoto,category:res.result.data});
       }else{
@@ -342,6 +359,20 @@ $(document).ready(function(){
         Template('tpl-page-anniversary', {content:delStyleHtml(res.result.data)});
       }else{
         removeNav("Anniversary");
+      }
+    });
+  }
+  /*****************
+   * 现金服务
+   */
+  function initCash() {
+    API.getCash({id:siteId},function(res){
+      // console.log(res.result);
+      if(res.errcode == 0 && res.result.data){
+        Template('tpl-page-cash', {content:delStyleHtml(res.result.data)});
+        initPlayList('.video-playlist-cash')
+      }else{
+        removeNav("Cash");
       }
     });
   }
@@ -408,6 +439,8 @@ $(document).ready(function(){
    * 回到首页
    */
   function backHome() {
+    var video = $(".page-show video")
+    if(video.length) video[0].pause();
     $o.pages.filter(".page-home").addClass("page-show").siblings(".page-show").removeClass("page-show");
     $o.html.attr("class", "");
     hidePopup();
@@ -443,10 +476,19 @@ $(document).ready(function(){
    */
   function pageTo(e) {
     console.log(this.dataset.tpl);    
-    $o.pages.filter(".page-"+this.dataset.tpl.toLowerCase()).addClass("page-show").siblings(".page-show").removeClass("page-show");
+    var $prevPage = $(".page-show");
+    var $nextPage = $o.pages.filter(".page-"+this.dataset.tpl.toLowerCase());
+
+    if($prevPage[0].id == $nextPage[0].id) return;
+    $nextPage.addClass("page-show");
+    $prevPage.removeClass("page-show");
     $("#navFixed a[data-tpl="+this.dataset.tpl+"]").addClass("active").siblings(".active").removeClass("active");
     $o.html.attr("class", "has-nav html-page-"+this.dataset.tpl.toLowerCase());
     initSwipe();
+    var prevVideo = $('video', $prevPage);
+    var nextVideo = $('video', $nextPage);
+    if(prevVideo.length) prevVideo[0].pause();
+    if(nextVideo.length) nextVideo[0].play();
   }
 
   /**
@@ -486,8 +528,6 @@ $(document).ready(function(){
             console.log("video play")
             console.log("fullScreen")
           }
-          
-
           // $o.video[0].play();
           // console.log("video play")
           // console.log("fullScreen")
@@ -498,8 +538,7 @@ $(document).ready(function(){
     });
 
     //监听window是否全屏，并进行相应的操作,支持esc键退出
-    window.onresize = function() {
-      
+    window.onresize = function() {      
       console.log('onresize')
       var isFull=!!(document.webkitIsFullScreen || document.mozFullScreen || document.msFullscreenElement || document.fullscreenElement );//!document.webkitIsFullScreen都为true。因此用!!
       if (isFull==false) {

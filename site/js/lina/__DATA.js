@@ -59,8 +59,9 @@ var __DATA = {
         ]
       },
       siteVideo: [
-        {src:"upload/北京银行上海分行1027_1.mp4",time:{start:"2021/03/18",end:"2021/12/30"}},
-        {src:"upload/MG动画-存款保险人行上海总部版.mp4",time:{start:"2021/03/18",end:"2021/12/30"}}
+        "upload/演讲大赛输出_1.mp4",
+        "upload/北京银行上海分行1027_1.mp4",
+        "upload/MG动画-存款保险人行上海总部版.mp4"
       ],
       siteNav: [
         // {
@@ -607,6 +608,13 @@ var __DATA = {
     errmsg: "ok",
     result: {
       data: "<img src='image/9/01.jpg' >"
+    }
+  },
+  getCash: {
+    errcode: 0,
+    errmsg: "ok",
+    result: {
+      data: "<video class='video-playlist video-playlist-cash' data-playlist='[\"image/10/2015.mp4\",\"image/10/2019-1.mp4\",\"image/10/2019-2.mp4\",\"image/10/2020-1.mp4\",\"image/10/2020-2.mp4\"]' controls></video><img src='image/10/01.jpg' ><img src='image/10/02.jpg' ><img src='image/10/03.jpg' ><img src='image/10/04.jpg' ><img src='image/10/05.jpg' ><img src='image/10/06.jpg' >"
     }
   },
 };
