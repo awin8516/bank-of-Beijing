@@ -28,7 +28,10 @@ var __DATA = {
           "image/index/20-y.jpg",
           "image/index/21-y.jpg",
           "image/index/22-y.jpg",
-          "image/index/23-y.jpg"
+          "image/index/23-y.jpg",
+          "image/index/24-y.jpg",
+          "image/index/25-y.jpg",
+          "image/index/26-y.jpg"
         ],        
         horizontal:[
           "image/index/02-x.jpg",
@@ -49,12 +52,15 @@ var __DATA = {
           "image/index/20-x.jpg",
           "image/index/21-x.jpg",
           "image/index/22-x.jpg",
-          "image/index/23-x.jpg"
+          "image/index/23-x.jpg",
+          "image/index/24-x.jpg",
+          "image/index/25-x.jpg",
+          "image/index/26-x.jpg"
         ]
       },
       siteVideo: [
-        "upload/北京银行上海分行1027_1.mp4",
-        "upload/MG动画-存款保险人行上海总部版.mp4",
+        {src:"upload/北京银行上海分行1027_1.mp4",time:{start:"2021/03/18",end:"2021/12/30"}},
+        {src:"upload/MG动画-存款保险人行上海总部版.mp4",time:{start:"2021/03/18",end:"2021/12/30"}}
       ],
       siteNav: [
         // {

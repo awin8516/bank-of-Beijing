@@ -28,7 +28,10 @@ var __DATA = {
           "image/index/20-y.jpg",
           "image/index/21-y.jpg",
           "image/index/22-y.jpg",
-          "image/index/23-y.jpg"
+          "image/index/23-y.jpg",
+          "image/index/24-y.jpg",
+          "image/index/25-y.jpg",
+          "image/index/26-y.jpg"
         ],        
         horizontal:[
           "image/index/02-x.jpg",
@@ -49,7 +52,10 @@ var __DATA = {
           "image/index/20-x.jpg",
           "image/index/21-x.jpg",
           "image/index/22-x.jpg",
-          "image/index/23-x.jpg"
+          "image/index/23-x.jpg",
+          "image/index/24-x.jpg",
+          "image/index/25-x.jpg",
+          "image/index/26-x.jpg"
         ]
       },
       siteVideo: [
