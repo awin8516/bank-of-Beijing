@@ -79,7 +79,7 @@
 				<div class="video">
 					<script id="tpl-video" type="text/html">
 						{{if siteVideo }}
-						<div class="video-container"><video data-playlist="{{siteVideo}}" src="" controls></video></div>
+						<div class="video-container"><video class="video-playlist video-playlist-home" data-playlist="{{siteVideo}}" src="" controls></video></div>
 						{{/if}}
 					</script>
 				</div>
@@ -328,6 +328,19 @@
 					<div class="scrollbox">
 						<div>
 							<script id="tpl-page-anniversary" type="text/html">
+								{{@ content}}
+							</script>
+						</div>
+					</div>
+				</main>
+			</section>
+
+			<!-- 现金服务 -->
+			<section id="pageCash" class="page page-cash">
+				<main>
+					<div class="scrollbox">
+						<div>
+							<script id="tpl-page-cash" type="text/html">
 								{{@ content}}
 							</script>
 						</div>
