@@ -180,7 +180,14 @@ $(document).ready(function(){
       }
 
       // console.log(banners)
-
+      var v = []
+      res.result.siteVideo.forEach(i => {
+        if(nowDate > new Date(i.startTime) && nowDate < new Date(i.endTime)){
+          v.push(i.src);
+        }
+      })
+      res.result.siteVideo = v
+      console.log(res)
       Template('tpl-nav-home', res.result);
       Template('tpl-banner', banners);
       Template('tpl-video', res.result);
@@ -515,19 +522,19 @@ $(document).ready(function(){
         fullScreen(function(){
           $o.container.addClass("full-screen");
           screenSize = {width:$o.win.width(),height:$o.win.height()};
-          if(nowDate < new Date(newDate)){
-            if(screenSize.width > screenSize.height){
-              $o.video[0].play();
-              console.log("video play")
-            }else{
-              $o.video[0].pause();
-              console.log("video pause")
-            }
-          }else{
+          // if(nowDate < new Date(newDate)){
+          //   if(screenSize.width > screenSize.height){
+          //     $o.video[0].play();
+          //     console.log("video play")
+          //   }else{
+          //     $o.video[0].pause();
+          //     console.log("video pause")
+          //   }
+          // }else{
             $o.video[0].play();
             console.log("video play")
             console.log("fullScreen")
-          }
+          // }
           // $o.video[0].play();
           // console.log("video play")
           // console.log("fullScreen")

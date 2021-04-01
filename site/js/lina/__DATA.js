@@ -59,9 +59,21 @@ var __DATA = {
         ]
       },
       siteVideo: [
-        "upload/演讲大赛输出_1.mp4",
-        "upload/北京银行上海分行1027_1.mp4",
-        "upload/MG动画-存款保险人行上海总部版.mp4"
+        {
+          src:"upload/演讲大赛输出_1.mp4",
+          startTime:"2021/04/01 00:00:00",
+          endTime:"2028/04/30 23:59:59"
+        },
+        {
+          src:"upload/北京银行上海分行1027_1.mp4",
+          startTime:"2021/05/01 00:00:00",
+          endTime:"2028/04/30 23:59:59"
+        },
+        {
+          src:"upload/MG动画-存款保险人行上海总部版.mp4",
+          startTime:"2021/05/01 00:00:00",
+          endTime:"2028/04/30 23:59:59"
+        }
       ],
       siteNav: [
         // {
