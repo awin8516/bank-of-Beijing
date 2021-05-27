@@ -14,6 +14,7 @@ public partial class Lays_Job_Edit : PageBase
 {
     protected string html = "";
     protected string html1 = "";
+    protected string html2 = "";
     protected void Page_Load(object sender, EventArgs e)
     {
         btnSave.Attributes.Add("onclick", "this.disabled=true;" + this.ClientScript.GetPostBackEventReference(btnSave, ""));
@@ -57,6 +58,22 @@ public partial class Lays_Job_Edit : PageBase
                         tempPathList.Add(item.MediaUrl);
                     }
                     this.img.Value = string.Join(",", tempPathList.ToArray());
+
+
+                    var imageList2 = Manage.GetList<Admin_GlobalMedia>("GlobalID=@0 and IsDel=0 and MediaType=@1", comm.ID, "img1");
+                    List<string> tempPathList2 = new List<string>();
+                    foreach (var item in imageList2)
+                    {
+
+                        html2 += "<li>";
+                        html2 += "<img class='btnShow' data-type='img' src='" + item.MediaUrl + "'  />";
+                        html2 += "<a class='btn-remove' data-url='" + item.MediaUrl + "'><i class='glyphicon glyphicon-remove'></i></a>";
+                        html2 += "</li>";
+
+
+                        tempPathList2.Add(item.MediaUrl);
+                    }
+                    this.img2.Value = string.Join(",", tempPathList2.ToArray());
 
 
                     var imageList1 = Manage.GetList<Admin_GlobalMedia>("GlobalID=@0 and IsDel=0 and MediaType=@1", comm.ID, "video");
@@ -151,6 +168,29 @@ public partial class Lays_Job_Edit : PageBase
             {
                 Admin_GlobalMedia qmodel = new Admin_GlobalMedia();
                 qmodel.MediaType = "video";
+                qmodel.GlobalID = comm.ID;
+                if (item.Contains(GetSiteUrl()))
+                {
+                    qmodel.MediaUrl = item;
+                }
+                else
+                {
+                    qmodel.MediaUrl = GetSiteUrl() + item;
+                }
+
+                qmodel.AddTime = DateTime.Now;
+                qmodel.IsDel = false;
+                Manage.Add(qmodel);
+            }
+        }
+        string imagePath2 = this.img2.Value.Trim(',');
+        DB.ExecuteCommand("delete from Admin_GlobalMedia where GlobalID=@0 and MediaType=@1", comm.ID, "img1");
+        if (!string.IsNullOrWhiteSpace(imagePath2))
+        {
+            foreach (var item in imagePath2.Split(','))
+            {
+                Admin_GlobalMedia qmodel = new Admin_GlobalMedia();
+                qmodel.MediaType = "img1";
                 qmodel.GlobalID = comm.ID;
                 if (item.Contains(GetSiteUrl()))
                 {

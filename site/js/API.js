@@ -1,7 +1,7 @@
 var API = {
     // DOMAIN: location.href.indexOf("lina") != -1 ? "http://lina007.com/Api/Handler.ashx" : " http://114.55.11.192:7300/mock/5f841673d29faf95e856baa9/lina",               //正式
     DOMAIN: "http://lina007.com",               //正式
-    DEBUG: true,    
+    DEBUG: false,    
     _send: function(method,type, data, success){
         var successfn = function(res){
             if (API.DEBUG){

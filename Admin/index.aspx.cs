@@ -25,6 +25,7 @@ public partial class Admin_index :PageBase
                 this.li4.Visible = false;
                 this.li5.Visible = false;
                 this.li6.Visible = false;
+                this.li7.Visible = false;
             }
             }
     }

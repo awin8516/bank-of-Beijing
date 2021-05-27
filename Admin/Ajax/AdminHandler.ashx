@@ -54,7 +54,7 @@ public class AdminHandler : HandlerBase
         List<string> list = new List<string>();
         for (int i = 0; i < files.Count; i++)
         {
-            if (files[i].ContentLength > 20971520)
+            if (files[i].ContentLength > 209715200)
             {
                 return "0";
             }

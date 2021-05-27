@@ -499,7 +499,7 @@ img{max-width: 100%;}
 
 	.btn-fullscreen{width:3%;right:2em;top:50%;}
 	.nav-fixed{
-		position: absolute;top:50%;width: 5%;margin-top: 0;;margin-left: 1%;transform: translate(0% , -50%);transition: transform 300ms 0ms;
+		position: absolute;top:50%;width: 4.8%;margin-top: 0;;margin-left: 1%;transform: translate(0% , -50%);transition: transform 300ms 0ms;
 		a{display: block;margin:0.5em 0; width: 100%;}
 	}
 	.has-nav .nav-fixed{transform: translate(0 , -50%);transition: transform 300ms 300ms;}

@@ -45,6 +45,7 @@ public class Handler : ApiBase
         json["siteTheme"] = model.siteTheme;
         json["siteLogo"] = model.siteLogo;
         List<string> Bannerlist = new List<string>();
+        List<string> Bannerlist1 = new List<string>();
         List<string> Videolist = new List<string>();
         Admin_GlobalManage g = Manage.Get<Admin_GlobalManage>("IsDel=0");
         if (g != null)
@@ -58,6 +59,10 @@ public class Handler : ApiBase
                     if (item.MediaType == "img")
                     {
                         Bannerlist.Add(item.MediaUrl);
+                    }
+                    else if (item.MediaType == "img1")
+                    {
+                        Bannerlist1.Add(item.MediaUrl);
                     }
                     else
                     {
@@ -74,6 +79,10 @@ public class Handler : ApiBase
                     if (item.MediaType == "img")
                     {
                         Bannerlist.Add(item.MediaUrl);
+                    }
+                    else if (item.MediaType == "img1")
+                    {
+                        Bannerlist1.Add(item.MediaUrl);
                     }
                     else
                     {
@@ -92,6 +101,10 @@ public class Handler : ApiBase
                 {
                     Bannerlist.Add(item.MediaUrl);
                 }
+                else if (item.MediaType == "img1")
+                {
+                    Bannerlist1.Add(item.MediaUrl);
+                }
                 else
                 {
                     Videolist.Add(item.MediaUrl);
@@ -102,6 +115,7 @@ public class Handler : ApiBase
 
 
         json["siteBanner"] = JSON.To(Bannerlist);
+        json["siteBanner1"] = JSON.To(Bannerlist1);
         json["siteVideo"] = JSON.To(Videolist);
         json["siteBackTime"] = model.siteBackTime;
 
@@ -324,4 +338,20 @@ public class Handler : ApiBase
 
     }
 
+
+    public string getCash()
+    {
+
+        Admin_Cash model = Manage.Get<Admin_Cash>("IsDel=0");
+        if (model == null)
+        {
+            return Result.Error("数据为空");
+        }
+        JSON json = new JSON();
+
+        json["data"] = model.content;
+
+        return Result.Return(json);
+
+    }
 }

@@ -59,14 +59,14 @@ $(document).ready(function(){
     ];
   }else{
     var siteNav =  [
-      // {"zh": "网点导览","en": "Guide","template": "Guide"},
-      // {"zh": "便民设施","en": "Facilities","template": "Facilities"},
+      {"zh": "网点导览","en": "Guide","template": "Guide"},
+      {"zh": "便民设施","en": "Facilities","template": "Facilities"},
       {"zh": "党建信息","en": "Party","template": "Party"},
-      // {"zh": "服务人员展示","en": "Personnel","template": "Personnel"},
+      {"zh": "服务人员展示","en": "Personnel","template": "Personnel"},
       {"zh": "消费者保护专栏","en": "Consumer","template": "Consumer"},
       {"zh": "贵宾增值服务","en": "VIP","template": "VIP"},
       {"zh": "理财资讯","en": "Financial","template": "Financial"},
-      // {"zh": "我的的荣誉","en": "Honor","template": "Honor"},
+      {"zh": "我的的荣誉","en": "Honor","template": "Honor"},
       {"zh": "13周年庆","en": "Anniversary","template": "Anniversary"},
       {"zh": "现金服务","en": "Cash","template": "Cash"}
     ];
@@ -180,7 +180,14 @@ $(document).ready(function(){
       }
 
       // console.log(banners)
-
+      var v = []
+      res.result.siteVideo.forEach(i => {
+        if(nowDate > new Date(i.startTime) && nowDate < new Date(i.endTime)){
+          v.push(i.src);
+        }
+      })
+      res.result.siteVideo = v
+      console.log(res)
       Template('tpl-nav-home', res.result);
       Template('tpl-banner', banners);
       Template('tpl-video', res.result);
@@ -515,19 +522,19 @@ $(document).ready(function(){
         fullScreen(function(){
           $o.container.addClass("full-screen");
           screenSize = {width:$o.win.width(),height:$o.win.height()};
-          if(nowDate < new Date(newDate)){
-            if(screenSize.width > screenSize.height){
-              $o.video[0].play();
-              console.log("video play")
-            }else{
-              $o.video[0].pause();
-              console.log("video pause")
-            }
-          }else{
+          // if(nowDate < new Date(newDate)){
+          //   if(screenSize.width > screenSize.height){
+          //     $o.video[0].play();
+          //     console.log("video play")
+          //   }else{
+          //     $o.video[0].pause();
+          //     console.log("video pause")
+          //   }
+          // }else{
             $o.video[0].play();
             console.log("video play")
             console.log("fullScreen")
-          }
+          // }
           // $o.video[0].play();
           // console.log("video play")
           // console.log("fullScreen")

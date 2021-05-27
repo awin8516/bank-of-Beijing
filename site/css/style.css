@@ -1739,7 +1739,7 @@ body.theme-ui-red .nav a:nth-child(10) b {
   .nav-fixed {
     position: absolute;
     top: 50%;
-    width: 5%;
+    width: 4.8%;
     margin-top: 0;
     margin-left: 1%;
     transform: translate(0%, -50%);
