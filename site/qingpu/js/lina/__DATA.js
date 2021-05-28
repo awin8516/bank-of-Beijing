@@ -10,6 +10,14 @@ var __DATA = {
       sitePoster: "",
       siteBanner: {
         vertical:[
+          "image/index/27-y.jpg",
+          "image/index/28-y.jpg",
+          "image/index/29-y.jpg",
+          "image/index/30-y.jpg",
+          "image/index/31-y.jpg",
+          "image/index/32-y.jpg",
+          "image/index/33-y.jpg",
+          "image/index/34-y.jpg",
           "image/index/02-y.jpg",
           "image/index/03-y.jpg",
           "image/index/04-y.jpg",
@@ -34,6 +42,14 @@ var __DATA = {
           "image/index/26-y.jpg"
         ],        
         horizontal:[
+          "image/index/27-x.jpg",
+          "image/index/28-x.jpg",
+          "image/index/29-x.jpg",
+          "image/index/30-x.jpg",
+          "image/index/31-x.jpg",
+          "image/index/32-x.jpg",
+          "image/index/33-x.jpg",
+          "image/index/34-x.jpg",
           "image/index/02-x.jpg",
           "image/index/03-x.jpg",
           "image/index/04-x.jpg",
@@ -59,11 +75,11 @@ var __DATA = {
         ]
       },
       siteVideo: [
-        {
-          src:"upload/演讲大赛输出_1.mp4",
-          startTime:"2021/04/01 00:00:00",
-          endTime:"2028/04/30 23:59:59"
-        },
+        // {
+        //   src:"upload/演讲大赛输出_1.mp4",
+        //   startTime:"2021/04/01 00:00:00",
+        //   endTime:"2028/04/30 23:59:59"
+        // },
         {
           src:"upload/北京银行上海分行1027_1.mp4",
           startTime:"2021/05/01 00:00:00",
