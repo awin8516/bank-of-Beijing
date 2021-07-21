@@ -43,34 +43,60 @@ $(document).ready(function(){
   var backHomeTimer = null;
   var newDate = "2020/11/28 00:00:00";  
   var nowDate = new Date();
+  var siteNav =  [
+    {"zh": "网点导览","en": "Guide","template": "Guide"},
+    {"zh": "便民设施","en": "Facilities","template": "Facilities"},
+    {"zh": "党建信息","en": "Party","template": "Party"},
+    {"zh": "服务人员展示","en": "Personnel","template": "Personnel"},
+    {"zh": "消费者保护专栏","en": "Consumer","template": "Consumer"},
+    {"zh": "贵宾增值服务","en": "VIP","template": "VIP"},
+    {"zh": "理财资讯","en": "Financial","template": "Financial"},
+    {"zh": "我的的荣誉","en": "Honor","template": "Honor"},
+    {"zh": "13周年庆","en": "Anniversary","template": "Anniversary"},
+    {"zh": "现金服务","en": "Cash","template": "Cash"}
+  ];
 
-  if(siteId == 1){
-    var siteNav =  [
-      {"zh": "网点导览","en": "Guide","template": "Guide"},
-      {"zh": "便民设施","en": "Facilities","template": "Facilities"},
-      {"zh": "党建信息","en": "Party","template": "Party"},
-      {"zh": "服务人员展示","en": "Personnel","template": "Personnel"},
-      {"zh": "消费者保护专栏","en": "Consumer","template": "Consumer"},
-      {"zh": "贵宾增值服务","en": "VIP","template": "VIP"},
-      {"zh": "理财资讯","en": "Financial","template": "Financial"},
-      {"zh": "我的的荣誉","en": "Honor","template": "Honor"},
-      {"zh": "13周年庆","en": "Anniversary","template": "Anniversary"},
-      {"zh": "现金服务","en": "Cash","template": "Cash"}
-    ];
-  }else{
-    var siteNav =  [
-      {"zh": "网点导览","en": "Guide","template": "Guide"},
-      {"zh": "便民设施","en": "Facilities","template": "Facilities"},
-      {"zh": "党建信息","en": "Party","template": "Party"},
-      {"zh": "服务人员展示","en": "Personnel","template": "Personnel"},
-      {"zh": "消费者保护专栏","en": "Consumer","template": "Consumer"},
-      {"zh": "贵宾增值服务","en": "VIP","template": "VIP"},
-      {"zh": "理财资讯","en": "Financial","template": "Financial"},
-      {"zh": "我的的荣誉","en": "Honor","template": "Honor"},
-      {"zh": "13周年庆","en": "Anniversary","template": "Anniversary"},
-      {"zh": "现金服务","en": "Cash","template": "Cash"}
-    ];
-  }
+    // var siteNav =  [
+    //   // {"zh": "网点导览","en": "Guide","template": "Guide"},
+    //   // {"zh": "便民设施","en": "Facilities","template": "Facilities"},
+    //   {"zh": "党建信息","en": "Party","template": "Party"},
+    //   // {"zh": "服务人员展示","en": "Personnel","template": "Personnel"},
+    //   {"zh": "消费者保护专栏","en": "Consumer","template": "Consumer"},
+    //   {"zh": "贵宾增值服务","en": "VIP","template": "VIP"},
+    //   {"zh": "理财资讯","en": "Financial","template": "Financial"},
+    //   // {"zh": "我的的荣誉","en": "Honor","template": "Honor"},
+    //   {"zh": "13周年庆","en": "Anniversary","template": "Anniversary"},
+    //   {"zh": "现金服务","en": "Cash","template": "Cash"}
+    // ];
+
+    
+  // if(siteId == 1){
+  //   var siteNav =  [
+  //     {"zh": "网点导览","en": "Guide","template": "Guide"},
+  //     {"zh": "便民设施","en": "Facilities","template": "Facilities"},
+  //     {"zh": "党建信息","en": "Party","template": "Party"},
+  //     {"zh": "服务人员展示","en": "Personnel","template": "Personnel"},
+  //     {"zh": "消费者保护专栏","en": "Consumer","template": "Consumer"},
+  //     {"zh": "贵宾增值服务","en": "VIP","template": "VIP"},
+  //     {"zh": "理财资讯","en": "Financial","template": "Financial"},
+  //     {"zh": "我的的荣誉","en": "Honor","template": "Honor"},
+  //     {"zh": "13周年庆","en": "Anniversary","template": "Anniversary"},
+  //     {"zh": "现金服务","en": "Cash","template": "Cash"}
+  //   ];
+  // }else{
+  //   var siteNav =  [
+  //     // {"zh": "网点导览","en": "Guide","template": "Guide"},
+  //     // {"zh": "便民设施","en": "Facilities","template": "Facilities"},
+  //     {"zh": "党建信息","en": "Party","template": "Party"},
+  //     // {"zh": "服务人员展示","en": "Personnel","template": "Personnel"},
+  //     {"zh": "消费者保护专栏","en": "Consumer","template": "Consumer"},
+  //     {"zh": "贵宾增值服务","en": "VIP","template": "VIP"},
+  //     {"zh": "理财资讯","en": "Financial","template": "Financial"},
+  //     // {"zh": "我的的荣誉","en": "Honor","template": "Honor"},
+  //     {"zh": "13周年庆","en": "Anniversary","template": "Anniversary"},
+  //     {"zh": "现金服务","en": "Cash","template": "Cash"}
+  //   ];
+  // }
   
 
   $o.body.on(eventList.click, ".nav a", pageTo);
@@ -176,18 +202,20 @@ $(document).ready(function(){
       }
 
       var banners = {
-        siteBanner:res.result.siteBanner[screenType]
+        siteBanner:screenType == 'vertical' ? res.result.siteBanner1 : res.result.siteBanner
       }
 
       // console.log(banners)
-      var v = []
-      res.result.siteVideo.forEach(i => {
-        if(nowDate > new Date(i.startTime) && nowDate < new Date(i.endTime)){
-          v.push(i.src);
-        }
-      })
-      res.result.siteVideo = v
-      console.log(res)
+      // var v = []
+      // res.result.siteVideo.forEach(i => {
+      //   i.startTime = i.startTime || '2020/01/01 00:00:00';
+      //   i.endTime   = i.endTime   || '2030/01/01 00:00:00';
+      //   if(nowDate > new Date(i.startTime) && nowDate < new Date(i.endTime)){
+      //     v.push(i.src);
+      //   }
+      // })
+      // res.result.siteVideo = v
+      // console.log(res)
       Template('tpl-nav-home', res.result);
       Template('tpl-banner', banners);
       Template('tpl-video', res.result);

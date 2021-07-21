@@ -16,8 +16,6 @@ if exist "C:\Program Files (x86)\Google\Chrome\Application\chrome.exe" (
   choice /t %delay% /d y /n >nul
 
   start chrome.exe "%d%\%zipName%\index.html%query%"
-  
-  pause
 
 ) else (
 
