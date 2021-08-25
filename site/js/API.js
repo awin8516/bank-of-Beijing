@@ -28,7 +28,11 @@ var API = {
             // }
         }
         if(API.DEBUG){
-            successfn && successfn(__DATA[method])
+            if(method == 'getSiteInfo'){
+                successfn && successfn(__DATA_UPDATE[method])
+            }else{
+                successfn && successfn(__DATA[method])
+            }
         }else{
             $.ajax({
                 url: API.DOMAIN + "/Api/Handler.ashx?method=" + method,

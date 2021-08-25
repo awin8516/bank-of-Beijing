@@ -4,7 +4,7 @@ var __DATA = {
     errmsg: "ok",
     result: {
       siteId: 1,
-      siteName: "bj",
+      siteName: "北京银行上海分行营业部",
       siteTheme: "red",
       siteLogo: "",
       sitePoster: "",
