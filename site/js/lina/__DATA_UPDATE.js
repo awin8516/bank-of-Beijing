@@ -9,6 +9,11 @@ var __DATA_UPDATE = {
       siteLogo: "",
       sitePoster: "",
       siteBanner1:[
+        "image/index/41-y.jpg",
+        "image/index/42-y.jpg",
+        "image/index/43-y.jpg",
+        "image/index/44-y.jpg",
+        "image/index/45-y.jpg",
         "image/index/37-x.jpg",
         "image/index/35-y.jpg",
         "image/index/36-y.jpg",
@@ -26,6 +31,11 @@ var __DATA_UPDATE = {
         "image/index/21-y.jpg"
       ],        
       siteBanner:[
+        "image/index/41-x.jpg",
+        "image/index/42-x.jpg",
+        "image/index/43-x.jpg",
+        "image/index/44-x.jpg",
+        "image/index/45-x.jpg",
         "image/index/37-x.jpg",
         "image/index/27-x.jpg",
         "image/index/02-x.jpg",
