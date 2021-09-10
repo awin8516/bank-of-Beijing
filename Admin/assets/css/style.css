@@ -54,6 +54,41 @@ td.Brand_Url{max-width: 40%;word-break: break-all;white-space: normal;}
 }
 
 
+.upload-file-list .btn-move{
+    position: absolute;
+    top: 50%;
+    transform: translate(0,-50%);
+    z-index: 2;
+    color: #fff;
+    font-size: 18px;
+    line-height: 1.2;
+    background: #4a4a4a;
+    padding: 3px 5px;
+    cursor: pointer;
+    border-radius: 40px;
+    visibility: hidden;
+    opacity: 0.7;
+}
+.upload-file-list li:hover .btn-move{
+    visibility: visible;
+}
+
+.upload-file-list .btn-move.btn-left{
+    left: 5px;
+}
+.upload-file-list .btn-move.btn-left:hover{
+    left: 2px;
+    opacity: 1;
+}
+.upload-file-list .btn-move.btn-right{
+    right: 5px;
+}
+.upload-file-list .btn-move.btn-right:hover{
+    right: 2px;
+    opacity: 1;
+}
+
+
 
 
 

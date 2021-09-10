@@ -257,17 +257,20 @@ $(document).ready(function(){
   function initGuide() {
     API.getGuide({id:siteId},function(res){
       if(res.errcode == 0 && res.result.content){
-        var time = JSON.parse('[{"name":"'+res.result.peakTime.replace(/\s|\n|\r\n|；$|;$|，$|,$|。$|\.$/g, '').replace(/;|；|,|，/g, '},{"name":"').replace(/=/g, '","value":')+'}]');
-        var week = JSON.parse('[{"name":"'+res.result.peakWeek.replace(/\s|\n|\r\n|；$|;$|，$|,$|。$|\.$/g, '').replace(/;|；|,|，/g, '},{"name":"').replace(/=/g, '","value":')+'}]');
-        var data = {
-          content:delStyleHtml(res.result.content),
-          peakTime:time,
-          peakWeek:week,
+        var contentText = res.result.content.replace(/<.*?>/g, "");
+        if(contentText){
+          var time = JSON.parse('[{"name":"'+res.result.peakTime.replace(/\s|\n|\r\n|；$|;$|，$|,$|。$|\.$/g, '').replace(/;|；|,|，/g, '},{"name":"').replace(/=/g, '","value":')+'}]');
+          var week = JSON.parse('[{"name":"'+res.result.peakWeek.replace(/\s|\n|\r\n|；$|;$|，$|,$|。$|\.$/g, '').replace(/;|；|,|，/g, '},{"name":"').replace(/=/g, '","value":')+'}]');
+          var data = {
+            content:delStyleHtml(res.result.content),
+            peakTime:time,
+            peakWeek:week,
+          }
+          // console.log(data)
+          Template('tpl-page-guide-content', data);
+        }else{
+          removeNav("Guide");
         }
-        // console.log(data)
-        Template('tpl-page-guide-content', data);
-      }else{
-        removeNav("Guide");
       }
       
     });

@@ -52,6 +52,8 @@ public partial class Lays_Job_Edit : PageBase
                         html += "<li>";
                         html += "<img class='btnShow' data-type='img' src='" + item.MediaUrl + "'  />";
                         html += "<a class='btn-remove' data-url='" + item.MediaUrl + "'><i class='glyphicon glyphicon-remove'></i></a>";
+                        html += "<b class='btn-move btn-left'><i class='glyphicon glyphicon-arrow-left'></i></b>";
+                        html += "<b class='btn-move btn-right'><i class='glyphicon glyphicon-arrow-right'></i></b>";
                         html += "</li>";
 
 
@@ -68,6 +70,8 @@ public partial class Lays_Job_Edit : PageBase
                         html2 += "<li>";
                         html2 += "<img class='btnShow' data-type='img' src='" + item.MediaUrl + "'  />";
                         html2 += "<a class='btn-remove' data-url='" + item.MediaUrl + "'><i class='glyphicon glyphicon-remove'></i></a>";
+                        html2 += "<b class='btn-move btn-left'><i class='glyphicon glyphicon-arrow-left'></i></b>";
+                        html2 += "<b class='btn-move btn-right'><i class='glyphicon glyphicon-arrow-right'></i></b>";
                         html2 += "</li>";
 
 
@@ -84,6 +88,8 @@ public partial class Lays_Job_Edit : PageBase
                         html1 += "<li>";
                         html1 += "<video class='btnShow' data-type='video' style='width:100%;object-fit: cover;height: 100%;' src='" + item.MediaUrl + "' /></video>";
                         html1 += "<a class='btn-remove' data-url='" + item.MediaUrl + "'><i class='glyphicon glyphicon-remove'></i></a>";
+                        html1 += "<b class='btn-move btn-left'><i class='glyphicon glyphicon-arrow-left'></i></b>";
+                        html1 += "<b class='btn-move btn-right'><i class='glyphicon glyphicon-arrow-right'></i></b>";
                         html1 += "</li>";
 
 

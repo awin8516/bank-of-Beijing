@@ -360,11 +360,15 @@
                                 html += '<li>';
                                 html += '<video class="btnShow" data-type="video" style="width:100%; object-fit: cover;height: 100%;" src="' + images[i] + '"  /></video>';
                                 html += '<a class="btn-remove" data-url="' + images[i] + '"><i class="glyphicon glyphicon-remove"></i></a>';
+                                html += '<b class="btn-move btn-left"><i class="glyphicon glyphicon-arrow-left"></i></b>';
+                                html += '<b class="btn-move btn-right"><i class="glyphicon glyphicon-arrow-right"></i></b>';
                                 html += '</li>';
                             } else {
                                 html += '<li>';
                                 html += '<img class="btnShow" data-type="img" src="' + images[i] + '"  />';
                                 html += '<a class="btn-remove" data-url="' + images[i] + '"><i class="glyphicon glyphicon-remove"></i></a>';
+                                html += '<b class="btn-move btn-left"><i class="glyphicon glyphicon-arrow-left"></i></b>';
+                                html += '<b class="btn-move btn-right"><i class="glyphicon glyphicon-arrow-right"></i></b>';
                                 html += '</li>';
                             }
 
@@ -556,7 +560,7 @@
                                 <a href="javascript:;" class="file company-upload">
                                     <input type="file" name="" accept="image/x-png,image/jpeg,image/jpg" multiple="multiple" runat="server" id="upLoad" />
                                 </a>
-                                <ul class="company-imgs" runat="server" id="ImgList">
+                                <ul class="company-imgs upload-file-list" runat="server" id="ImgList">
                                     <%= html %>
                                 </ul>
                             </div>

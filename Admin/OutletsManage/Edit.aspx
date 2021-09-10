@@ -624,11 +624,15 @@
                                 html += '<li>';
                                 html += '<video class="btnShow" data-type="video" style="width:100%; object-fit: cover;height: 100%;" src="' + images[i] + '"  /></video>';
                                 html += '<a class="btn-remove" data-url="' + images[i] + '"><i class="glyphicon glyphicon-remove"></i></a>';
+                                html += '<b class="btn-move btn-left"><i class="glyphicon glyphicon-arrow-left"></i></b>';
+                                html += '<b class="btn-move btn-right"><i class="glyphicon glyphicon-arrow-right"></i></b>';
                                 html += '</li>';
                             } else {
                                 html += '<li>';
                                 html += '<img class="btnShow" data-type="img" src="' + images[i] + '"  />';
                                 html += '<a class="btn-remove" data-url="' + images[i] + '"><i class="glyphicon glyphicon-remove"></i></a>';
+                                html += '<b class="btn-move btn-left"><i class="glyphicon glyphicon-arrow-left"></i></b>';
+                                html += '<b class="btn-move btn-right"><i class="glyphicon glyphicon-arrow-right"></i></b>';
                                 html += '</li>';
                             }
 
@@ -782,11 +786,15 @@
                                 html += '<li>';
                                 html += '<video class="btnShow" data-type="video" style="width:100%; object-fit: cover;height: 100%;" src="' + images[i] + '"  /></video>';
                                 html += '<a class="btn-remove" data-url="' + images[i] + '"><i class="glyphicon glyphicon-remove"></i></a>';
+                                html += '<b class="btn-move btn-left"><i class="glyphicon glyphicon-arrow-left"></i></b>';
+                                html += '<b class="btn-move btn-right"><i class="glyphicon glyphicon-arrow-right"></i></b>';
                                 html += '</li>';
                             } else {
                                 html += '<li>';
                                 html += '<img class="btnShow" data-type="img" src="' + images[i] + '"  />';
                                 html += '<a class="btn-remove" data-url="' + images[i] + '"><i class="glyphicon glyphicon-remove"></i></a>';
+                                html += '<b class="btn-move btn-left"><i class="glyphicon glyphicon-arrow-left"></i></b>';
+                                html += '<b class="btn-move btn-right"><i class="glyphicon glyphicon-arrow-right"></i></b>';
                                 html += '</li>';
                             }
 
@@ -947,11 +955,15 @@
                                 html += '<li>';
                                 html += '<video class="btnShow" data-type="video" style="width:100%;object-fit: cover;height: 100%;" src="' + images[i] + '"  /></video>';
                                 html += '<a class="btn-remove" data-url="' + images[i] + '"><i class="glyphicon glyphicon-remove"></i></a>';
+                                html += '<b class="btn-move btn-left"><i class="glyphicon glyphicon-arrow-left"></i></b>';
+                                html += '<b class="btn-move btn-right"><i class="glyphicon glyphicon-arrow-right"></i></b>';
                                 html += '</li>';
                             } else {
                                 html += '<li>';
                                 html += '<img class="btnShow" data-type="img" src="' + images[i] + '"  />';
                                 html += '<a class="btn-remove" data-url="' + images[i] + '"><i class="glyphicon glyphicon-remove"></i></a>';
+                                html += '<b class="btn-move btn-left"><i class="glyphicon glyphicon-arrow-left"></i></b>';
+                                html += '<b class="btn-move btn-right"><i class="glyphicon glyphicon-arrow-right"></i></b>';
                                 html += '</li>';
                             }
 
@@ -1008,11 +1020,11 @@
             }
 
             if ($('#ContentPlaceHolder1_TextBox2').val() == '') {
-                alert('招聘人数不能为空');
+                alert('定时设置不能为空');
                 return false;
             } else {
                 if (isNaN($('#ContentPlaceHolder1_TextBox2').val())) {
-                    alert('请输入正确的招聘人数');
+                    alert('请输入正确的定时设置');
                     return false;
                 }
             }
@@ -1187,7 +1199,7 @@
                             <a href="javascript:;" class="file company-upload">
                                 <input type="file" name="" accept="image/x-png,image/jpeg,image/jpg" multiple="multiple" runat="server" id="upLoad" />
                             </a>
-                            <ul class="company-imgs" style="max-width: 80%;" runat="server" id="ImgList">
+                            <ul class="company-imgs upload-file-list" style="max-width: 80%;" runat="server" id="ImgList">
                                 <%= html %>
                             </ul>
                         </div>
@@ -1205,7 +1217,7 @@
                                 <a href="javascript:;" class="file company-upload2">
                                     <input type="file" name="" accept="image/x-png,image/jpeg,image/jpg" multiple="multiple" runat="server" id="upLoad2" />
                                 </a>
-                                <ul class="company-imgs2" style="max-width: 80%;" runat="server" id="ImgList2">
+                                <ul class="company-imgs2 upload-file-list" style="max-width: 80%;" runat="server" id="ImgList2">
                                     <%= html2 %>
                                 </ul>
                             </div>
@@ -1223,7 +1235,7 @@
                             <a href="javascript:;" class="file company-upload1">
                                 <input type="file" name="" accept="video/mp4" multiple="multiple" runat="server" id="upLoad1" />
                             </a>
-                            <ul class="company-imgs1" runat="server" id="ImgList1">
+                            <ul class="company-imgs1 upload-file-list" runat="server" id="ImgList1">
                                 <%= html1 %>
                             </ul>
                         </div>

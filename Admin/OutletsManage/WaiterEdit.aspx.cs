@@ -56,6 +56,8 @@ public partial class Lays_Job_Edit : PageBase
                         html += "<li>";
                         html += "<video class='btnShow' data-type='video' style='width:100%;object-fit: cover;height: 100%;' src='" + item.ImgUrl + "' /></video>";
                         html += "<a class='btn-remove' data-url='" + item.ImgUrl + "'><i class='glyphicon glyphicon-remove'></i></a>";
+                        html += "<b class='btn-move btn-left'><i class='glyphicon glyphicon-arrow-left'></i></b>";
+                        html += "<b class='btn-move btn-right'><i class='glyphicon glyphicon-arrow-right'></i></b>";
                         html += "</li>";
                     }
                     else
@@ -63,6 +65,8 @@ public partial class Lays_Job_Edit : PageBase
                         html += "<li>";
                         html += "<img class='btnShow' data-type='img' src='" + item.ImgUrl + "'  />";
                         html += "<a class='btn-remove' data-url='" + item.ImgUrl + "'><i class='glyphicon glyphicon-remove'></i></a>";
+                        html += "<b class='btn-move btn-left'><i class='glyphicon glyphicon-arrow-left'></i></b>";
+                        html += "<b class='btn-move btn-right'><i class='glyphicon glyphicon-arrow-right'></i></b>";
                         html += "</li>";
                     }
 

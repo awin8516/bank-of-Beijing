@@ -24,4 +24,41 @@ $(function(){
             console.log(1)
         }
     })
+    
+})
+
+$(document).on("click", ".upload-file-list .btn-move", function(){
+    var $ul = $(this).closest(".upload-file-list");
+    var $li = $(this).closest("li");
+    var $prev = $li.prev();
+    var $next = $li.next();
+    var $hidForm = $ul.parent().find("input[type=hidden]");
+    if(!$hidForm.length){
+        $hidForm = $ul.parent().parent().find("input[type=hidden]");
+    }
+    if($(this).hasClass("btn-left")){
+        if($prev.length){
+            $li.insertBefore($prev);
+        }else{
+            $li.insertAfter($li.siblings(":last"));
+        }
+    }else if($(this).hasClass("btn-right")){
+        if($next.length){
+            $li.insertAfter($next);
+        }else{
+            $li.insertBefore($li.siblings(":first"));
+        }
+    }
+
+    // var ul = $("#ContentPlaceHolder1_ImgList");
+    // var imgs = ul.html().match(/src="(.*?)"/g);
+    // console.log(imgs)
+    var imgs = $ul.html().match(/src="(.*?)"/g);
+
+    $hidForm.val(imgs.join(",").replace(/src=|"/g,""))
+
+
+    
+    
+        
 })

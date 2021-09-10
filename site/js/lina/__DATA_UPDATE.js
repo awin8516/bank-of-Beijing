@@ -9,6 +9,7 @@ var __DATA_UPDATE = {
       siteLogo: "",
       sitePoster: "",
       siteBanner1:[
+        "image/index/46-y.png",
         "image/index/41-y.jpg",
         "image/index/42-y.jpg",
         "image/index/43-y.jpg",
@@ -31,6 +32,7 @@ var __DATA_UPDATE = {
         "image/index/21-y.jpg"
       ],        
       siteBanner:[
+        "image/index/46-x.png",
         "image/index/41-x.jpg",
         "image/index/42-x.jpg",
         "image/index/43-x.jpg",
