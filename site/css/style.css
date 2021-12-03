@@ -147,6 +147,25 @@ img {
   animation-iteration-count: infinite;
 }
 
+.side-notice {
+  position: relative;
+  z-index: 100;
+}
+
+.marquee {
+  font-size: 1.5em;
+  line-height: 1.5;
+  overflow: hidden;
+  white-space: nowrap;
+  background-color: rgba(0, 0, 0, 0.2);
+  color: #fff;
+}
+
+.marquee li {
+  display: inline-block;
+  margin: 0 3em;
+}
+
 .side-btns {
   position: absolute;
   z-index: 200;

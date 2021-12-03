@@ -92,6 +92,7 @@ $(document).ready(function(){
   //   hidePopup2()
   // });
 
+  autoScroll($('.marquee'),"x", 20)
   initFullScreen();
   initHome();
   initGuide();
@@ -271,6 +272,8 @@ $(document).ready(function(){
         }else{
           removeNav("Guide");
         }
+      }else{
+        removeNav("Guide");
       }
       
     });
@@ -297,7 +300,11 @@ $(document).ready(function(){
   function initParty() {
     API.getParty({id:siteId},function(res){
       // console.log(res.result);
-      Template('tpl-page-party', {content:delStyleHtml(res.result.data)});
+      if(res.errcode == 0 && res.result.data){
+        Template('tpl-page-party', {content:delStyleHtml(res.result.data)});
+      }else{
+        removeNav("Party");
+      }
     });
   }
   
@@ -327,7 +334,11 @@ $(document).ready(function(){
   function initConsumer() {
     API.getConsumer({id:siteId},function(res){
       // console.log(res.result);
-      Template('tpl-page-consumer', {content:delStyleHtml(res.result.data)});
+      if(res.errcode == 0 && res.result.data){
+        Template('tpl-page-consumer', {content:delStyleHtml(res.result.data)});
+      }else{
+        removeNav("Consumer");
+      }
     });
   }
   /*****************
@@ -336,7 +347,12 @@ $(document).ready(function(){
   function initVip() {
     API.getVip({id:siteId},function(res){
       // console.log(res.result);
-      Template('tpl-page-vip', {content:delStyleHtml(res.result.data)});
+      if(res.errcode == 0 && res.result.data){
+        Template('tpl-page-vip', {content:delStyleHtml(res.result.data)});
+      }else{
+        removeNav("VIP");
+      }
+      
     });
   }
   /*****************
@@ -345,7 +361,12 @@ $(document).ready(function(){
   function initFinancial() {
     API.getFinancial({id:siteId},function(res){
       // console.log(res.result);
-      Template('tpl-page-financial', {content:delStyleHtml(res.result.data)});
+      if(res.errcode == 0 && res.result.data){
+        Template('tpl-page-financial', {content:delStyleHtml(res.result.data)});
+      }else{
+        removeNav("Financial");
+      }
+      
     });
   }
   /*****************
@@ -403,23 +424,28 @@ $(document).ready(function(){
    * 汇率自动滚动
    * @param {*} box 
    */
-  function autoScroll(box){
-    var sh = box[0].scrollHeight - box.height();
-    if(sh > 0){
-      var name = "auto-scroll-" + new Date().getTime() + parseInt(Math.random()*1000) 
-      var duration = sh*20
-      box.children().attr("style", "animation: "+name+" "+duration+"ms linear infinite;");
-      $o.head.append("<style>.a {width:100px} @keyframes "+name+"{to {transform: translateY(-"+sh+"px);}}</style>")
-    }
-  }
-
-  function autoScroll(box){
-    var sh = box[0].scrollHeight - box.height();
-    if(sh > 0){
-      var name = "auto-scroll-" + new Date().getTime() + parseInt(Math.random()*1000) 
-      var duration = sh*20
-      box.children().attr("style", "animation: "+name+" "+duration+"ms linear infinite;");
-      $o.head.append("<style>.a {width:100px} @keyframes "+name+"{to {transform: translateY(-"+sh+"px);}}</style>")
+  function autoScroll(box, direct, speed){
+    if(box.length){
+      var dir = direct || "y";
+      var sp = speed || 20;
+      if(dir=="y"){
+        var sh = box[0].scrollHeight - box.height();
+        if(sh > 0){
+          var name = "auto-scroll-" + new Date().getTime() + parseInt(Math.random()*1000) 
+          var duration = sh*sp
+          box.children().attr("style", "animation: "+name+" "+duration+"ms linear infinite;");
+          $o.head.append("<style>@keyframes "+name+"{to {transform: translateY(-"+sh+"px);}}</style>")
+        }
+      }else{
+        var sh = box[0].scrollWidth - box.width();
+        if(sh > 0){
+          var name = "auto-scroll-" + new Date().getTime() + parseInt(Math.random()*1000) 
+          var duration = sh*sp
+          box.children().attr("style", "animation: "+name+" "+duration+"ms linear infinite;");
+          $o.head.append("<style>@keyframes "+name+"{to {transform: translateX(-"+sh+"px);}}</style>")
+        }
+      }
+      
     }
   }
 

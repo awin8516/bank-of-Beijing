@@ -69,6 +69,24 @@ public class Handler : ApiBase
                         Videolist.Add(item.MediaUrl);
                     }
                 }
+
+                List<Admin_OutletsMedia> mm = Manage.GetList<Admin_OutletsMedia>("OutletsID=@0 and IsDel=@1", model.ID, 0);
+                foreach (var item in mm)
+                {
+                    if (item.MediaType == "img")
+                    {
+                        Bannerlist.Add(item.MediaUrl);
+                    }
+                    else if (item.MediaType == "img1")
+                    {
+                        Bannerlist1.Add(item.MediaUrl);
+                    }
+                    else
+                    {
+                        Videolist.Add(item.MediaUrl);
+                    }
+                }
+
             }
             else
             {

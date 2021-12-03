@@ -52,7 +52,7 @@ var __DATA_UPDATE = {
         "image/index/20-x.jpg",
         "image/index/21-x.jpg"
       ],
-      siteVideo: ["upload/北京银行上海分行1027_1.mp4","upload/MG动画-存款保险人行上海总部版.mp4"]      
+      siteVideo: ["upload/非法集资.mp4","upload/京剧v8_0906_成片_1080_1.mp4","upload/MG动画-存款保险人行上海总部版.mp4"]      
     }
   }  
 };

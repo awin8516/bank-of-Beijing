@@ -90,6 +90,23 @@ img{max-width: 100%;}
 
 .auto-scroll > * {animation-timing-function: linear; animation-iteration-count: infinite;}
 
+.side-notice{
+	position: relative;
+	z-index: 100;
+}
+.marquee {	
+	font-size: 1.5em;
+	line-height: 1.5;
+	overflow: hidden;
+	white-space: nowrap;
+	background-color: rgba(0, 0, 0, 0.2);
+	color: #fff;
+	li{
+		display: inline-block;
+		margin: 0 3em;
+	}
+}
+
 .side-btns{
 	position: absolute;z-index: 200; right:-0%;top:10%;text-align: center;color: $myColor;line-height: 1.2;font-size: 2em;transform: translate(150%, 0);transition: transform 300ms 500ms;
 	b{
