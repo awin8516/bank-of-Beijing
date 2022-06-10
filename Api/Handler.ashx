@@ -2,16 +2,38 @@
 
 using System;
 using System.Web;
+using System.Text;
+using System.Net;
 using Aglie;
 using System.Collections.Generic;
 using System.Linq;
+using System.IO;
 
 public class Handler : ApiBase
 {
 
+    public string getHtmlByUrl()
+    {
+        string weburl = Request["url"];
+        return GetWebClient(weburl);
+
+
+    }
+
+    private string GetWebClient(string url)
+    {
+        string strHTML = "";
+        WebClient myWebClient = new WebClient();
+        Stream myStream = myWebClient.OpenRead(url);
+        StreamReader sr = new StreamReader(myStream, System.Text.Encoding.GetEncoding("utf-8"));
+        strHTML = sr.ReadToEnd();
+        myStream.Close();
+        return strHTML;
+    }
+
+
     public string getSiteList()
     {
-
 
         var model = Manage.GetList<Admin_OutletsManage>("IsDel=@0", 0);
         var newmodel = model.Select(p => new { p.ID, p.siteName, p.siteLink });

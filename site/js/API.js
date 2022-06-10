@@ -51,28 +51,45 @@ var API = {
         API._send('getSiteInfo',"POST", data, success);
     },
 
-    getExchange:function(data,success,error){
-        $.ajax({
-            type: "GET",
-            url: "http://ewealth.abchina.com/app/data/api/DataService/RealTimeExchangeRateV2",
-            data: {},
-            dataType: "json",
-            success: success,
-            error:error
-        });
-    },
+    // getExchange:function(data,success,error){
+    //     $.ajax({
+    //         type: "GET",
+    //         url: "http://ewealth.abchina.com/app/data/api/DataService/RealTimeExchangeRateV2",
+    //         data: {},
+    //         dataType: "json",
+    //         success: success,
+    //         error:error
+    //     });
+    // },
 
-    getFund:function(data,success,error){
-        $.ajax({
-            type: "GET",
-            url: "http://ewealth.abchina.com/app/data/api/DataService/FundFilterV2_New?i=1&s=50&o=2&W=0%7C-1%7C-1%7C1%7C0%7C1%7C1%7C0%7C-1%7C9_DESC",
-            data: {},
-            dataType: "json",
-            success: success,
-            error:error
-        });
-    },
+    // getFund:function(data,success,error){
+    //     $.ajax({
+    //         type: "GET",
+    //         // url: "http://ewealth.abchina.com/app/data/api/DataService/FundFilterV2_New?i=1&s=50&o=2&W=0%7C-1%7C-1%7C1%7C0%7C1%7C1%7C0%7C-1%7C9_DESC",
+    //         // url: "http://ewealth.abchina.com/app/data/api/DataService/FundFilterV2_New?i=1&s=15&w=0%257C1%257C-1%257C1%257C0%257C1%257C1%257C0%257C-1%257C9_DESC&o=2",
+    //         url: "https://ewealth.abchina.com/app/data/api/DataService/FundFilterV2_New?i=1&s=15&w=0%257C-1%257C-1%257C1%257C0%257C1%257C1%257C0%257C-1%257C9_DESC&o=2",
+    //         dataType: "json",
+    //         success: success,
+    //         error:error
+    //     });
 
+    //     // var settings = {
+    //     //     "url": "http://ewealth.abchina.com/app/data/api/DataService/FundFilterV2_New?i=1&s=15&w=0%257C-1%257C-1%257C1%257C0%257C1%257C1%257C0%257C-1%257C9_DESC&o=2",
+    //     //     "method": "GET",
+    //     //     "timeout": 0,
+    //     //     "dataType":'json',
+    //     //     "crossDomain": true
+    //     //   };
+          
+    //     //   $.ajax(settings).done(success);
+    // },
+
+    getExchange:function(data,success){
+        API._send('getHtmlByUrl',"POST", {url:"http://ewealth.abchina.com/app/data/api/DataService/RealTimeExchangeRateV2"}, success);
+    },
+    getFund:function(data,success){
+        API._send('getHtmlByUrl',"POST", {url:"http://ewealth.abchina.com/app/data/api/DataService/FundFilterV2_New?i=1&s=15&w=0%257C-1%257C-1%257C1%257C0%257C1%257C1%257C0%257C-1%257C9_DESC&o=2"}, success);
+    },
     getGuide:function(data,success){
         API._send('getGuide',"POST", data, success);
     },

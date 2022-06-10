@@ -233,22 +233,31 @@ $(document).ready(function(){
 
     API.getExchange({},function(res){
       // console.log(res);
-      if(res.ErrorCode == 0){
-        Template('tpl-exchange', {list:res.Data.CacheTable});
+      if(res.errcode == 0 && res.result.ErrorCode == 0 ){
+        Template('tpl-exchange', {list:res.result.Data.CacheTable});
         autoScroll($('.exchange dd'))
-      }else{
-        console.log("加载超时");
       }
+      // if(res.ErrorCode == 0){
+      //   Template('tpl-exchange', {list:res.Data.CacheTable});
+      //   autoScroll($('.exchange dd'))
+      // }else{
+      //   console.log("加载超时");
+      // }
     });
 
     API.getFund({},function(res){
       // console.log(res);
-      if(res.ErrorCode == 0){
-        Template('tpl-fund', {list:res.Data.Table});
+      if(res.errcode == 0 && res.result.ErrorCode == 0 ){
+        Template('tpl-fund', {list:res.result.Data.Table});
         autoScroll($('.fund dd'))
-      }else{
-        console.log("加载超时");
       }
+
+      // if(res.ErrorCode == 0){
+      //   Template('tpl-fund', {list:res.Data.Table});
+      //   autoScroll($('.fund dd'))
+      // }else{
+      //   console.log("加载超时");
+      // }
     });
   }
   
