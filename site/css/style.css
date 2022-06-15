@@ -516,7 +516,7 @@ img {
 }
 
 .exchange-fund > div dd {
-  height: calc(100% - 2em);
+  height: calc(100% - 4em);
   overflow: hidden;
 }
 
