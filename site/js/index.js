@@ -54,7 +54,7 @@ $(document).ready(function(){
       {"zh": "贵宾增值服务","en": "VIP","template": "VIP"},
       {"zh": "理财资讯","en": "Financial","template": "Financial"},
       {"zh": "我的的荣誉","en": "Honor","template": "Honor"},
-      {"zh": "13周年庆","en": "Anniversary","template": "Anniversary"},
+      {"zh": "小京卡专栏","en": "Anniversary","template": "Anniversary"},
       {"zh": "现金服务","en": "Cash","template": "Cash"}
     ];
   }else{
@@ -67,7 +67,7 @@ $(document).ready(function(){
       {"zh": "贵宾增值服务","en": "VIP","template": "VIP"},
       {"zh": "理财资讯","en": "Financial","template": "Financial"},
       // {"zh": "我的的荣誉","en": "Honor","template": "Honor"},
-      {"zh": "13周年庆","en": "Anniversary","template": "Anniversary"},
+      {"zh": "小京卡专栏","en": "Anniversary","template": "Anniversary"},
       {"zh": "现金服务","en": "Cash","template": "Cash"}
     ];
   }
@@ -319,6 +319,7 @@ $(document).ready(function(){
       // console.log(res.result);
       if(res.errcode == 0 && !isEmpty(res.result.data)){
         Template('tpl-page-party', {content:delStyleHtml(res.result.data)});
+        removeNav("Party");
       }else{
         removeNav("Party");
       }
@@ -362,15 +363,45 @@ $(document).ready(function(){
    * 初始化贵宾增值服务
    */
   function initVip() {
-    API.getVip({id:siteId},function(res){
-      // console.log(res.result);
-      if(res.errcode == 0 && !isEmpty(res.result.data)){
-        Template('tpl-page-vip', {content:delStyleHtml(res.result.data)});
-      }else{
-        removeNav("VIP");
-      }
-      
+    var doclist = [];
+    API._send('getHtmlByUrl',"POST", {url:"http://www.bankofbeijing.com.cn/personal/zs-yujinxiang.shtml"}, function(data){
+      var html = getHtmlByDoc(data.result,".pic_card","","http://www.bankofbeijing.com.cn/personal")
+      doclist[0] = html;
+      checklist()
     });
+    API._send('getHtmlByUrl',"POST", {url:"http://www.bankofbeijing.com.cn/personal/zs-yujinxiang2.shtml"}, function(data){
+      var html = getHtmlByDoc(data.result,".pic_card","","http://www.bankofbeijing.com.cn/personal")
+      doclist[1] = html;
+      checklist()
+    });
+    API._send('getHtmlByUrl',"POST", {url:"http://www.bankofbeijing.com.cn/personal/zs-minshika.shtml"}, function(data){
+      var html = getHtmlByDoc(data.result,".pic_card","","http://www.bankofbeijing.com.cn/personal")
+      doclist[2] = html;
+      checklist()
+    });
+    API._send('getHtmlByUrl',"POST", {url:"http://www.bankofbeijing.com.cn/personal/private3.shtml"}, function(data){
+      var html = getHtmlByDoc(data.result,".wenziyangshi","table","http://www.bankofbeijing.com.cn")
+      doclist[3] = html;
+      checklist()
+    });
+
+    function checklist(){
+      if(doclist.length==4){
+        Template('tpl-page-vip', {content:delStyleHtml(doclist.join(" "))});
+      }
+    }
+
+
+    // API.getVip({id:siteId},function(res){
+    //   // console.log(res.result);
+    //   if(res.errcode == 0 && !isEmpty(res.result.data)){
+    //     Template('tpl-page-vip', {content:delStyleHtml(res.result.data)});
+    //     removeNav("VIP");
+    //   }else{
+    //     removeNav("VIP");
+    //   }
+      
+    // });
   }
   /*****************
    * 初始化理财资讯
@@ -380,6 +411,7 @@ $(document).ready(function(){
       // console.log(res.result);
       if(res.errcode == 0 && !isEmpty(res.result.data)){
         Template('tpl-page-financial', {content:delStyleHtml(res.result.data)});
+        removeNav("Financial");
       }else{
         removeNav("Financial");
       }
@@ -717,5 +749,52 @@ $(document).ready(function(){
 
     $o.swipUp.on(eventList.mouseup, function(){clear()});
     $o.swipDown.on(eventList.mouseup, function(){clear()});
+  };
+
+
+  /**
+   * 
+   */
+  function getHtmlByDoc(doc,selecter, removeSelecter,domain){
+
+    var body = doc.match(/<body.*?<\/body>/);
+    if(body.length){
+      body = body[0].replace(/<script.*?<\/script>/g,"");
+      body = body.replace(/(<img.*?src=")(.*?)(".*?>)/g,function(a,b,c,d){
+        if(c.indexOf("http") ==-1){
+          return b+domain+"/"+c+d;
+        }else{
+          return a;
+        }
+      });
+
+      // console.log(body);
+      var tempDiv = $("<div id='tempDiv'>"+body+"</div>");
+      $("body").append(tempDiv);
+      var content = tempDiv.find(selecter);
+      content.find(removeSelecter).remove();
+      var res = content.prop("outerHTML");
+      tempDiv.remove();
+      console.log(res);
+      return res;
+      // tempDiv.html("").append(content);
+
+    }
   }
+
+  // var aa = '<div><img border="0" src="http://www.bankofbeijing.com.cn/images/private_zzfw01.jpg">000</div>';
+  // var bb = aa.replace(/(<img.*?src=")(.*?)(".*?>)/g,function(a,b,c,d){
+  //   console.log(a);
+  //   console.log(b);
+  //   console.log(c);
+  //   console.log(d);
+  //   if(c.indexOf("http") ==-1){
+  //     return b+domain+c+d;
+  //   }else{
+  //     return a;
+  //   }
+  // })
+  // console.log(bb);
+
+
 });
