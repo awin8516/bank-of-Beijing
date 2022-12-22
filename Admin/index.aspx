@@ -64,10 +64,10 @@
                                 <a target="xframe" href="VIP/List.aspx?ID=1"><i class="si si-arrow-right"></i><span class="sidebar-mini-hide">贵宾增值服务</span></a>
                             </li>
                             <li id="li4" runat="server">
-                                <a target="xframe" href="Financial/List.aspx?ID=1"><i class="si si-arrow-right"></i><span class="sidebar-mini-hide">理财资讯</span></a>
+                                <a target="xframe" href="Financial/List.aspx?ID=1"><i class="si si-arrow-right"></i><span class="sidebar-mini-hide">理财产品专栏</span></a>
                             </li>
                             <li id="li5" runat="server">
-                                <a target="xframe" href="Anniversary/List.aspx?ID=1"><i class="si si-arrow-right"></i><span class="sidebar-mini-hide">13周年庆</span></a>
+                                <a target="xframe" href="Anniversary/List.aspx?ID=1"><i class="si si-arrow-right"></i><span class="sidebar-mini-hide">小京卡专栏</span></a>
                             </li>
                                                         <li id="li7" runat="server">
                                 <a target="xframe" href="Cash/List.aspx?ID=1"><i class="si si-arrow-right"></i><span class="sidebar-mini-hide">现金服务</span></a>

@@ -52,7 +52,7 @@ $(document).ready(function(){
       {"zh": "服务人员展示","en": "Personnel","template": "Personnel"},
       {"zh": "消费者保护专栏","en": "Consumer","template": "Consumer"},
       {"zh": "贵宾增值服务","en": "VIP","template": "VIP"},
-      {"zh": "理财资讯","en": "Financial","template": "Financial"},
+      {"zh": "理财产品专栏","en": "Financial","template": "Financial"},
       {"zh": "我的的荣誉","en": "Honor","template": "Honor"},
       {"zh": "小京卡专栏","en": "Anniversary","template": "Anniversary"},
       {"zh": "现金服务","en": "Cash","template": "Cash"}
@@ -65,7 +65,7 @@ $(document).ready(function(){
       // {"zh": "服务人员展示","en": "Personnel","template": "Personnel"},
       {"zh": "消费者保护专栏","en": "Consumer","template": "Consumer"},
       {"zh": "贵宾增值服务","en": "VIP","template": "VIP"},
-      {"zh": "理财资讯","en": "Financial","template": "Financial"},
+      {"zh": "理财产品专栏","en": "Financial","template": "Financial"},
       // {"zh": "我的的荣誉","en": "Honor","template": "Honor"},
       {"zh": "小京卡专栏","en": "Anniversary","template": "Anniversary"},
       {"zh": "现金服务","en": "Cash","template": "Cash"}
@@ -411,7 +411,7 @@ $(document).ready(function(){
       // console.log(res.result);
       if(res.errcode == 0 && !isEmpty(res.result.data)){
         Template('tpl-page-financial', {content:delStyleHtml(res.result.data)});
-        removeNav("Financial");
+        // removeNav("Financial");
       }else{
         removeNav("Financial");
       }

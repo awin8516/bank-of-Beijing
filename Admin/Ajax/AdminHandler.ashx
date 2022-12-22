@@ -17,7 +17,7 @@ public class AdminHandler : HandlerBase
         string username = Request["Username"];
         string password = Request["Password"];
         //youyijia_Login login = Manage.Get<youyijia_Login>("Number_Login=@0 and Password_Login=@1 and IsDel=@2", username, password, 0);
-        if (username == "admin" && password == "admin")//Request["Password"] == "admin" && Request["Password"]=="admin"
+        if (username == "admin" && password == "7wfXStH6mwt9")//Request["Password"] == "admin" && Request["Password"]=="admin"
         {
             Session["Username"] = username;
             Session["LoginState"] = 1;
