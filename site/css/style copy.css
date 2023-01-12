@@ -1658,10 +1658,6 @@ body.theme-ui-red .nav a:nth-child(10) b {
   background-color: #f78a8a;
 }
 
-body.theme-ui-red .nav a:nth-child(11) b {
-  background-color: #f78ab9;
-}
-
 /* y 
  * 1080/1920==0.5625
  */
@@ -1684,67 +1680,61 @@ body.theme-ui-red .nav a:nth-child(11) b {
     font-size: 1.72em;
   }
   .nav-fixed.nav-num-1 a {
-    width: 90%;
+    width: 80%;
   }
   .nav-fixed.nav-num-2 {
     font-size: 1.59em;
   }
   .nav-fixed.nav-num-2 a {
-    width: 45%;
+    width: 40%;
   }
   .nav-fixed.nav-num-3 {
     font-size: 1.46em;
   }
   .nav-fixed.nav-num-3 a {
-    width: 30%;
+    width: 26.66667%;
   }
   .nav-fixed.nav-num-4 {
     font-size: 1.33em;
   }
   .nav-fixed.nav-num-4 a {
-    width: 22.5%;
+    width: 20%;
   }
   .nav-fixed.nav-num-5 {
     font-size: 1.2em;
   }
   .nav-fixed.nav-num-5 a {
-    width: 18%;
+    width: 16%;
   }
   .nav-fixed.nav-num-6 {
     font-size: 1.07em;
   }
   .nav-fixed.nav-num-6 a {
-    width: 15%;
+    width: 13.33333%;
   }
   .nav-fixed.nav-num-7 {
     font-size: 0.94em;
   }
   .nav-fixed.nav-num-7 a {
-    width: 12.85714%;
+    width: 11.42857%;
   }
   .nav-fixed.nav-num-8 {
     font-size: 0.81em;
   }
   .nav-fixed.nav-num-8 a {
-    width: 11.25%;
+    width: 10%;
   }
   .nav-fixed.nav-num-9 {
     font-size: 0.68em;
   }
   .nav-fixed.nav-num-9 a {
-    width: 10%;
+    width: 8.88889%;
   }
   .nav-fixed.nav-num-10 {
     font-size: 0.55em;
   }
   .nav-fixed.nav-num-10 a {
-    width: 9%;
-  }
-  .nav-fixed.nav-num-11 {
-    font-size: 0.42em;
-  }
-  .nav-fixed.nav-num-11 a {
-    width: 8.18182%;
+    width: 8%;
   }
 }
 
@@ -1775,7 +1765,7 @@ body.theme-ui-red .nav a:nth-child(11) b {
   .nav-fixed {
     position: absolute;
     top: 50%;
-    width: 6%;
+    width: 4.8%;
     margin-top: 0;
     margin-left: 1%;
     transform: translate(0%, -50%);
@@ -1785,13 +1775,6 @@ body.theme-ui-red .nav a:nth-child(11) b {
     display: block;
     margin: 0.5em 0;
     width: 100%;
-  }
-  .nav-fixed a b {
-    padding-bottom: 65%;
-    border-radius: 100px;
-  }
-  .nav-fixed a b:after {
-    padding-bottom: 65%;
   }
   .has-nav .nav-fixed {
     transform: translate(0, -50%);

@@ -49,8 +49,6 @@
                     <!-- Side Content -->
                     <div class="side-content">
                         <ul class="nav-main">
-
-
                             <li id="liUser" runat="server">
                                 <a target="xframe" id="autolink" href="OutletsManage/List.aspx"><i class="si si-arrow-right"></i><span class="sidebar-mini-hide">网点配置</span></a>
                             </li>
@@ -69,11 +67,16 @@
                             <li id="li5" runat="server">
                                 <a target="xframe" href="Anniversary/List.aspx?ID=1"><i class="si si-arrow-right"></i><span class="sidebar-mini-hide">小京卡专栏</span></a>
                             </li>
-                                                        <li id="li7" runat="server">
+                            <li id="li7" runat="server">
                                 <a target="xframe" href="Cash/List.aspx?ID=1"><i class="si si-arrow-right"></i><span class="sidebar-mini-hide">现金服务</span></a>
                             </li>
-
-                                                        <li id="li6" runat="server">
+                            <li id="li8" runat="server">
+                                <a target="xframe" href="Pension/List.aspx?ID=1"><i class="si si-arrow-right"></i><span class="sidebar-mini-hide">养老金</span></a>
+                            </li>
+                            <li id="li9" runat="server">
+                                <a target="xframe" href="Notice/List.aspx?ID=1"><i class="si si-arrow-right"></i><span class="sidebar-mini-hide">公告</span></a>
+                            </li>
+                            <li id="li6" runat="server">
                                 <a target="xframe" href="Global/List.aspx?ID=1"><i class="si si-arrow-right"></i><span class="sidebar-mini-hide">全局设置</span></a>
                             </li>
                         </ul>

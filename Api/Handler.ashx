@@ -394,4 +394,36 @@ public class Handler : ApiBase
         return Result.Return(json);
 
     }
+
+    public string getNotice()
+    {
+
+        Admin_Notice model = Manage.Get<Admin_Notice>("IsDel=0");
+        if (model == null)
+        {
+            return Result.Error("数据为空");
+        }
+        JSON json = new JSON();
+
+        json["data"] = model.content;
+
+        return Result.Return(json);
+
+    }
+
+    public string getPension()
+    {
+
+        Admin_Pension model = Manage.Get<Admin_Pension>("IsDel=0");
+        if (model == null)
+        {
+            return Result.Error("数据为空");
+        }
+        JSON json = new JSON();
+
+        json["data"] = model.content;
+
+        return Result.Return(json);
+
+    }
 }

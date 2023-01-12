@@ -453,7 +453,7 @@ img{max-width: 100%;}
 	$myFontSize: 12px;
 	$myLineHeight: 1.6;
 	$myWidth: 680px;
-	$navColor:  #22baf1,#6be2b4,#ddc95a,#f0915a,#ff6f6f,#dd54a4,#ae8adf,#829ae7,#e782df,#f78a8a;
+	$navColor:  #22baf1,#6be2b4,#ddc95a,#f0915a,#ff6f6f,#dd54a4,#ae8adf,#829ae7,#e782df,#f78a8a,#f78ab9;
 
 	/* scss */
 	background-image: url(../image/bg.jpg);
@@ -492,10 +492,10 @@ img{max-width: 100%;}
 
 	.nav-fixed{
 		a{max-width: 16%;}
-		@for $i from 1 through 10 {	
+		@for $i from 1 through length($navColor)+1 {	
 			&.nav-num-#{$i} {
 				font-size:1.2em - ($i - 5 ) * 0.13 ;
-				a { width: 80% / $i;}
+				a { width: 90% / $i;}
 			}
 		}
 	}
@@ -522,8 +522,10 @@ img{max-width: 100%;}
 
 	.btn-fullscreen{width:3%;right:2em;top:50%;}
 	.nav-fixed{
-		position: absolute;top:50%;width: 4.8%;margin-top: 0;;margin-left: 1%;transform: translate(0% , -50%);transition: transform 300ms 0ms;
+		position: absolute;top:50%;width: 6%;margin-top: 0;;margin-left: 1%;transform: translate(0% , -50%);transition: transform 300ms 0ms;
 		a{display: block;margin:0.5em 0; width: 100%;}
+		a b{padding-bottom: 65%;border-radius: 100px;}
+		a b:after{padding-bottom: 65%;}
 	}
 	.has-nav .nav-fixed{transform: translate(0 , -50%);transition: transform 300ms 300ms;}
 

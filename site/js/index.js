@@ -55,7 +55,9 @@ $(document).ready(function(){
       {"zh": "理财产品专栏","en": "Financial","template": "Financial"},
       {"zh": "我的的荣誉","en": "Honor","template": "Honor"},
       {"zh": "小京卡专栏","en": "Anniversary","template": "Anniversary"},
-      {"zh": "现金服务","en": "Cash","template": "Cash"}
+      {"zh": "现金服务","en": "Cash","template": "Cash"},
+      {"zh": "养老金","en": "Pension","template": "Pension"},
+      {"zh": "公告","en": "Notice","template": "Notice"}
     ];
   }else{
     var siteNav =  [
@@ -68,7 +70,9 @@ $(document).ready(function(){
       {"zh": "理财产品专栏","en": "Financial","template": "Financial"},
       // {"zh": "我的的荣誉","en": "Honor","template": "Honor"},
       {"zh": "小京卡专栏","en": "Anniversary","template": "Anniversary"},
-      {"zh": "现金服务","en": "Cash","template": "Cash"}
+      {"zh": "现金服务","en": "Cash","template": "Cash"},
+      {"zh": "养老金","en": "Pension","template": "Pension"},
+      {"zh": "公告","en": "Notice","template": "Notice"}
     ];
   }
   
@@ -105,6 +109,8 @@ $(document).ready(function(){
   initHonor();
   initAnniversary();
   initCash();
+  initPension();
+  initNotice();
 
   //获得http url参数
 	function getQueryString(name) {
@@ -455,6 +461,34 @@ $(document).ready(function(){
         initPlayList('.video-playlist-cash')
       }else{
         removeNav("Cash");
+      }
+    });
+  }
+  /*****************
+   * 养老金
+   */
+  function initPension() {
+    API.getPension({id:siteId},function(res){
+      // console.log(res.result);
+      if(res.errcode == 0 && !isEmpty(res.result.data)){
+        Template('tpl-page-pension', {content:delStyleHtml(res.result.data)});
+        initPlayList('.video-playlist-pension')
+      }else{
+        removeNav("Pension");
+      }
+    });
+  }
+  /*****************
+   * 公告
+   */
+  function initNotice() {
+    API.getNotice({id:siteId},function(res){
+      // console.log(res.result);
+      if(res.errcode == 0 && !isEmpty(res.result.data)){
+        Template('tpl-page-notice', {content:delStyleHtml(res.result.data)});
+        initPlayList('.video-playlist-notice')
+      }else{
+        removeNav("Notice");
       }
     });
   }

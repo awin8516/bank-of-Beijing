@@ -1,6 +1,7 @@
 var API = {
     // DOMAIN: location.href.indexOf("lina") != -1 ? "http://lina007.com/Api/Handler.ashx" : " http://114.55.11.192:7300/mock/5f841673d29faf95e856baa9/lina",               //正式
-    DOMAIN: "http://lina007.com",               //正式
+    DOMAIN: location.href.indexOf("http://lina007.com/") != -1 ? "http://lina007.com" : " http://test.lina007.com",               //正式
+    // DOMAIN: "http://lina007.com",               //正式
     DEBUG: false,    
     _send: function(method,type, data, success){
         var successfn = function(res){
@@ -119,5 +120,11 @@ var API = {
     },
     getCash:function(data,success){
         API._send('getCash',"POST", data, success);
+    },
+    getPension:function(data,success){
+        API._send('getPension',"POST", data, success);
+    },
+    getNotice:function(data,success){
+        API._send('getNotice',"POST", data, success);
     },
 }
