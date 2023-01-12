@@ -195,6 +195,19 @@ $(document).ready(function(){
         siteBanner:screenType == 'vertical' ? res.result.siteBanner1 : res.result.siteBanner
       }
 
+      var bannersX1 = {
+        siteBanner:res.result.siteBanner.filter((a,i) => i <= parseInt(res.result.siteBanner.length/2))
+      }
+      var bannersX2 = {
+        siteBanner:res.result.siteBanner.filter((a,i) => i > parseInt(res.result.siteBanner.length/2))
+      }
+      var videoX1 = {
+        siteVideo:res.result.siteVideo.filter((a,i) => i <= parseInt(res.result.siteVideo.length/2))
+      }
+      var videoX2 = {
+        siteVideo:res.result.siteVideo.filter((a,i) => i > parseInt(res.result.siteVideo.length/2))
+      }
+
       // console.log(banners)
       // var v = []
       // res.result.siteVideo.forEach(i => {
@@ -208,28 +221,17 @@ $(document).ready(function(){
       // console.log(res)
       Template('tpl-nav-home', res.result);
       Template('tpl-banner', banners);
+      Template('tpl-banner-x1', bannersX1);
+      Template('tpl-banner-x2', bannersX2);
       Template('tpl-video', res.result);
+      Template('tpl-video-x1', videoX1);
+      Template('tpl-video-x2', videoX2);
       Template('tpl-nav-fixed', res.result);
       $o.video = $("video");
       swiperBanner = new Swiper({
-        el: '.swiper-home-banner',
-        // initialSlide: 0,
-        // spaceBetween: 50,
-        // slidesPerView: 1,
-        // centeredSlides: true,
-        // slideToClickedSlide: true,
-        // grabCursor: true,
-        // scrollbar: {
-        //   el: '.swiper-scrollbar',
-        // },
-        // mousewheel: {
-        //   enabled: true,
-        // },
-        // keyboard: {
-        //   enabled: true,
-        // },
+        el: '.banner-y1 .swiper-home-banner',
         pagination: {
-          el: '.swiper-home-banner .swiper-pagination',
+          el: '.banner-y1 .swiper-home-banner .swiper-pagination',
         },
         loop : true,
         autoplay: {
@@ -237,10 +239,30 @@ $(document).ready(function(){
           stopOnLastSlide: false,
           disableOnInteraction: true
         }
-        // navigation: {
-        //   nextEl: '.swiper-home-banner .swiper-button-next',
-        //   prevEl: '.swiper-home-banner .swiper-button-prev',
-        // }
+      });
+      swiperBannerX1 = new Swiper({
+        el: '.banner-x1 .swiper-home-banner',
+        pagination: {
+          el: '.banner-x1 .swiper-home-banner .swiper-pagination',
+        },
+        loop : true,
+        autoplay: {
+          delay: 5000,
+          stopOnLastSlide: false,
+          disableOnInteraction: true
+        }
+      });
+      swiperBannerX2 = new Swiper({
+        el: '.banner-x2 .swiper-home-banner',
+        pagination: {
+          el: '.banner-x2 .swiper-home-banner .swiper-pagination',
+        },
+        loop : true,
+        autoplay: {
+          delay: 5000,
+          stopOnLastSlide: false,
+          disableOnInteraction: true
+        }
       });
 
       initPlayList('.video video');

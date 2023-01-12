@@ -91,7 +91,7 @@
 					</script>
 				</div>
 
-				<div class="video">
+				<div class="video video-y1">
 					<script id="tpl-video" type="text/html">
 						{{if siteVideo }}
 						<div class="video-container"><video class="video-playlist video-playlist-home" data-playlist="{{siteVideo}}" src="" controls></video></div>
@@ -99,7 +99,22 @@
 					</script>
 				</div>
 
-				<div class="banner">
+				<div class="video video-x1">
+					<script id="tpl-video-x1" type="text/html">
+						{{if siteVideo }}
+						<div class="video-container"><video class="video-playlist video-playlist-home" data-playlist="{{siteVideo}}" src="" controls></video></div>
+						{{/if}}
+					</script>
+				</div>
+				<div class="video video-x2">
+					<script id="tpl-video-x2" type="text/html">
+						{{if siteVideo }}
+						<div class="video-container"><video class="video-playlist video-playlist-home" data-playlist="{{siteVideo}}" src="" controls></video></div>
+						{{/if}}
+					</script>
+				</div>
+
+				<div class="banner banner-y1">
 					<script id="tpl-banner" type="text/html">
 						{{if siteBanner && siteBanner.length }}
 						<section class="swiper-container swiper-home-banner">
@@ -114,7 +129,36 @@
 						</section>
 						{{/if}}
 					</script>
-				</div>				
+				</div>
+				
+				<div class="banner banner-x1">
+					<script id="tpl-banner-x1" type="text/html">
+						{{if siteBanner && siteBanner.length }}
+						<section class="swiper-container swiper-home-banner">
+							<div class="swiper-wrapper">
+								{{each siteBanner}}
+								<div class="swiper-slide"><img src="{{$value}}"></div>
+								{{/each}}
+							</div>
+							<div class="swiper-pagination"></div>
+						</section>
+						{{/if}}
+					</script>
+				</div>
+				<div class="banner banner-x2">
+					<script id="tpl-banner-x2" type="text/html">
+						{{if siteBanner && siteBanner.length }}
+						<section class="swiper-container swiper-home-banner">
+							<div class="swiper-wrapper">
+								{{each siteBanner}}
+								<div class="swiper-slide"><img src="{{$value}}"></div>
+								{{/each}}
+							</div>
+							<div class="swiper-pagination"></div>
+						</section>
+						{{/if}}
+					</script>
+				</div>
 
 				<div class="exchange-fund">
 					<div class="exchange">
