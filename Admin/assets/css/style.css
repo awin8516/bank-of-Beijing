@@ -1,0 +1,96 @@
+/*
+ * 项目自定义样式
+*/
+
+td.Brand_Url{max-width: 40%;word-break: break-all;white-space: normal;}
+.form-control-textarea-1x .note-editable{height: 150px !important;min-height:0 !important;}
+.form-control-textarea-2x .note-editable{height: 200px !important;min-height:0 !important;}
+.form-control-textarea-3x .note-editable{height: 250px !important;min-height:0 !important;}
+.form-control-textarea-4x .note-editable{height: 300px !important;min-height:0 !important;}
+.form-control-textarea-5x .note-editable{height: 350px !important;min-height:0 !important;}
+.form-control-textarea-6x .note-editable{height: 400px !important;min-height:0 !important;}
+.form-control-textarea-7x .note-editable{height: 450px !important;min-height:0 !important;}
+.form-control-textarea-8x .note-editable{height: 500px !important;min-height:0 !important;}
+.form-horizontal .form-group .form-control {max-width: 500px!important; height: auto;}
+.form-horizontal .form-group .form-control .img {width: auto!important; height: auto!important; max-width: 300px!important; max-height: 100px!important;}
+.px0{padding-left: 0;padding-right: 0;}
+
+.brand-tabs  {margin-bottom: 0 !important;margin-top: 30px;}
+.brand-tabs .tabs-nav {border-bottom: 1px #ccc solid;}
+.brand-tabs a{display: inline-block;padding: 0.5em 2em;margin:0 0.5em;border: 1px #ccc solid;border-radius: 2px 2px 0px 0px;vertical-align: bottom;margin-bottom: -1px;background-color: #f9f9f9;color: #999;cursor: pointer;}
+.brand-tabs a:hover{background-color: #f5f5f5;color: #545454;}
+.brand-tabs a.current{display: inline-block;background-color:#fff;border-bottom: 2px #fff solid;color: #000;font-weight: bold;cursor: default;position: relative;margin-bottom: -2px;}
+.brand-iframe-box {width: 100%;height: calc( 100vh - 155px);padding-top: 0 !important;}
+.brand-iframe-box iframe{width: 100%;height: 100%;}
+
+.control-label-must::after{ content: "*";color: #ff0000;padding-left: 0.2em;font-family: serif;}
+
+
+.control-container{display: inline-block;vertical-align: middle;}
+
+.form-group .del-img{
+    position: absolute;
+    font-size: 12px;
+    line-height: 1;
+    width: 20px;
+    height: 20px;
+    right: -10px;
+    top: -10px;
+    border: 1px #e30512 solid;
+    border-radius: 50%;
+    background: #e30512;
+    text-align: center;
+    color: #fff;
+    cursor: pointer;
+}
+.form-group .del-img::before {
+    content: "";
+    display: inline-block;
+    height: 94%;
+    vertical-align: middle;
+}
+.form-group .del-img i {
+    vertical-align: middle;
+}
+
+
+.upload-file-list .btn-move{
+    position: absolute;
+    top: 50%;
+    transform: translate(0,-50%);
+    z-index: 2;
+    color: #fff;
+    font-size: 18px;
+    line-height: 1.2;
+    background: #4a4a4a;
+    padding: 3px 5px;
+    cursor: pointer;
+    border-radius: 40px;
+    visibility: hidden;
+    opacity: 0.7;
+}
+.upload-file-list li:hover .btn-move{
+    visibility: visible;
+}
+
+.upload-file-list .btn-move.btn-left{
+    left: 5px;
+}
+.upload-file-list .btn-move.btn-left:hover{
+    left: 2px;
+    opacity: 1;
+}
+.upload-file-list .btn-move.btn-right{
+    right: 5px;
+}
+.upload-file-list .btn-move.btn-right:hover{
+    right: 2px;
+    opacity: 1;
+}
+
+
+
+
+
+
+

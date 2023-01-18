@@ -1,0 +1,131 @@
+﻿
+
+* { margin: 0; padding: 0; }
+
+.TS_table { width: 100%; border-collapse: collapse; border-spacing: 0; }
+.TS_table .hide { display: none; }
+.TS_table tr:hover { }
+.TS_table td { height: 30px;color: #333; border: 0px solid #ddd; white-space: nowrap; }
+.TS_table td:last-child {padding: 7px; }
+.TS_table .TS_title { padding: 7px; color: #333; font-weight: bold; font-size: 12px; text-align: left; font-family: "Helvetica Neue",Helvetica,Arial,Microsoft YaHei; font-size: 14px; }
+.TS_table .TS_title td {border-bottom: 2px #999 solid;color:#999;box-shadow: 0 20px 50px -10px rgba(0, 0, 0, 0.05) inset}
+.TS_table .TS_title td:last-child {padding: 12px 10px;}
+.TS_table .TS_sort { position: relative; padding-right:30px; cursor:pointer }
+.TS_table .TS_sort:after { display: inline-block; font-family: FontAwesome; font-size: 14px; content: "\f0dc";padding-left: 10px; }
+.TS_table .TS_sort_desc:after { content: "\f107"; opacity: .75;}
+.TS_table .TS_sort_asc:after { content: "\f106"; opacity: .75;}
+
+.TS_table a { cursor: pointer; text-decoration: none; color: #e30514; margin-right: 5px; }
+.TS_table a.btn-primary { color: #fff;}
+.TS_table a.btn-default { color: #333;}
+
+.TS_table .TS_search { color: #fff; font-size: 12px; text-align: center; }
+.TS_table .TS_search .Empty { min-width: 50px; }
+.TS_table .TS_search tr { background-color: transparent!important;}
+.TS_table .TS_search td { white-space: nowrap; padding: 10px; vertical-align: middle;background-color: transparent!important;text-align: left;}
+.TS_table .TS_search td:first-child {padding-left: 0;}
+.TS_table .TS_search:hover { }
+.TS_table .TS_search input::placeholder {color: #ccc; }
+.TS_table .TS_search input:-webkit-input-placeholder {color: #ccc; }
+.TS_table .TS_search input:-ms-input-placeholder {color: #ccc; }
+.TS_table .TS_search input::-moz-placeholder {color: #ccc; }
+.TS_table .TS_input:focus { outline: none; }
+.TS_table .TS_input { border: 1px #eee solid; height: 30px;padding: 0 10px; border-radius: 3px; color: #333; text-align: left; }
+.TS_table .TS_between { width: 65px; }
+.TS_table .TS_time { width: 40%;}
+.TS_table .TS_text { width: 85%; }
+.TS_table .TS_none { width: 30px; }
+.TS_table .TS_select {background-color: #fff; color: #999; width: 85%; }
+.TS_table .TS_empty_td { }
+.TS_table .TS_empty { margin: 0 5px; }
+.TS_table .TS_export { }
+
+
+.TS_page { width: 100%; margin: 10px 0 20px; }
+.TS_page > div { display: table-cell; white-space: nowrap; text-align: center; padding: 0; vertical-align: top; padding-right: 3px; }
+.TS_page > div > a { border: 1px solid rgba(0,0,0,0.2); color: rgba(0,0,0,0.4); padding: 0 10px; float: left; height: 28px; line-height: 28px; }
+.TS_page > div > span { padding: 0 10px; margin-right: 3px; float: left; height: 25px; line-height: 25px; }
+.TS_page .bind { cursor: pointer; border: 1px solid rgba(0,0,0,0.2); color: #000; }
+.TS_page .num { width: auto; padding: 0 10px; }
+.TS_page .sel { background-color: #cc0000; color: #fff; }
+.TS_page .txt_go { height: 28px; border: 1px solid rgba(0,0,0,0.2); color: #000; width: 30px; margin-right: 3px; text-align: center; }
+.TS_page .a_go { cursor: pointer; color: #000; }
+
+
+/*正常*/
+.TS_list .StateName-1e3ba  td:last-child .btn-open{
+    display: none;
+}
+.TS_list .StateName-24ae4 td:last-child .btn-open{
+    display: none;
+}
+.TS_table a.btn-open{
+    color: #8fb91c;
+}
+.TS_table a.btn-stop{
+    color: #e30514;
+}
+/*暂停*/
+.TS_list .StateName-1e3ba  td:last-child .btn-stop{
+    display: none;
+}
+.TS_list .StateName-24ae4 td:last-child .btn-stop{
+    display: none;
+}
+.TS_list .StateName-b6de td{
+    color: #bbb;
+}
+.TS_list .StateName-b6de td.Scale b{
+    color: #bbb !important;
+}
+
+
+ /*理赔审核成功*/
+.TS_list :not(.OrderState-10) td:last-child .btn-pay{
+    display: none;
+}
+
+/*订单待生效 & 订单生效中*/
+.TS_list :not(.OrderState-4):not(.OrderState-5) td:last-child .btn-cancel{
+    display: none;
+}
+
+/*订单失效*/
+.TS_list :not(.OrderState-12) td:last-child .btn-set{
+    display: none;
+}
+
+/*需要操作的订单*/
+.TS_list .OrderState-100 td:last-child .btn-view,.TS_list .OrderState-600 td:last-child .btn-view{
+    display: none;
+}
+.TS_list .OrderState-100 td,.TS_list .OrderState-600 td{
+    color: #ff8800;
+}
+.TS_list :not(.OrderState-100):not(.OrderState-600) td:last-child .btn-check{
+    display: none;
+}
+
+
+
+/*下架*/
+.TS_list .IsRelease-1 td:last-child .btn-open{
+    display: none;
+}
+.TS_table a.btn-open{
+    color: #8fb91c;
+}
+.TS_table a.btn-stop{
+    color: #e30514;
+}
+/*上架*/
+.TS_list .IsRelease-2 td:last-child .btn-stop{
+    display: none;
+}
+.TS_list .IsRelease-b6de td{
+    color: #bbb;
+}
+.TS_list .IsRelease-b6de td.Scale b{
+    color: #bbb !important;
+}
+

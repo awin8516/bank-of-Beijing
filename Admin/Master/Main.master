@@ -1,0 +1,44 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeFile="Main.master.cs" Inherits="Admin_Master_Main" %>
+<!DOCTYPE html>
+
+<!--[if IE 9]><html class="ie9 no-focus"><![endif]-->
+<!--[if gt IE 9]><!-->
+<html class="no-focus">
+<!--<![endif]-->
+
+<head runat="server">
+
+    <meta charset="utf-8">
+    <title>Lina System</title>
+    <link rel="icon" type="image/x-icon" href="assets/img/favicons/fav.png"/>
+    <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1.0">
+
+    <link href="~/Admin/assets/css/oneui.css" rel="stylesheet" />
+    <link href="~/Admin/assets/js/ITableSearch/default.css" rel="stylesheet" />
+    <link href="~/Admin/assets/js/plugins/datatables/jquery.dataTables.min.css" rel="stylesheet" />
+
+    <script src="<%=ResolveUrl("~/Admin/assets/js/core/jquery.min.js") %>"></script>
+    <script src="<%=ResolveUrl("~/Admin/assets/js/core/bootstrap.min.js") %>"></script>
+    <script src="<%=ResolveUrl("~/Admin/assets/js/core/jquery.slimscroll.min.js") %>"></script>
+    <script src="<%=ResolveUrl("~/Admin/assets/js/core/jquery.scrollLock.min.js") %>"></script>
+    <script src="<%=ResolveUrl("~/Admin/assets/js/core/jquery.appear.min.js") %>"></script>
+    <script src="<%=ResolveUrl("~/Admin/assets/js/core/jquery.countTo.min.js") %>"></script>
+    <script src="<%=ResolveUrl("~/Admin/assets/js/core/jquery.placeholder.min.js") %>"></script>
+    <script src="<%=ResolveUrl("~/Admin/assets/js/core/js.cookie.min.js") %>"></script>
+    <script src="<%=ResolveUrl("~/Admin/assets/js/My97DatePicker/WdatePicker.js") %>"></script>
+    <script src="<%=ResolveUrl("~/Admin/assets/js/global.js") %>"></script>
+    <script src="<%=ResolveUrl("~/Admin/assets/js/ITableSearch/jquery.ITableSearch.js") %>"></script>
+    <script src="<%=ResolveUrl("~/Admin/assets/js/app.js") %>"></script>
+ <%--   <script src="<%=ResolveUrl("~/Admin/assets/js/layer/layer.js") %>"></script>--%>
+    <asp:ContentPlaceHolder ID="head" runat="server">
+    </asp:ContentPlaceHolder>
+</head>
+<body>
+    <form runat="server" class="form-horizontal form-master">
+        <main id="main-container">
+        <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server">
+        </asp:ContentPlaceHolder>
+        </main>
+    </form>
+</body>
+</html>

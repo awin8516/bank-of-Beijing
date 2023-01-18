@@ -1,0 +1,63 @@
+﻿{
+    "Config": { "DB": "DB", "Name": "youyijia_Video", "PK": "ID", "Field": "*", "Query": "IsDel=0", "Sort": "ID desc", "PageSize": 10, "Span": 5 },
+    "Column": [
+        {
+            "Title": "ID",
+            "SearchType": "Like",
+            "Bind": "ID"
+        },
+		{
+            "Title": "上传类型",
+            "SearchType": "Select",
+            "BindType": "Select",			
+            "Bind": "State",
+            "Info": [ { "Value": 1, "Text": "文件上传" }, { "Value": 2, "Text": "地址引用" } ]
+        },
+		{
+            "Title": "视频名称",
+            "SearchType": "Like",
+            "Bind": "Video_Name"
+        },
+		 { 
+		    "Title": "视频文件", 
+		    "BindType": "Html", 
+		    "Info": "<video data-type='video' src='{Video_Url}' width='100' autoplay></video>"
+		 },
+		 { 
+		    "Title": "视频封面", 
+		    "BindType": "Html", 
+		    "Info": "<img src='{Video_Cover}' width='100'></img>"
+		 },
+		 { 
+		    "Title": "视频地址", 
+		    "BindType": "Html", 
+		    "Info": "<a  href='{Video_Url}' target='_blank' >视频地址</a>"
+		 },
+		{
+            "Title": "排序",
+            "SearchType": "Like",
+			"IsSort":true,
+            "Bind": "Weight"
+        },
+		{
+            "Title": "入库时间",
+            "SearchType": "Time",
+			"BindType": "Time",
+            "Bind": "AddTime"
+        },
+		{ 
+			"Title": "", 
+			"SearchType": "",
+			"BindType": "Html", 
+			"Info": "<a class='btn btn-sm btn-default' title='编辑图片' onclick='fhuo({ID},\"{Video_Name}\",\"{Video_Url}\",\"{Video_Cover}\",\"{State}\",\"{Weight}\")'><i class='glyphicon glyphicon-pencil'></i> 编辑</a><a class='btn btn-sm btn-default lab456' onclick='if(confirm(\"确认删除吗？\"))DelCoupon([{ID},1])' title='删除'><i class='glyphicon glyphicon-remove'></i>删除</a>" 
+		 }			
+    ],
+	"Ajax": [
+        {
+            "Name": "DelCoupon",
+            "SQL": "Update youyijia_Video set IsDel=@1 where ID=@0",
+            "Update": true,
+            "Info": "alert('删除成功!');"
+        }
+    ]
+}

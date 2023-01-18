@@ -1,0 +1,12 @@
+$myFont: "microsoft yahei", "Source Sans Pro", "-apple-system",
+    "BlinkMacSystemFont", "Segoe UI", "Roboto", "Helvetica Neue", "Arial",
+    "sans-serif";
+  $myColor: #e60012;
+  $myColor2: lighten($myColor, 80%);
+  $myColor3: lighten($myColor, 30%);
+  $myFontSize: 12px;
+  $myLineHeight: 1.6;
+  $myWidth: 680px;
+  $navColor: #22baf1, #6be2b4, #ddc95a, #f0915a, #ff6f6f, #dd54a4, #ae8adf,
+    #829ae7, #e782df, #f78a8a;
+  $fixedNavHeight: 20%;
