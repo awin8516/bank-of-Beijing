@@ -1,5 +1,6 @@
 import { createApp } from 'vue'
-import './style.css'
+// import './assets/scss/global.scss'
 import App from './App.vue'
-
-createApp(App).mount('#app')
+import fn from './assets/js/fn'
+window.fn = fn;
+createApp(App).mount('#app');

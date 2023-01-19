@@ -1,0 +1,53 @@
+/*************
+ * theme-ui-red
+ *************/
+body.theme-ui-red {
+  $myFont: "microsoft yahei", "Source Sans Pro", "-apple-system",
+    "BlinkMacSystemFont", "Segoe UI", "Roboto", "Helvetica Neue", "Arial",
+    "sans-serif";
+  $myColor: #e60012;
+  $navColor: #ff0000, #6be2b4, #ddc95a, #f0915a, #ff6f6f, #dd54a4, #ae8adf,
+    #829ae7, #e782df, #f78a8a;
+
+  
+  background-image: url(@/assets/images/bg.jpg);
+
+  .header {
+    background-color: #fff;
+    .slogan {
+      color: $myColor;
+    }
+    .btn-fullscreen {
+      background: url(@/assets/images/common/icon-fullscreen-w2.png) $myColor
+        no-repeat center / 90% auto;
+      box-shadow: 0px 0px 0.5rem rgba(0, 0, 0, 0.5);
+      border: 5px #fff solid;
+    }
+  }
+
+  .nav {
+    li {
+      box-shadow: 0 0 1.5em 0.5em #fff inset;
+      color: #fff;
+    }
+    @each $c in $navColor {
+      $i: index(
+        $navColor,
+        $c
+      ); // 获取 $c 在数组中的索引，并赋值给 $i 赋值用冒号，不是等号~！
+      li:nth-child(#{$i}) {
+        background-color: $c;
+      }
+    }
+  }
+  .side-btns {
+    color: $myColor;
+    b {
+      background: $myColor;
+      color: #fff;
+      &.disabled {
+        color: #f5737d;
+      }
+    }
+  }
+}
