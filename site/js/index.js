@@ -391,6 +391,7 @@ $(document).ready(function(){
    * 初始化贵宾增值服务
    */
   function initVip() {
+    removeNav("VIP");
     var doclist = [];
     API._send('getHtmlByUrl',"POST", {url:"http://www.bankofbeijing.com.cn/personal/zs-yujinxiang.shtml"}, function(data){
       var html = getHtmlByDoc(data.result,".pic_card","","http://www.bankofbeijing.com.cn/personal")
@@ -415,7 +416,10 @@ $(document).ready(function(){
 
     function checklist(){
       if(doclist.length==4){
-        Template('tpl-page-vip', {content:delStyleHtml(doclist.join(" "))});
+        removeNav("VIP");
+        // Template('tpl-page-vip', {content:delStyleHtml(doclist.join(" "))});
+      }else{
+        removeNav("VIP");
       }
     }
 
