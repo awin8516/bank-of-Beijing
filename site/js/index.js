@@ -50,7 +50,7 @@ $(document).ready(function(){
       {"zh": "便民设施","en": "Facilities","template": "Facilities"},
       {"zh": "党建信息","en": "Party","template": "Party"},
       {"zh": "服务人员展示","en": "Personnel","template": "Personnel"},
-      {"zh": "消费者保护专栏","en": "Consumer","template": "Consumer"},
+      {"zh": "消费者<br>保护专栏","en": "Consumer","template": "Consumer"},
       {"zh": "贵宾增值服务","en": "VIP","template": "VIP"},
       {"zh": "理财产品专栏","en": "Financial","template": "Financial"},
       {"zh": "我的的荣誉","en": "Honor","template": "Honor"},
@@ -65,7 +65,7 @@ $(document).ready(function(){
       // {"zh": "便民设施","en": "Facilities","template": "Facilities"},
       {"zh": "党建信息","en": "Party","template": "Party"},
       // {"zh": "服务人员展示","en": "Personnel","template": "Personnel"},
-      {"zh": "消费者保护专栏","en": "Consumer","template": "Consumer"},
+      {"zh": "消费者<br>保护专栏","en": "Consumer","template": "Consumer"},
       {"zh": "贵宾增值服务","en": "VIP","template": "VIP"},
       {"zh": "理财产品专栏","en": "Financial","template": "Financial"},
       // {"zh": "我的的荣誉","en": "Honor","template": "Honor"},
@@ -139,7 +139,7 @@ $(document).ready(function(){
   }
 
   function getIndexByArray(key,value,arr){
-    var index = false;
+    var index = -1;
     for(var i=0;i<arr.length;i++){
       if(arr[i][key] == value){
         index = i;
@@ -163,12 +163,14 @@ $(document).ready(function(){
   }
 
   function removeNav(name){
-    var index = getIndexByArray("en",name,siteNav)
-    siteNav.splice(index,1);
-    var nav = {siteNav:siteNav}
-    // console.log(nav)
-    Template('tpl-nav-home', nav);
-    Template('tpl-nav-fixed', nav);
+    var index = getIndexByArray("en",name,siteNav);
+    if(index >=0){
+      siteNav.splice(index,1);
+      var nav = {siteNav:siteNav}
+      // console.log("---"+name,index, nav)
+      Template('tpl-nav-home', nav);
+      Template('tpl-nav-fixed', nav);
+    }
   }
 
   /*******************
@@ -817,29 +819,32 @@ $(document).ready(function(){
    */
   function getHtmlByDoc(doc,selecter, removeSelecter,domain){
 
-    var body = doc.match(/<body.*?<\/body>/);
-    if(body.length){
-      body = body[0].replace(/<script.*?<\/script>/g,"");
-      body = body.replace(/(<img.*?src=")(.*?)(".*?>)/g,function(a,b,c,d){
-        if(c.indexOf("http") ==-1){
-          return b+domain+"/"+c+d;
-        }else{
-          return a;
-        }
-      });
-
-      // console.log(body);
-      var tempDiv = $("<div id='tempDiv'>"+body+"</div>");
-      $("body").append(tempDiv);
-      var content = tempDiv.find(selecter);
-      content.find(removeSelecter).remove();
-      var res = content.prop("outerHTML");
-      tempDiv.remove();
-      console.log(res);
-      return res;
-      // tempDiv.html("").append(content);
-
+    if(doc){
+      var body = doc.match(/<body.*?<\/body>/);
+      if(body.length){
+        body = body[0].replace(/<script.*?<\/script>/g,"");
+        body = body.replace(/(<img.*?src=")(.*?)(".*?>)/g,function(a,b,c,d){
+          if(c.indexOf("http") ==-1){
+            return b+domain+"/"+c+d;
+          }else{
+            return a;
+          }
+        });
+  
+        // console.log(body);
+        var tempDiv = $("<div id='tempDiv'>"+body+"</div>");
+        $("body").append(tempDiv);
+        var content = tempDiv.find(selecter);
+        content.find(removeSelecter).remove();
+        var res = content.prop("outerHTML");
+        tempDiv.remove();
+        console.log(res);
+        return res;
+        // tempDiv.html("").append(content);
+  
+      }
     }
+    
   }
 
   // var aa = '<div><img border="0" src="http://www.bankofbeijing.com.cn/images/private_zzfw01.jpg">000</div>';

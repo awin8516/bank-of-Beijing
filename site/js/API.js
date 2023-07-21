@@ -1,8 +1,6 @@
 var API = {
-    // DOMAIN: location.href.indexOf("lina") != -1 ? "http://lina007.com/Api/Handler.ashx" : " http://114.55.11.192:7300/mock/5f841673d29faf95e856baa9/lina",               //正式
-    DOMAIN: location.href.indexOf("http://lina007.com/") != -1 ? "http://lina007.com" : " http://test.lina007.com",               //正式
-    // DOMAIN: "http://lina007.com",               //正式
-    DEBUG: false,    
+    DOMAIN: location.href.indexOf("lina007.com") != -1 ? "http://lina007.com" : " http://test.lina007.com",
+    DEBUG: location.href.indexOf("lina007.com") == -1,    
     _send: function(method,type, data, success){
         var successfn = function(res){
             if (API.DEBUG){
@@ -30,8 +28,10 @@ var API = {
         }
         if(API.DEBUG){
             if(method == 'getSiteInfo'){
+                console.log(method, __DATA[method]);
                 successfn && successfn(__DATA_UPDATE[method])
             }else{
+                console.log(method, __DATA[method]);
                 successfn && successfn(__DATA[method])
             }
         }else{

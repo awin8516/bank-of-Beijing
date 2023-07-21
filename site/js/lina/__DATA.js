@@ -4,7 +4,7 @@ var __DATA = {
     errmsg: "ok",
     result: {
       siteId: 1,
-      siteName: "北京银行上海分行营业部",
+      siteName: "北京银行上海分行营业部000",
       siteTheme: "red",
       siteLogo: "",
       sitePoster: "",
@@ -602,11 +602,10 @@ var __DATA = {
     },
   },
   getConsumer: {
-    errcode: 0,
-    errmsg: "ok",
-    result:{
-      data:
-      "<img src='image/5/0.jpg'><img src='image/5/01.jpg'><img src='image/5/02.jpg'><img src='image/5/03.jpg'><img src='image/5/04.jpg'><img src='image/5/05.jpg'><img src='image/5/06.jpg'><img src='image/5/07.jpg'><img src='image/5/08.jpg'><img src='image/5/09.jpg'><img src='image/5/10.jpg'><img src='image/5/11.jpg'><img src='image/5/12.jpg'><img src='image/5/13.jpg'><img src='image/5/14.jpg'><img src='image/5/15.jpg'><img src='image/5/16.jpg'><img src='image/5/17.jpg'><img src='image/5/18.jpg'>"
+    "errcode": 0,
+    "errmsg": "ok",
+    "result": {
+        "data": "<p><img src=\"http://lina007.com/Upload/Img/3f38bd34-61ab-40a5-9ab3-8a6f48bb98c8.jpg\" data-filename=\"img\" style=\"width: 962px;\"><img src=\"http://lina007.com/Upload/Img/135e72eb-77a8-4344-bf77-fbc21cfacbee.jpg\" style=\"width: 962px;\" data-filename=\"img\"><img src=\"http://lina007.com/Upload/Img/6fdeb664-2c60-4d97-8cf1-03d983c344eb.jpg\" data-filename=\"img\" style=\"width: 962px;\"><img src=\"http://lina007.com/Upload/Img/f885d850-5ab3-49ff-a2ed-31358cde8579.jpg\" data-filename=\"img\" style=\"width: 962px;\"><img src=\"http://lina007.com/Upload/Img/6ca41250-cd61-4d71-8d15-a7646336513c.jpg\" data-filename=\"img\" style=\"width: 962px;\"><img src=\"http://lina007.com/Upload/Img/4a3cd46b-ceda-49b6-8a49-4500018c276d.jpg\" data-filename=\"img\" style=\"width: 962px;\"><img src=\"http://lina007.com/Upload/Img/80909a73-f317-4656-8224-2696e2192b62.jpg\" data-filename=\"img\" style=\"width: 962px;\"><img src=\"http://lina007.com/Upload/Img/106a6642-e733-4d1b-93ee-d37c9c6c22f5.jpg\" data-filename=\"img\" style=\"width: 962px;\"><img src=\"http://lina007.com/Upload/Img/389c3f14-32a7-410f-9ea1-6b0654904e52.jpg\" data-filename=\"img\" style=\"width: 962px;\"><img src=\"http://lina007.com/Upload/Img/11027657-5e2a-4c9b-851c-bb6afd851713.jpg\" data-filename=\"img\" style=\"width: 962px;\"><img src=\"http://lina007.com/Upload/Img/b66df093-190e-4ffc-9afb-433a6e362cda.jpg\" data-filename=\"img\" style=\"width: 962px;\"><img src=\"http://lina007.com/Upload/Img/33e721d7-217c-4657-b736-b3e66829d0e0.jpg\" data-filename=\"img\" style=\"width: 962px;\"><img src=\"http://lina007.com/Upload/Img/07adafea-47d7-42ef-9369-526ead0baa40.jpg\" data-filename=\"img\" style=\"width: 962px;\"><img src=\"http://lina007.com/Upload/Img/6797a6c0-cd47-4c90-8855-0326f4a32bd7.jpg\" data-filename=\"img\" style=\"width: 962px;\"><img src=\"http://lina007.com/Upload/Img/818d3478-e907-45a7-856a-3d55c56e42b4.jpg\" data-filename=\"img\" style=\"width: 962px;\"><img src=\"http://lina007.com/Upload/Img/31d25a86-8c37-4e2c-a93b-d8dfce5a5b12.jpg\" data-filename=\"img\" style=\"width: 962px;\"><img src=\"http://lina007.com/Upload/Img/45183beb-c029-4794-9876-0b2fba683775.jpg\" data-filename=\"img\" style=\"width: 962px;\"><img src=\"http://lina007.com/Upload/Img/68635e39-b5d1-44b5-89d0-39e26b9aac65.jpg\" data-filename=\"img\" style=\"width: 962px;\"><img src=\"http://lina007.com/Upload/Img/3550e6ed-5cc8-4249-90ff-cfcea3f7a81c.jpg\" data-filename=\"img\" style=\"width: 962px;\"><br></p>"
     }
   },
   getVip: {
@@ -636,7 +635,7 @@ var __DATA = {
     errcode: 0,
     errmsg: "ok",
     result: {
-      data: "<img src='image/9/01.jpg' >"
+      data: ""
     }
   },
   getCash: {
@@ -645,5 +644,24 @@ var __DATA = {
     result: {
       data: "<video class='video-playlist video-playlist-cash' data-playlist='[\"image/10/2015.mp4\",\"image/10/2019-1.mp4\",\"image/10/2019-2.mp4\",\"image/10/2020-1.mp4\",\"image/10/2020-2.mp4\"]' controls></video><img src='image/10/01.jpg' ><img src='image/10/02.jpg' ><img src='image/10/03.jpg' ><img src='image/10/04.jpg' ><img src='image/10/05.jpg' ><img src='image/10/06.jpg' >"
     }
+  },
+  getPension: {
+    "errcode": 0,
+    "errmsg": "ok",
+    "result": {
+        "data": "<p><br></p>"
+    }
+  },
+  getNotice: {
+    "errcode": 0,
+    "errmsg": "ok",
+    "result": {
+        "data": "<p><img src=\"http://lina007.com/Upload/Img/13601fd3-4d52-45a3-84a9-1c033f1e5c65.jpg\" style=\"width: 80%;\" data-filename=\"img\"><br></p>"
+    }
+  },
+  getHtmlByUrl: {
+    errcode: -1,
+    errmsg: "ok",
+    result: ""
   },
 };
