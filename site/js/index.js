@@ -43,38 +43,52 @@ $(document).ready(function(){
   var backHomeTimer = null;
   var newDate = "2020/11/28 00:00:00";  
   var nowDate = new Date();
-
-  if(__DATA.getSiteInfo.result.siteName == '北京银行上海分行营业部' || __DATA.getSiteInfo.result.siteName == '北京银行上海青浦支行'){
-    var siteNav =  [
-      {"zh": "网点导览","en": "Guide","template": "Guide"},
-      {"zh": "便民设施","en": "Facilities","template": "Facilities"},
-      {"zh": "党建信息","en": "Party","template": "Party"},
-      {"zh": "服务人员展示","en": "Personnel","template": "Personnel"},
-      {"zh": "消费者<br>保护专栏","en": "Consumer","template": "Consumer"},
-      {"zh": "贵宾增值服务","en": "VIP","template": "VIP"},
-      {"zh": "理财产品专栏","en": "Financial","template": "Financial"},
-      {"zh": "我的的荣誉","en": "Honor","template": "Honor"},
-      {"zh": "小京卡专栏","en": "Anniversary","template": "Anniversary"},
-      {"zh": "现金服务","en": "Cash","template": "Cash"},
-      {"zh": "养老金","en": "Pension","template": "Pension"},
-      {"zh": "公告","en": "Notice","template": "Notice"}
-    ];
-  }else{
-    var siteNav =  [
-      // {"zh": "网点导览","en": "Guide","template": "Guide"},
-      // {"zh": "便民设施","en": "Facilities","template": "Facilities"},
-      {"zh": "党建信息","en": "Party","template": "Party"},
-      // {"zh": "服务人员展示","en": "Personnel","template": "Personnel"},
-      {"zh": "消费者<br>保护专栏","en": "Consumer","template": "Consumer"},
-      {"zh": "贵宾增值服务","en": "VIP","template": "VIP"},
-      {"zh": "理财产品专栏","en": "Financial","template": "Financial"},
-      // {"zh": "我的的荣誉","en": "Honor","template": "Honor"},
-      {"zh": "小京卡专栏","en": "Anniversary","template": "Anniversary"},
-      {"zh": "现金服务","en": "Cash","template": "Cash"},
-      {"zh": "养老金","en": "Pension","template": "Pension"},
-      {"zh": "公告","en": "Notice","template": "Notice"}
-    ];
-  }
+  var siteNav =  [
+    {"zh": "网点导览","en": "Guide","template": "Guide"},
+    {"zh": "便民设施","en": "Facilities","template": "Facilities"},
+    {"zh": "党建信息","en": "Party","template": "Party"},
+    {"zh": "服务人员展示","en": "Personnel","template": "Personnel"},
+    {"zh": "消费者<br>保护专栏","en": "Consumer","template": "Consumer"},
+    {"zh": "贵宾增值服务","en": "VIP","template": "VIP"},
+    {"zh": "理财产品专栏","en": "Financial","template": "Financial"},
+    {"zh": "我的的荣誉","en": "Honor","template": "Honor"},
+    {"zh": "小京卡专栏","en": "Anniversary","template": "Anniversary"},
+    {"zh": "现金服务","en": "Cash","template": "Cash"},
+    {"zh": "养老金","en": "Pension","template": "Pension"},
+    {"zh": "公告","en": "Notice","template": "Notice"}
+  ];
+  
+  // if(__DATA.getSiteInfo.result.siteName == '北京银行上海分行营业部' || __DATA.getSiteInfo.result.siteName == '北京银行上海青浦支行'){
+  //   var siteNav =  [
+  //     {"zh": "网点导览","en": "Guide","template": "Guide"},
+  //     {"zh": "便民设施","en": "Facilities","template": "Facilities"},
+  //     {"zh": "党建信息","en": "Party","template": "Party"},
+  //     {"zh": "服务人员展示","en": "Personnel","template": "Personnel"},
+  //     {"zh": "消费者<br>保护专栏","en": "Consumer","template": "Consumer"},
+  //     {"zh": "贵宾增值服务","en": "VIP","template": "VIP"},
+  //     {"zh": "理财产品专栏","en": "Financial","template": "Financial"},
+  //     {"zh": "我的的荣誉","en": "Honor","template": "Honor"},
+  //     {"zh": "小京卡专栏","en": "Anniversary","template": "Anniversary"},
+  //     {"zh": "现金服务","en": "Cash","template": "Cash"},
+  //     {"zh": "养老金","en": "Pension","template": "Pension"},
+  //     {"zh": "公告","en": "Notice","template": "Notice"}
+  //   ];
+  // }else{
+  //   var siteNav =  [
+  //     // {"zh": "网点导览","en": "Guide","template": "Guide"},
+  //     // {"zh": "便民设施","en": "Facilities","template": "Facilities"},
+  //     {"zh": "党建信息","en": "Party","template": "Party"},
+  //     // {"zh": "服务人员展示","en": "Personnel","template": "Personnel"},
+  //     {"zh": "消费者<br>保护专栏","en": "Consumer","template": "Consumer"},
+  //     {"zh": "贵宾增值服务","en": "VIP","template": "VIP"},
+  //     {"zh": "理财产品专栏","en": "Financial","template": "Financial"},
+  //     // {"zh": "我的的荣誉","en": "Honor","template": "Honor"},
+  //     {"zh": "小京卡专栏","en": "Anniversary","template": "Anniversary"},
+  //     {"zh": "现金服务","en": "Cash","template": "Cash"},
+  //     {"zh": "养老金","en": "Pension","template": "Pension"},
+  //     {"zh": "公告","en": "Notice","template": "Notice"}
+  //   ];
+  // }
   
 
   $o.body.on(eventList.click, ".nav a", pageTo);
