@@ -1161,14 +1161,14 @@
                 <div class="form-group">
                     <div class="form-material">
                         <div class="col-xs-12">
-                            <label class="control-label control-label" for="inputError2" >首页轮播视频:</label>
+                            <label class="control-label control-label" style="vertical-align: top;" for="inputError2" >首页轮播视频:</label>
                             <asp:HiddenField runat="server" ID="img1" Value="" />
 
-                            <div class="control-container">
+                            <div class="control-container" style="max-width: 80%;">
                                 <a href="javascript:;" class="file company-upload1">
                                     <input type="file" name="" accept="video/mp4" multiple="multiple" runat="server" id="upLoad1" />
                                 </a>
-                                <ul class="company-imgs1 upload-file-list" runat="server" id="ImgList1">
+                                <ul class="company-imgs1 upload-file-list" style="max-width: 80%;" runat="server" id="ImgList1">
                                     <%= html1 %>
                                 </ul>
                             </div>

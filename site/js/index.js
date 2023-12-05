@@ -136,12 +136,24 @@ $(document).ready(function(){
 		} //end if
 		else return null;
 	} //end func
+
+  //批量预载视频
+	function preload(list) {
+		list.forEach(src => {
+      let video = document.createElement('video');
+      video.preload = "auto";
+      video.src = src;
+    });
+
+	} //end func
   
   function initPlayList(el){
     var $videos= $(el);
+    console.log($videos)
     $.each($videos,function(index, video){
-      // console.log(this.dataset.playlist)
       var playlist = JSON.parse(this.dataset.playlist);
+      console.log(playlist)
+      preload(playlist);
       var index = 0;
       video.src = playlist[index];
       $(video).on("ended", function(){
@@ -236,82 +248,87 @@ $(document).ready(function(){
       // res.result.siteVideo = v
       // console.log(res)
       Template('tpl-nav-home', res.result);
-      Template('tpl-banner', banners);
-      Template('tpl-banner-x1', bannersX1);
-      Template('tpl-banner-x2', bannersX2);
-      Template('tpl-video', res.result);
-      Template('tpl-video-x1', videoX1);
-      Template('tpl-video-x2', videoX2);
       Template('tpl-nav-fixed', res.result);
+
+      if(screenType == 'vertical'){
+        Template('tpl-banner', banners);
+        Template('tpl-video', res.result);
+        swiperBanner = new Swiper({
+          el: '.banner-y1 .swiper-home-banner',
+          pagination: {
+            el: '.banner-y1 .swiper-home-banner .swiper-pagination',
+          },
+          loop : true,
+          autoplay: {
+            delay: 5000,
+            stopOnLastSlide: false,
+            disableOnInteraction: true
+          }
+        });
+      }else{
+        Template('tpl-banner-x1', bannersX1);
+        Template('tpl-banner-x2', bannersX2);
+        Template('tpl-video-x1', videoX1);
+        Template('tpl-video-x2', videoX2);
+        swiperBannerX1 = new Swiper({
+          el: '.banner-x1 .swiper-home-banner',
+          pagination: {
+            el: '.banner-x1 .swiper-home-banner .swiper-pagination',
+          },
+          loop : true,
+          autoplay: {
+            delay: 5000,
+            stopOnLastSlide: false,
+            disableOnInteraction: true
+          }
+        });
+        swiperBannerX2 = new Swiper({
+          el: '.banner-x2 .swiper-home-banner',
+          pagination: {
+            el: '.banner-x2 .swiper-home-banner .swiper-pagination',
+          },
+          loop : true,
+          autoplay: {
+            delay: 5000,
+            stopOnLastSlide: false,
+            disableOnInteraction: true
+          }
+        });
+      }
+    
       $o.video = $("video");
-      swiperBanner = new Swiper({
-        el: '.banner-y1 .swiper-home-banner',
-        pagination: {
-          el: '.banner-y1 .swiper-home-banner .swiper-pagination',
-        },
-        loop : true,
-        autoplay: {
-          delay: 5000,
-          stopOnLastSlide: false,
-          disableOnInteraction: true
-        }
-      });
-      swiperBannerX1 = new Swiper({
-        el: '.banner-x1 .swiper-home-banner',
-        pagination: {
-          el: '.banner-x1 .swiper-home-banner .swiper-pagination',
-        },
-        loop : true,
-        autoplay: {
-          delay: 5000,
-          stopOnLastSlide: false,
-          disableOnInteraction: true
-        }
-      });
-      swiperBannerX2 = new Swiper({
-        el: '.banner-x2 .swiper-home-banner',
-        pagination: {
-          el: '.banner-x2 .swiper-home-banner .swiper-pagination',
-        },
-        loop : true,
-        autoplay: {
-          delay: 5000,
-          stopOnLastSlide: false,
-          disableOnInteraction: true
-        }
-      });
 
       initPlayList('.video video');
     });
 
-    API.getExchange({},function(res){
-      // console.log(res);
-      if(res.errcode == 0 && res.result.ErrorCode == 0 ){
-        Template('tpl-exchange', {list:res.result.Data.CacheTable});
-        autoScroll($('.exchange dd'))
-      }
-      // if(res.ErrorCode == 0){
-      //   Template('tpl-exchange', {list:res.Data.CacheTable});
-      //   autoScroll($('.exchange dd'))
-      // }else{
-      //   console.log("加载超时");
-      // }
-    });
+    // API.getExchange({},function(res){
+    //   // console.log(res);
+    //   if(res.errcode == 0 && res.result.ErrorCode == 0 ){
+    //     Template('tpl-exchange', {list:res.result.Data.CacheTable});
+    //     autoScroll($('.exchange dd'))
+    //   }
+    //   // if(res.ErrorCode == 0){
+    //   //   Template('tpl-exchange', {list:res.Data.CacheTable});
+    //   //   autoScroll($('.exchange dd'))
+    //   // }else{
+    //   //   console.log("加载超时");
+    //   // }
+    // });
 
-    API.getFund({},function(res){
-      // console.log(res);
-      if(res.errcode == 0 && res.result.ErrorCode == 0 ){
-        Template('tpl-fund', {list:res.result.Data.Table});
-        autoScroll($('.fund dd'))
-      }
+    // API.getFund({},function(res){
+    //   // console.log(res);
+    //   if(res.errcode == 0 && res.result.ErrorCode == 0 ){
+    //     Template('tpl-fund', {list:res.result.Data.Table});
+    //     autoScroll($('.fund dd'))
+    //   }
 
-      // if(res.ErrorCode == 0){
-      //   Template('tpl-fund', {list:res.Data.Table});
-      //   autoScroll($('.fund dd'))
-      // }else{
-      //   console.log("加载超时");
-      // }
-    });
+    //   // if(res.ErrorCode == 0){
+    //   //   Template('tpl-fund', {list:res.Data.Table});
+    //   //   autoScroll($('.fund dd'))
+    //   // }else{
+    //   //   console.log("加载超时");
+    //   // }
+    // });
   }
   
   /*****************

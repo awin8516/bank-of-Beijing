@@ -1,6 +1,8 @@
 var API = {
-    DOMAIN: location.href.indexOf("lina007.com") != -1 ? "http://lina007.com" : " http://test.lina007.com",
-    DEBUG: location.href.indexOf("lina007.com") == -1,    
+    // DOMAIN: location.href.indexOf("lina007.com") != -1 ? "http://lina007.com" : " http://test.lina007.com",
+    DOMAIN: "http://lina007.com",
+    // DEBUG: location.href.indexOf("lina007.com") == -1, 
+    DEBUG: false,    
     _send: function(method,type, data, success){
         var successfn = function(res){
             if (API.DEBUG){
