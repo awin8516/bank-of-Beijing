@@ -532,8 +532,8 @@
             setTimeout(function () {
                 $(".company-upload").on("click", function () {
                     nowLen = $("#ContentPlaceHolder1_ImgList").find("li").length;
-                    if (nowLen >= 50) {
-                        alert("最多上传50张图片");
+                    if (nowLen >= 500) {
+                        alert("最多上传500张图片");
                         return false;
                     }
                 })
@@ -555,8 +555,8 @@
                 var formData = new FormData();
 
 
-                if (tempLen > 50) {
-                    alert("最多上传50张图片");
+                if (tempLen > 500) {
+                    alert("最多上传500张图片");
                     return false;
                 }
                 for (var i = 0; i < $("#ContentPlaceHolder1_upLoad")[0].files.length; i++) {
@@ -693,8 +693,8 @@
             setTimeout(function () {
                 $(".company-upload2").on("click", function () {
                     nowLen = $("#ContentPlaceHolder1_ImgList2").find("li").length;
-                    if (nowLen >= 50) {
-                        alert("最多上传50张图片");
+                    if (nowLen >= 500) {
+                        alert("最多上传500张图片");
                         return false;
                     }
                 })
@@ -716,8 +716,8 @@
                 var formData = new FormData();
 
 
-                if (tempLen > 50) {
-                    alert("最多上传50张图片");
+                if (tempLen > 500) {
+                    alert("最多上传500张图片");
                     return false;
                 }
                 for (var i = 0; i < $("#ContentPlaceHolder1_upLoad2")[0].files.length; i++) {
@@ -857,8 +857,8 @@
             setTimeout(function () {
                 $(".company-upload1").on("click", function () {
                     nowLen = $("#ContentPlaceHolder1_ImgList1").find("li").length;
-                    if (nowLen1 >= 50) {
-                        alert("最多上传50个视频");
+                    if (nowLen1 >= 500) {
+                        alert("最多上传500个视频");
                         return false;
                     }
                 })
@@ -880,8 +880,8 @@
                 var formData = new FormData();
 
 
-                if (tempLen > 50) {
-                    alert("最多上传50张图片");
+                if (tempLen > 500) {
+                    alert("最多上传500张图片");
                     return false;
                 }
                 for (var i = 0; i < $("#ContentPlaceHolder1_upLoad1")[0].files.length; i++) {
