@@ -41,6 +41,10 @@ public class Admin_Waiter
     /// 资质
     /// </summary>
     public string qualification { get; set; }
+    /// <summary>
+    /// 资质
+    /// </summary>
+    public int Sort { get; set; }
 
     public DateTime AddTime { get; set; }
 

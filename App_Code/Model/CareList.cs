@@ -25,6 +25,7 @@ public class Waiter {
     public string post { get; set; }
     public string promise { get; set; }
     public string qualification { get; set; }
+    public int Sort { get; set; }
     public List<string> qualificationImgs { get; set; }
 
 }

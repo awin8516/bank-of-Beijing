@@ -199,6 +199,27 @@ $(document).ready(function(){
     }
   }
 
+  function sortByKey(arr,key,act,child){
+    // 定义一个按'id'键升序排序的比较函数
+    function compare(a, b) {
+      if (a[key] < b[key]) return -act;
+      if (a[key] > b[key]) return act;
+      return 0; // a.id等于b.id时保持原顺序
+    }
+    if(child){
+      arr.forEach(element => {
+        element[child].sort(compare)
+      });
+    }else{
+      arr.sort(compare)
+    }
+    // // 使用sort方法对数组进行排序
+    // var res = arr.sort(compare);  
+    console.log(arr);
+    
+    return arr
+  }
+
   /*******************
    * 初始化首页 & 菜单
    */
@@ -401,7 +422,7 @@ $(document).ready(function(){
       }
       // console.log(res);
       if(res.errcode == 0 && res.result.data.length){
-        Template('tpl-page-personnel', {groupPhoto:res.result.groupPhoto,category:res.result.data});
+        Template('tpl-page-personnel', {groupPhoto:res.result.groupPhoto,category:sortByKey(res.result.data,'Sort',-1, "list")});
       }else{
         removeNav("Personnel");
       }

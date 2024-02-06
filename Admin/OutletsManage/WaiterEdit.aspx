@@ -546,7 +546,6 @@
                         <div class="col-xs-12">
                             <label class="control-label">资质</label>
                             <asp:TextBox ID="TextBox5" runat="server" class="form-control"></asp:TextBox>
-
                         </div>
                     </div>
                 </div>
@@ -564,6 +563,14 @@
                                     <%= html %>
                                 </ul>
                             </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="form-material">
+                        <div class="col-xs-12">
+                            <label class="control-label">排序</label>
+                            <asp:TextBox ID="TextBox6" runat="server" Text="1" class="form-control"></asp:TextBox>
                         </div>
                     </div>
                 </div>

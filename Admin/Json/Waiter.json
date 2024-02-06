@@ -5,7 +5,7 @@
         "PK": "ID",
         "Field": "*",
         "Query": "IsDel=0",
-        "Sort": "ID desc",
+        "Sort": "Sort desc",
         "PageSize": 10,
         "Span": 5
     },
@@ -76,6 +76,11 @@
             "Title": "资质",
             "SearchType": "Like",
             "Bind": "qualification"
+        },
+        {
+            "Title": "排序",
+            "SearchType": "Like",
+            "Bind": "Sort"
         },
         {
             "Title": "入库时间",

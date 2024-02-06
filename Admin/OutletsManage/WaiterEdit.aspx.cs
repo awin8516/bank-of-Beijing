@@ -41,6 +41,7 @@ public partial class Lays_Job_Edit : PageBase
                 this.TextBox3.Text = comm.number;
                 this.TextBox4.Text = comm.promise;
                 this.TextBox5.Text = comm.qualification;
+                this.TextBox6.Text = comm.Sort.ToString();
                 this.image1.ImageUrl = comm.photo;
                 this.image1Hidden.Value = comm.photo;
                 this.ddl_Type.SelectedValue = comm.category;
@@ -106,6 +107,7 @@ public partial class Lays_Job_Edit : PageBase
         comm.number = this.TextBox3.Text;
         comm.promise = this.TextBox4.Text;
         comm.qualification = this.TextBox5.Text;
+        comm.Sort = Convert.ToInt32(this.TextBox6.Text);
 
         comm.category = this.ddl_Type.SelectedValue;
         if (!string.IsNullOrWhiteSpace(FileUpload1.FileName))

@@ -189,6 +189,7 @@ public class Handler : ApiBase
                 w.post = witem.position;
                 w.promise = witem.promise;
                 w.qualification = witem.qualification;
+                w.Sort = witem.Sort;
                 List<string> imglist = new List<string>();
                 List<Admin_QualificationImgs> Qlist = Manage.GetList<Admin_QualificationImgs>("WaiterID=@0 and IsDel=@1", witem.ID, 0);
                 foreach (var imgitem in Qlist)
