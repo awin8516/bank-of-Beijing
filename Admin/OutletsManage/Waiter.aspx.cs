@@ -50,6 +50,8 @@ public partial class Lays_Job_List : PageBase
                 fileUpload.SaveAs(Server.MapPath("~" + path));
                 model.groupPhoto = GetSiteUrl() + path;
             }
+        }else{
+            model.groupPhoto = "";
         }
         model.OutletsID = OutletsID;
         model.AddTime = DateTime.Now;

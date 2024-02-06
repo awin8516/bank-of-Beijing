@@ -303,7 +303,9 @@
 					<div class="scrollbox">
 						<div>
 							<script id="tpl-page-personnel" type="text/html">
+                                {{if groupPhoto }}
 								<div><img src="{{groupPhoto}}"></div>
+                                {{/if}}
 								<div id="peopleList">
 									{{each category}}
 									{{if $value.list.length}}

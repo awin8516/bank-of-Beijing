@@ -512,6 +512,15 @@
                         </div>
                     </div>
                 </div>
+                           <div class="form-group">
+                    <div class="form-material">
+                        <div class="col-xs-12">
+                            <label class="control-label">服务承诺</label>
+                            <asp:TextBox ID="TextBox4" runat="server" class="form-control"></asp:TextBox>
+
+                        </div>
+                    </div>
+                </div>
                 <div class="form-group">
                     <div class="form-material">
                         <div class="col-xs-12">
@@ -532,16 +541,7 @@
 
                     </div>
                 </div>
-                           <div class="form-group">
-                    <div class="form-material">
-                        <div class="col-xs-12">
-                            <label class="control-label">服务承诺</label>
-                            <asp:TextBox ID="TextBox4" runat="server" class="form-control"></asp:TextBox>
-
-                        </div>
-                    </div>
-                </div>
-                           <div class="form-group">
+                <div class="form-group">
                     <div class="form-material">
                         <div class="col-xs-12">
                             <label class="control-label">资质</label>

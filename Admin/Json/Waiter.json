@@ -1,69 +1,101 @@
 ﻿{
-  "Config": {
-    "DB": "DB",
-    "Name": "Admin_Waiter",
-    "PK": "ID",
-    "Field": "*",
-    "Query": "IsDel=0",
-    "Sort": "ID desc",
-    "PageSize": 10,
-    "Span": 5
-  },
-  "Column": [
-    {
-      "Title": "ID",
-      "SearchType": "Like",
-      "Bind": "ID"
+    "Config": {
+        "DB": "DB",
+        "Name": "Admin_Waiter",
+        "PK": "ID",
+        "Field": "*",
+        "Query": "IsDel=0",
+        "Sort": "ID desc",
+        "PageSize": 10,
+        "Span": 5
     },
-    {
-      "Title": "姓名",
-      "SearchType": "Like",
-      "Bind": "name"
-    },
-      {
-        "Title": "照片",
-        "BindType": "Html",
-        "Info": "<img src='{photo}' width='100' hight='100' onerror=\"this.src='../assets/默认图标.png';this.onerror=null\"></img>"
-      },
-		{
+    "Column": [
+        {
+            "Title": "ID",
+            "SearchType": "Like",
+            "Bind": "ID"
+        },
+        {
+            "Title": "照片",
+            "BindType": "Html",
+            "Info": "<img src='{photo}' width='100' hight='100' onerror=\"this.src='../assets/默认图标.png';this.onerror=null\"></img>"
+        },
+        {
+            "Title": "姓名",
+            "SearchType": "Like",
+            "Bind": "name"
+        },
+        {
             "Title": "科室",
             "SearchType": "Select",
-            "BindType": "Select",			
+            "BindType": "Select",
             "Bind": "category",
-            "Info": [ { "Value": 1, "Text": "党组成员" }, { "Value": 2, "Text": "支行领导" }, { "Value": 3, "Text": "对公客户经理" }, { "Value": 4, "Text": "对私客户经理" }, { "Value": 5, "Text": "营业室" }, { "Value": 6, "Text": "零售团队" } ]
+            "Info": [
+                {
+                    "Value": 1,
+                    "Text": "党组成员"
+                },
+                {
+                    "Value": 2,
+                    "Text": "支行领导"
+                },
+                {
+                    "Value": 3,
+                    "Text": "对公客户经理"
+                },
+                {
+                    "Value": 4,
+                    "Text": "对私客户经理"
+                },
+                {
+                    "Value": 5,
+                    "Text": "营业室"
+                },
+                {
+                    "Value": 6,
+                    "Text": "零售团队"
+                }
+            ]
         },
-    {
-      "Title": "岗位",
-      "SearchType": "Like",
-      "Bind": "position"
-    },
-    {
-      "Title": "工号",
-      "SearchType": "Like",
-      "Bind": "number"
-    },
-    {
-      "Title": "入库时间",
-      "SearchType": "Time",
-      "BindType": "Time",
-      "Bind": "AddTime"
-
-
-    },
-    {
-      "Title": "",
-      "SearchType": "Export",
-      "BindType": "Html",
-      "Info": "<a class='btn btn-sm btn-default' title='编辑' href='WaiterEdit.aspx?ID={ID}'><i class='fa fa-pencil'></i> 编辑/查看</a><a class='btn btn-sm btn-default lab456' onclick='if(confirm(\"确认删除吗？\"))SetIsDel([{ID},1])' title='删除'><i class='glyphicon glyphicon-remove'></i> 删除</a>"
-    }
-  ],
-  "Ajax": [
-
-    {
-      "Name": "SetIsDel",
-      "SQL": "Update Admin_Waiter set IsDel=@1 where ID=@0",
-      "Update": true,
-      "Info": "alert('删除成功!');"
-    }
-  ]
+        {
+            "Title": "岗位",
+            "SearchType": "Like",
+            "Bind": "position"
+        },
+        {
+            "Title": "工号",
+            "SearchType": "Like",
+            "Bind": "number"
+        },
+        {
+            "Title": "服务承诺",
+            "SearchType": "Like",
+            "Bind": "promise"
+        },
+        {
+            "Title": "资质",
+            "SearchType": "Like",
+            "Bind": "qualification"
+        },
+        {
+            "Title": "入库时间",
+            "SearchType": "Time",
+            "BindType": "Time",
+            "Bind": "AddTime"
+        },
+        {
+            "Title": "",
+            "SearchType": "Export",
+            "BindType": "Html",
+            "Info": "<a class='btn btn-sm btn-default' title='编辑' href='WaiterEdit.aspx?ID={ID}'><i class='fa fa-pencil'></i> 编辑/查看</a><a class='btn btn-sm btn-default lab456' onclick='if(confirm(\"确认删除吗？\"))SetIsDel([{ID},1])' title='删除'><i class='glyphicon glyphicon-remove'></i> 删除</a>"
+        }
+    ],
+    "Ajax": [
+        {
+            "Name": "SetIsDel",
+            "SQL": "Update Admin_Waiter set IsDel=@1 where ID=@0",
+            "Update": true,
+            "Info": "alert('删除成功!');"
+        }
+    ]
 }
