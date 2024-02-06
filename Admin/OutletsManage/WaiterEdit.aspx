@@ -570,7 +570,8 @@
                     <div class="form-material">
                         <div class="col-xs-12">
                             <label class="control-label">排序</label>
-                            <asp:TextBox ID="TextBox6" runat="server" Text="1" class="form-control"></asp:TextBox>
+                            <asp:TextBox ID="TextBox6" runat="server" Text="1" class="form-control" style="width:80px"></asp:TextBox>
+                            值越大越靠前
                         </div>
                     </div>
                 </div>
